@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 @font-face {
@@ -39,7 +40,7 @@ body {
   /* font-family: "SamsungOne500-kr",-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", */
     /* "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", */
     /* sans-serif; */
-  
+
   background: #121212;
   /* color: #fefefe; */
   width: 100vw;
