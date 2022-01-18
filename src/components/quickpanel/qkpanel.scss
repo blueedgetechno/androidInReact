@@ -1,0 +1,115 @@
+.quickpanel-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0);
+  opacity: 0;
+  z-index: -1;
+  transition: 0.3s all ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &[data-open="true"] {
+    pointer-events: auto;
+    z-index: 1000;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.2);
+
+    .quickpanel {
+      transform: translateY(0);
+    }
+  }
+}
+
+.quickpanel {
+  width: 100%;
+  max-width: 540px;
+  // min-height: 25%;
+  padding: 0 1.6em;
+  padding-bottom: 1em;
+
+  .status-bar {
+    padding: 0;
+  }
+
+  border-radius: 0 0 1em 1em;
+  background: #f2f2f2;
+  transform: translateY(-100%);
+  transition: all 0.3s ease-in-out;
+
+  // &[data-extended="true"] {
+  //   min-height: 60%;
+  // }
+
+  .date-and-setting {
+    display: flex;
+    justify-content: space-between;
+    color: var(--txt-col);
+    transition: all 200ms ease-in-out;
+  }
+
+  .date-day {
+    font-weight: 600;
+    color: var(--txt-col);
+  }
+
+  .quick-panel-time {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 200ms linear;
+
+    &[data-extended="true"] {
+      max-height: 80px;
+    }
+  }
+}
+
+.notif-panel {
+  padding: 1em 0;
+  text-align: center;
+
+  .mini-quick-panel {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    transition: all 300ms ease-in-out;
+
+    &[data-ext="true"] {
+      position: absolute;
+      width: 156%;
+      opacity: 0;
+    }
+  }
+
+  .mini-quick-panel-item {
+    padding: 8px;
+    background-color: var(--comp-txt);
+    border-radius: 50%;
+
+    .mini-quick-icon {
+      color: var(--sat-txt);
+    }
+  }
+
+  .extended-quick {
+    max-height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: all 300ms ease-in-out;
+
+    .quick-tool-container {
+      width: 100%;
+      display: grid !important;
+      grid-template-columns: 42px 42px 42px 42px;
+      justify-content: space-between;
+    }
+  }
+
+  .extended-quick-open {
+    max-height: 999px;
+    pointer-events: auto;
+  }
+}

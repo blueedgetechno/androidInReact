@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+@font-face {
+  font-family: "SamsungOne400";
+  src: url("https://d3unf4s5rp9dfh.cloudfront.net/ONEUI/SamsungOneKorean-400.woff2")
+      format("woff2"),
+    url(https://d3unf4s5rp9dfh.cloudfront.net/ONEUI/SamsungOneKorean-400.woff)
+      format("woff");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "SamsungOne500";
+  src: url("https://d3unf4s5rp9dfh.cloudfront.net/ONEUI/SamsungOneKorean-500.woff2")
+      format("woff2"),
+    url(https://d3unf4s5rp9dfh.cloudfront.net/ONEUI/SamsungOneKorean-500.woff)
+      format("woff");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "SamsungOne700";
+  src: url("https://d3unf4s5rp9dfh.cloudfront.net/ONEUI/SamsungOneKorean-700.woff2")
+      format("woff2"),
+    url(https://d3unf4s5rp9dfh.cloudfront.net/ONEUI/SamsungOneKorean-700.woff)
+      format("woff");
+  font-weight: 700;
+}
+
+body {
+  margin: 0;
+  font-family: "SamsungOne500", sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* font-family: "SamsungOne500-kr",-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", */
+    /* "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", */
+    /* sans-serif; */
+  
+  background: #121212;
+  /* color: #fefefe; */
+  width: 100vw;
+  height: 100vh;
+  user-select: none;
+  overflow: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.App {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.appwrap {
+  position: relative;
+  z-index: 0;
+}

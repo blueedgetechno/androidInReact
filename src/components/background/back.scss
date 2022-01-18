@@ -1,0 +1,9 @@
+.background {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: var(--wintheme);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.2s ease;
+}

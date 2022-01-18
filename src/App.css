@@ -1,0 +1,43 @@
+.App {
+  --stbar-h: 2.4em;
+}
+
+.uicon {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.text-xss {
+  font-size: 0.64em;
+}
+
+.smooth-trans{
+  transition: all 200ms ease-in-out;
+}
+
+.invert-true,
+img[data-invert="true"],
+svg[data-invert="true"],
+i[data-invert="true"] {
+  filter: invert(1);
+}
+
+.rounded-true,
+img[data-rounded="true"],
+svg[data-rounded="true"],
+i[data-rounded="true"] {
+  border-radius: 1000px;
+}
+
+.flip-true,
+img[data-flip="true"],
+svg[data-flip="true"],
+i[data-flip="true"] {
+  transform: scale(-1, 1);
+}
+
+.uicon img {
+  transform-origin: center;
+  transition: 400ms ease-in-out;
+}
