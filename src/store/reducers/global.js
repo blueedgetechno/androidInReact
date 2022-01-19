@@ -15,6 +15,10 @@ const initialState = {
     charging: false,
     level: 1,
   },
+  display: {
+    width: window.innerWidth,
+    height: window.innerHeight
+  }
 };
 
 const Global = createSlice({
@@ -30,6 +34,10 @@ const Global = createSlice({
     },
     date: (state, action) => {
       state.date = action.payload;
+    },
+    resolution: (state, action) => {
+      state.display.width = action.payload.width;
+      state.display.height = action.payload.height;
     }
   },
 });

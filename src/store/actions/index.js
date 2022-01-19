@@ -44,4 +44,11 @@ const fetchActions = () => {
 export const loadSettings = () => {
   fetchActions();
   const shortUpdates = setInterval(fetchActions, 10000);
+
+  window.onresize = ()=>{
+    store.dispatch({type: "global/resolution", payload: {
+      width: window.innerWidth,
+      height: window.innerHeight
+    }})
+  };
 };

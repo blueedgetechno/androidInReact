@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Hammer from 'react-hammerjs';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import './home.scss';
 import QuickPanel from '../../components/quickpanel';
@@ -8,8 +8,9 @@ import StatusBar from '../../components/statusbar';
 
 function Home() {
   const [action, setAction] = useState("Tap");
+  const display = useSelector((state) => state.global.display);
   const dispatch = useDispatch();
-  
+
   const options = {
     // direction: 'DIRECTION_ALL'
   }
@@ -34,7 +35,7 @@ function Home() {
       <QuickPanel/>
       <Hammer onSwipe={handleSwipe} options={options} direction='DIRECTION_ALL'>
         <div className='home'>
-          <div>{action}</div>
+          <div>{display.width}{" , "}{display.height}</div>
         </div>
       </Hammer>
     </div>

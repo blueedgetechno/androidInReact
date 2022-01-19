@@ -27,15 +27,18 @@
 .quickpanel {
   width: 100%;
   max-width: 540px;
-  min-height: 25%;
-  padding: 0 1.6em 0.5em;
+  max-height: 50%;
+  // padding: 0 1.6em 0.5em;
+  padding-bottom: 0.5em;
   color: var(--med-txt);
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 
   & > div {
     width: 100%;
+    padding: 0 1.6em;
   }
 
   .quick-panel-bottom-bar {
@@ -45,22 +48,25 @@
     border-radius: 10px;
   }
 
-  .status-bar {
-    padding: 0;
+  .notif-panel {
+    padding-left: 0;
+    padding-right: 0;
   }
+
   border-radius: 0 0 1em 1em;
   background: #f2f2f2;
   transform: translateY(-100%);
   transition: all 0.3s ease-in-out;
 
   &[data-extended="true"] {
-    min-height: 60%;
+    max-height: 100%;
   }
 
   .date-and-setting {
     display: flex;
     justify-content: space-between;
     color: var(--med-txt);
+    margin-bottom: 0.5em;
     transition: all 200ms ease-in-out;
   }
 
@@ -91,8 +97,9 @@
 .notif-panel {
   padding-top: 1em;
   text-align: center;
-
+  
   .mini-quick-panel {
+    padding: 0 1.6em;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -130,6 +137,7 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+    padding: 0 1.6em;
     pointer-events: none;
     transition: all 200ms ease-in-out;
 
@@ -169,6 +177,7 @@
     pointer-events: auto;
     // overflow: visible;
     opacity: 1;
+    animation: fastfadein 200ms linear;
   }
 
   .slick-list {

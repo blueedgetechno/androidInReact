@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { dispatchAction } from "../../store/actions";
-import Hammer, { propTypes } from "react-hammerjs";
+import Hammer, { displayName, propTypes } from "react-hammerjs";
 import { Icon } from "../utils";
 import StatusBar from "../../components/statusbar";
 import Swiper from "react-slick";
@@ -35,6 +35,7 @@ const DateObj = (props) => {
 
 export default function QuickPanel() {
   const quickpanel = useSelector((state) => state.quickpanel);
+  const display = useSelector((state) => state.global.display);
   const dispatch = useDispatch();
 
   const closePanel = (e) => {
@@ -59,7 +60,7 @@ export default function QuickPanel() {
         <Hammer onSwipeUp={collapsePanel} direction="DIRECTION_ALL">
           <div className="quickpanel" data-extended={quickpanel.extended}>
             <StatusBar hidetime={quickpanel.extended} />
-            <DateObj showtime ext={quickpanel.extended} />
+            <DateObj showtime ext={quickpanel.extended && display.height > 600} />
             <div className="date-and-setting">
               <DateObj ext={quickpanel.extended} />
               <Icon fafa="faCog" w={16} />
@@ -78,6 +79,8 @@ export default function QuickPanel() {
 }
 
 const QuickTool = (props) => {
+  const [toolCount, setToolCount] = useState(16);
+  const display = useSelector((state) => state.global.display);
   const settings = {
     dots: true,
     arrows: false,
@@ -121,35 +124,34 @@ const QuickTool = (props) => {
   data = data.concat(data);
   data = data.concat(data);
 
+  useEffect(() => {
+    if(display.height > 600) setToolCount(16);
+    else setToolCount(8);
+  },[display.height])
+
   const QuickSwiper = ()=>{
     return (
       <Swiper {...settings} className={"extended-quick" + (
         props.ext ? " extended-quick-open" : ""
       )}>
-        <div className="quick-tool-container">
-          {data.slice(0, 16).map((item,i) => {
+        {data.map((temp, idx) => {
+          if(idx%toolCount==0){
             return (
-              <div className="quick-tool-item" key={i}>
-                <div className="mini-quick-panel-item" data-active={item.state!=0}>
-                  <Icon className="mini-quick-icon" mui={item.icon} w={26}/>
-                </div>
-                <div className="quick-tool-info">{item.name}</div>
+              <div className="quick-tool-container">
+                {data.slice(idx, idx+toolCount).map((item,i) => {
+                  return (
+                    <div className="quick-tool-item" key={i}>
+                      <div className="mini-quick-panel-item" data-active={item.state!=0}>
+                        <Icon className="mini-quick-icon" mui={item.icon} w={26}/>
+                      </div>
+                      <div className="quick-tool-info">{item.name}</div>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
-        <div className="quick-tool-container">
-          {data.slice(17, 24).map((item,i) => {
-            return (
-              <div className="quick-tool-item" key={i}>
-                <div className="mini-quick-panel-item" data-active={item.state!=0}>
-                  <Icon className="mini-quick-icon" mui={item.icon} w={26}/>
-                </div>
-                <div className="quick-tool-info">{item.name}</div>
-              </div>
-            );
-          })}
-        </div>
+            )
+          }
+        })}
       </Swiper>
     )
   }
