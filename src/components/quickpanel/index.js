@@ -4,7 +4,9 @@ import { dispatchAction } from "../../store/actions";
 import Hammer, { propTypes } from "react-hammerjs";
 import { Icon } from "../utils";
 import StatusBar from "../../components/statusbar";
-import Slider from "react-slick";
+import Swiper from "react-slick";
+
+import Slider from '@mui/material/Slider';
 
 import "./qkpanel.scss";
 
@@ -14,12 +16,12 @@ const DateObj = (props) => {
 
   var datestring = new Date(date.year, date.month, date.day).toLocaleString(
     "en-us",
-    { weekday: "short", day: "numeric", month: "short" }
+    { weekday: "short", day: "numeric", month: "long" }
   );
 
   return props.showtime ? (
     <div className="date-day quick-panel-time" data-extended={props.ext}>
-      <div className="text-4xl">
+      <div className="text-5xl font-thin">
         {time.hours}:{time.minutes}
       </div>
       <div className="date-day-text">{datestring}</div>
@@ -41,7 +43,9 @@ export default function QuickPanel() {
     }
   };
   const extendPanel = () => dispatch({ type: "quickpanel/extend" });
-  const collapsePanel = () => dispatch({ type: "quickpanel/collapse" });
+  const collapsePanel = (e) => {
+    dispatch({ type: "quickpanel/collapse" });
+  }
 
   return (
     <Hammer
@@ -61,6 +65,11 @@ export default function QuickPanel() {
               <Icon fafa="faCog" w={16} />
             </div>
             <QuickTool ext={quickpanel.extended} />
+            <div className="brightness-input-container flex">
+              <Icon className="mr-2" mui="LightMode" w={16}/>
+              <Slider size="small" defaultValue={70} aria-label="Small"/>
+            </div>
+            <div className="quick-panel-bottom-bar"></div>
           </div>
         </Hammer>
       </div>
@@ -72,8 +81,8 @@ const QuickTool = (props) => {
   const settings = {
     dots: true,
     arrows: false,
-    infinite: true,
-    speed: 500,
+    infinite: false,
+    speed: 200
   };
 
   var data = [
@@ -112,18 +121,9 @@ const QuickTool = (props) => {
   data = data.concat(data);
   data = data.concat(data);
 
-  return (
-    <div className="notif-panel">
-      <div className="mini-quick-panel" data-ext={props.ext}>
-        {data.slice(0,6).map((item) => {
-          return (
-            <div className="mini-quick-panel-item" key={item.name} data-active={item.state!=0}>
-              <Icon className="mini-quick-icon" mui={item.icon} w={26} />
-            </div>
-          );
-        })}
-      </div>
-      <Slider {...settings} className={"extended-quick" + (
+  const QuickSwiper = ()=>{
+    return (
+      <Swiper {...settings} className={"extended-quick" + (
         props.ext ? " extended-quick-open" : ""
       )}>
         <div className="quick-tool-container">
@@ -138,7 +138,34 @@ const QuickTool = (props) => {
             );
           })}
         </div>
-      </Slider>
+        <div className="quick-tool-container">
+          {data.slice(17, 24).map((item,i) => {
+            return (
+              <div className="quick-tool-item" key={i}>
+                <div className="mini-quick-panel-item" data-active={item.state!=0}>
+                  <Icon className="mini-quick-icon" mui={item.icon} w={26}/>
+                </div>
+                <div className="quick-tool-info">{item.name}</div>
+              </div>
+            );
+          })}
+        </div>
+      </Swiper>
+    )
+  }
+
+  return (
+    <div className="notif-panel">
+      <div className="mini-quick-panel" data-ext={props.ext}>
+        {data.slice(0,6).map((item) => {
+          return (
+            <div className="mini-quick-panel-item" key={item.name} data-active={item.state!=0}>
+              <Icon className="mini-quick-icon" mui={item.icon} w={26} />
+            </div>
+          );
+        })}
+      </div>
+      <QuickSwiper/>
     </div>
   );
 };

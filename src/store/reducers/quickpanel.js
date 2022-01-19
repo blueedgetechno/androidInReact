@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const intialState = {
   open: true,
-  extended: false
+  extended: true
 };
 
 const QuickPanel = createSlice({

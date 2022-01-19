@@ -27,27 +27,40 @@
 .quickpanel {
   width: 100%;
   max-width: 540px;
-  // min-height: 25%;
-  padding: 0 1.6em;
-  padding-bottom: 1em;
+  min-height: 25%;
+  padding: 0 1.6em 0.5em;
+  color: var(--med-txt);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > div {
+    width: 100%;
+  }
+
+  .quick-panel-bottom-bar {
+    width: 32px;
+    height: 4px;
+    background: var(--light-txt);
+    border-radius: 10px;
+  }
 
   .status-bar {
     padding: 0;
   }
-
   border-radius: 0 0 1em 1em;
   background: #f2f2f2;
   transform: translateY(-100%);
   transition: all 0.3s ease-in-out;
 
-  // &[data-extended="true"] {
-  //   min-height: 60%;
-  // }
+  &[data-extended="true"] {
+    min-height: 60%;
+  }
 
   .date-and-setting {
     display: flex;
     justify-content: space-between;
-    color: var(--txt-col);
+    color: var(--med-txt);
     transition: all 200ms ease-in-out;
   }
 
@@ -58,17 +71,25 @@
 
   .quick-panel-time {
     max-height: 0;
+    padding: 0;
+    opacity: 0;
+    font-weight: 500;
+    transition: all 200ms linear;
+    display: flex;
     overflow: hidden;
-    transition: max-height 200ms linear;
+    flex-direction: column;
+    align-items: center;
 
     &[data-extended="true"] {
-      max-height: 80px;
+      opacity: 1;
+      padding: 2em 0;
+      max-height: 240px;
     }
   }
 }
 
 .notif-panel {
-  padding: 1em 0;
+  padding-top: 1em;
   text-align: center;
 
   .mini-quick-panel {
@@ -76,11 +97,14 @@
     width: 100%;
     justify-content: space-between;
     transition: all 300ms ease-in-out;
+    margin-bottom: 1em;
 
     &[data-ext="true"] {
       position: absolute;
-      width: 156%;
+      width: 150%;
       opacity: 0;
+      z-index: -1;
+      pointer-events: none;
     }
   }
 
@@ -92,24 +116,75 @@
     .mini-quick-icon {
       color: var(--sat-txt);
     }
+
+    &[data-active="true"] {
+      background: var(--active-blue);
+
+      svg {
+        color: #fefefe;
+      }
+    }
   }
 
   .extended-quick {
     max-height: 0;
     overflow: hidden;
+    opacity: 0;
     pointer-events: none;
-    transition: all 300ms ease-in-out;
+    transition: all 200ms ease-in-out;
 
     .quick-tool-container {
       width: 100%;
       display: grid !important;
-      grid-template-columns: 42px 42px 42px 42px;
+      grid-template-columns: auto auto auto auto;
+      place-items: center;
+      align-items: flex-start;
       justify-content: space-between;
+      // margin-right: 1em;
+      // margin: 0 1em;
+    }
+
+    .quick-tool-item {
+      max-width: 42px;
+      margin: 0.5em 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .mini-quick-panel-item {
+        margin-bottom: 0.5em;
+      }
+
+      .quick-tool-info {
+        font-size: 0.75em;
+        line-height: 1em;
+        font-weight: 600;
+        width: 200%;
+      }
     }
   }
 
   .extended-quick-open {
-    max-height: 999px;
+    max-height: 800px;
     pointer-events: auto;
+    // overflow: visible;
+    opacity: 1;
+  }
+
+  .slick-list {
+    margin: 0 -2em;
+  }
+
+  .slick-slide > div {
+    margin: 0 2em;
+  }
+
+  .slick-dots {
+    position: relative;
+    bottom: 0;
+
+    li {
+      width: 6px;
+    }
   }
 }
