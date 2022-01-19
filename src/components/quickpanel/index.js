@@ -137,7 +137,7 @@ const QuickTool = (props) => {
         {data.map((temp, idx) => {
           if(idx%toolCount==0){
             return (
-              <div className="quick-tool-container">
+              <div className="quick-tool-container" key={idx}>
                 {data.slice(idx, idx+toolCount).map((item,i) => {
                   return (
                     <div className="quick-tool-item" key={i}>
