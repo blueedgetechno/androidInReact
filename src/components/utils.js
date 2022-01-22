@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector, useDispatch } from "react-redux";
-// import './general.scss';
 
 import { dispatchAction } from "../store/actions";
 
@@ -45,19 +44,23 @@ export const Icon = (props) => {
     src = props.src;
   }
 
-  var prtclk = "";
-  if (props.src) {
-    if (props.onClick || props.pr) {
-      prtclk = "prtclk";
+  var dataset = {}
+  Object.entries(props).forEach(([key, value]) => {
+    if(key.includes("data-")){
+      dataset[key] = value;
     }
+  });
+
+  var classname = `uicon prtclk ${props.className || ""}`.trim()
+  var styles = {
+    borderRadius: props.radii
   }
 
   if (props.fafa) {
     return (
-      <div
-        className={`uicon prtclk ${props.className || ""}`}
-        onClick={props.onClick || (props.click && dispatchAction)}
-        data-action={props.click} data-payload={props.payload}>
+      <div className={classname} {...dataset} style={styles}
+        onClick={props.onClick || (props.action && dispatchAction)}
+        data-action={props.action} data-payload={props.payload}>
         <FontAwesomeIcon
           data-flip={props.flip}
           data-invert={props.invert}
@@ -66,7 +69,7 @@ export const Icon = (props) => {
             width: props.w,
             height: props.h || props.w,
             color: props.color,
-            margin: props.margin,
+            margin: props.margin
           }}
           icon={!props.reg ? FaIcons[props.fafa] : FaRegIcons[props.fafa]}
         />
@@ -74,37 +77,21 @@ export const Icon = (props) => {
     );
   } else if (props.mui) {
     return (
-      <div
-        className={`uicon prtclk ${props.className || ""}`}
-        onClick={props.onClick || (props.click && dispatchAction)}
-        data-action={props.click} data-payload={props.payload}>
+      <div className={classname} {...dataset} style={styles}
+        onClick={props.onClick || (props.action && dispatchAction)}
+        data-action={props.action} data-payload={props.payload}>
         <MaterialIcon {...props} />
       </div>
     );
   } else {
     return (
-      <div
-        className={`uicon ${props.className || ""} ${prtclk}`}
-        data-open={props.open}
-        data-action={props.click}
-        data-active={props.active}
-        data-payload={props.payload}
-        onClick={props.onClick || (props.pr && dispatchAction)}
-        data-pr={props.pr}>
-        <img
-          width={props.w}
-          height={props.h}
-          data-action={props.click}
-          data-payload={props.payload}
-          data-click={props.click}
-          onClick={props.click ? dispatchAction : null}
-          data-flip={props.flip}
-          data-invert={props.invert}
-          data-rounded={props.rounded}
-          src={src}
-          style={{ margin: props.margin }}
-          alt=""
-        />
+      <div className={classname} data-active={props.active} {...dataset}
+        data-action={props.action} data-payload={props.payload}
+        onClick={props.onClick || dispatchAction} style={styles}>
+        <img width={props.w} height={props.h} data-flip={props.flip}
+          data-invert={props.invert} data-rounded={props.rounded}
+          src={src} style={{ margin: props.margin}}
+          alt={props.alt || ""}/>
       </div>
     );
   }

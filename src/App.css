@@ -6,6 +6,7 @@
   position: relative;
   display: grid;
   place-items: center;
+  overflow: hidden;
 }
 
 .text-xss {

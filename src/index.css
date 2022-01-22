@@ -31,8 +31,13 @@
   font-weight: 700;
 }
 
-body {
+html, body{
   margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
   font-family: "SamsungOne500", sans-serif;
 
   -webkit-font-smoothing: antialiased;
@@ -43,8 +48,6 @@ body {
 
   background: #121212;
   /* color: #fefefe; */
-  width: 100vw;
-  height: 100vh;
   user-select: none;
   overflow: hidden;
 }
@@ -54,13 +57,36 @@ code {
     monospace;
 }
 
+#root{
+  width: 100%;
+  height: 100%;
+}
+
 .App {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 .appwrap {
   position: relative;
+  height: 100%;
   z-index: 0;
+}
+
+.redbd{
+  box-sizing: border-box;
+  border: solid 1px red;
+}
+
+.dpShad {
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.25));
+}
+
+.mdShad {
+  filter: drop-shadow(0 1px 4px rgba(41, 41, 41, 0.2));
+}
+
+.ltShad {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
 }

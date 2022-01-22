@@ -1,0 +1,23 @@
+.bottom-nav{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bt-nav-container{
+  display: flex;
+  justify-content: space-around;
+  padding: 0.1em 1em;
+  width: 100%;
+  max-width: 50em;
+
+  .uicon{
+    padding: 0.5em;
+    color: var(--txt-col);
+    // filter: drop-shadow(1px 1px 4px rgba(254, 254, 254, 0.6));
+  }
+
+  .bar-icon{
+    transform: rotateZ(90deg);
+  }
+}
