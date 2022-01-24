@@ -4,6 +4,7 @@ const initialState = {
   time: {
     hours: 0,
     minutes: 0,
+    abb: "",
     military: false
   },
   date: {
@@ -31,6 +32,7 @@ const Global = createSlice({
     time: (state, action) => {
       state.time.hours = action.payload.hours;
       state.time.minutes = action.payload.minutes;
+      state.time.abb = action.payload.abb;
     },
     date: (state, action) => {
       state.date = action.payload;

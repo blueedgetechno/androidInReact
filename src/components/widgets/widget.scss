@@ -1,0 +1,179 @@
+.google-search-container {
+  width: 100%;
+  padding: 0 1em;
+  display: flex;
+}
+
+.google-input-container {
+  background: #fefefe;
+  border-radius: 200px;
+  padding: 0.8em;
+  flex-grow: 1;
+}
+
+.analog-clock-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .clock-body {
+    width: 60%;
+    aspect-ratio: 1 / 1;
+    max-width: 160px;
+    max-height: 160px;
+    background: #fafafa;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 -4px 16px rgba(36, 36, 36, 0.1), 0 4px 16px rgba(36, 36, 36, 0.1);
+
+    .clock-center {
+      position: absolute;
+      background: #333;
+      inset: 50%;
+      width: 8px;
+      height: 8px;
+      margin-top: -4px;
+      margin-left: -4px;
+      border-radius: 50%;
+    }
+
+    .hour-container,
+    .minute-container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+    }
+
+    .hour-hand,
+    .minute-hand {
+      width: 4px;
+      border-radius: 8px;
+      transform: translateY(-50%);
+    }
+
+    .hour-hand {
+      height: 20%;
+      background: #444;
+    }
+
+    .minute-hand {
+      height: 40%;
+      background: #888;
+    }
+  }
+
+  .clock-date {
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    color: var(--med-txt);
+  }
+}
+
+.digital-time-container,
+.vert-time-container {
+  padding: 0 1em;
+  display: flex;
+  flex-direction: column;
+  color: var(--med-txt);
+}
+
+.vert-time-container {
+  box-sizing: border-box;
+  width: 96%;
+}
+
+.cell-container {
+  // box-sizing: border-box;
+  // border: solid 1px red;
+}
+
+.calender-container {
+  box-sizing: border-box;
+  background: #fefefe;
+  border-radius: 1em;
+  padding: 0.6em 1em;
+  position: absolute;
+  inset: 0.5em 1em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  .react-calendar {
+    width: 66%;
+
+    .react-calendar__month-view__days__day--weekend {
+      color: red;
+    }
+
+    .react-calendar__tile--now {
+      color: #fefefe;
+      position: relative;
+      transform: translateX(-36%);
+
+      abbr {
+        position: absolute;
+        inset: 0 0.3em;
+        text-align: center;
+        font-weight: 400;
+        background: #444;
+        border-radius: 6px;
+      }
+    }
+
+    abbr {
+      display: block;
+      text-decoration: none;
+      font-size: 0.72em;
+      font-weight: 600;
+      padding: 0.2em 0;
+      text-align: left;
+    }
+  }
+
+  .calender-events {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 33%;
+
+    .event-container {
+      color: var(--med-txt);
+      border: 0 solid var(--comp-txt);
+      border-left-width: 2px;
+      padding-left: 0.5em;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -4px;
+        width: 6px;
+        height: 6px;
+        border-radius: 20px;
+        background: #277beb;
+      }
+
+      .event-time {
+        height: 16px;
+        color: var(--sat-txt);
+        font-weight: 300;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.countdown-container {
+  position: absolute;
+  inset: 0.5em 1em;
+  text-align: center;
+  background: #fefefe;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5em;
+  border-radius: 1em;
+}

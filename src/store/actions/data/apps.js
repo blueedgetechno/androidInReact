@@ -1,5 +1,3 @@
-export const gene_name = () => Math.random().toString(36).substring(2, 10).toUpperCase()
-
 var apps = [
   {
     name: 'Assistant',

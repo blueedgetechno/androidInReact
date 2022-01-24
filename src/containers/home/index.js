@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Hammer from 'react-hammerjs';
 import Swiper from "react-slick";
-import { Icon } from "../../components/utils.js";
 
+import * as Widgets from "../../components/widgets/widget.js";
+import { Icon } from "../../components/utils.js";
 import QuickPanel from '../../components/quickpanel';
 import StatusBar from '../../components/statusbar';
 import BottomNav from '../../components/bottomnav';
@@ -93,6 +94,16 @@ const HomeScreen = (props)=>{
                           <Icon src={"apps/" + app.icon} w={52} radii={22} data-padd={app.padd}/>
                           <div className="app-name">{app.name}</div>
                         </div>
+                      </div>
+                    )
+                  }else if (item.type=="widget") {
+                    var Widget = Widgets[item.widget]
+                    return (
+                      <div className="cell-container" key={ix} style={{
+                        gridRow: item.row.join(" / "),
+                        gridColumn: item.col.join(" / ")
+                      }}>
+                        <Widget/>
                       </div>
                     )
                   }
