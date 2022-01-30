@@ -19,6 +19,12 @@ body{
   -webkit-backdrop-filter: blur(20px);
 }
 
+.prtclk{
+  *{
+    pointer-events: none;
+  }
+}
+
 .status-bar{
   // position: absolute;
   height: var(--stbar-h);
@@ -31,6 +37,12 @@ body{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: background-color 200ms ease-in-out;
+  color: var(--txt-col);
+
+  &[data-invert="true"]{
+    color: var(--comp-txt);
+  }
 }
 
 .status-row{

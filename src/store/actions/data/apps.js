@@ -276,10 +276,12 @@ var apps = [
   },{
     name: 'WhatsApp',
     icon: 'whatsapp',
+    payload: 'whatsapp',
     type: 'app'
   },{
     name: 'Youtube',
     icon: 'youtube',
+    payload: 'youtube',
     type: 'app',
     padd: true
   }

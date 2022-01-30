@@ -52,6 +52,14 @@ body {
   overflow: hidden;
 }
 
+* {
+  scrollbar-width: none;
+}
+
+*::selection {
+  background: initial;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

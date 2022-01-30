@@ -11,7 +11,8 @@ const ClockDate = (props)=>{
     weekday: "short", day: "numeric", month: props.datemin?"short":"long"
   });
 
-  return <div className={"clock-date"+(props.className?" "+props.className:"")}>{datestring}</div>
+  var classNameString = props.className || ""
+  return <div className={"clock-date " + classNameString}>{datestring}</div>
 }
 
 export const GoogleSearch = () => {
@@ -108,7 +109,7 @@ export const WideCalender = ()=>{
   }
 
   return (
-    <div className="calender-container">
+    <div className="calender-container medScroll">
       <div className="calendar-month text-xl pb-1">{datemonth}</div>
       <div className="flex">
         <Calendar
@@ -131,6 +132,58 @@ export const WideCalender = ()=>{
           </div>
         </div>
       </div>
+    </div>
+  )
+}
+
+export const WideWeather = ()=>{
+  const date = useSelector((state) => state.global.date);
+  const weather = useSelector((state) => state.widget.weather);
+  var datemonth = new Date(date.year, date.month, date.day).toLocaleString("en-us",{month: "long"});
+  var iconurl = "https://www.metaweather.com/static/img/weather/"
+
+  return (
+    <div className="weather-container medScroll">
+      <div className="city-container">
+        <Icon mui="LocationOn" w={18}/>
+        <span>{weather.city}</span>
+      </div>
+      <ClockDate className="weather-date"/>
+      <div className="main-weather">
+        <Icon src={iconurl+weather.icon+".svg"} ext w={48}/>
+        <div className="today-temperature">{weather.temperature}°</div>
+      </div>
+      <div className="weather-pred-container">
+        {weather && weather.predictions.map((pred, i)=>{
+          return(
+            <div className="weather-pred" key={i}>
+              <Icon src={iconurl + pred.icon + ".svg"} ext w={32}/>
+              <div className="pred-day">{pred.day}</div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+export const ShortWeather = ()=>{
+  const date = useSelector((state) => state.global.date);
+  const weather = useSelector((state) => state.widget.weather);
+  var datemonth = new Date(date.year, date.month, date.day).toLocaleString("en-us",{month: "long"});
+  var iconurl = "https://www.metaweather.com/static/img/weather/"
+
+  return (
+    <div className="weather-container short-weather-container medScroll">
+      <div className="main-weather">
+        <Icon src="weather/clear-sky" w={56}/>
+        <div className="today-temperature">{weather.temperature}°</div>
+      </div>
+      <div className="city-container">
+        <Icon mui="LocationOn" w={18}/>
+        <span>{weather.city}</span>
+      </div>
+      <ClockDate className="weather-date"/>
     </div>
   )
 }

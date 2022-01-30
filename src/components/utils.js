@@ -7,7 +7,6 @@ import { dispatchAction } from "../store/actions";
 import * as FaIcons from "@fortawesome/free-solid-svg-icons";
 import * as FaRegIcons from "@fortawesome/free-regular-svg-icons";
 import * as MUIcons from "@mui/icons-material";
-// import SettingsIcon from '@mui/icons-material/Settings';
 
 export const MaterialIcon = (props) => {
   var icon = props.mui;
@@ -96,6 +95,35 @@ export const Icon = (props) => {
     );
   }
 };
+
+export const Image = (props) => {
+  const dispatch = useDispatch();
+  var src = `/img/${(props.dir?props.dir+"/":"")+props.src}.png`;
+  if(props.ext){
+    src = props.src
+  }
+
+  const errorHandler = (e)=>{
+    if(props.err){
+      e.target.src = props.err
+    }
+  }
+
+  return (
+    <div className={`imageCont prtclk ${props.className||""}`} id={props.id} style={{
+      backgroundImage: props.back && `url(${src})`
+    }} data-back={props.back} onClick={props.onClick || (props.click && dispatchAction)}
+      data-action={props.click} data-payload={props.payload} data-var={props.var}>
+        {!props.back?<img
+          width={props.w}
+          height={props.h}
+          data-free={props.free}
+          data-var={props.var}
+          loading={props.lazy && "lazy"}
+          src={src} alt="" onError={errorHandler}/>:null}
+    </div>
+  )
+}
 
 export const LazyComponent = ({ show, children }) => {
   const [loaded, setLoad] = useState(false);

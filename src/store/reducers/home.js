@@ -1,13 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+var initialState = {
   slides: {
     count: 3,
     list: {}
   },
   apps: {},
+  stack: [],
+  ishome: true,
+  recent: true,
   favbar: []
 };
+
+var dev = ""
+if(process.env.REACT_APP_ENV=="development" && dev!=""){
+  initialState.stack.push(dev);
+  initialState.ishome = false;
+}
 
 const Home = createSlice({
   name: "home",
@@ -21,6 +30,31 @@ const Home = createSlice({
     },
     setFavBar: (state, action) => {
       state.favbar = action.payload;
+    },
+    setHome: (state, action) => {
+      state.ishome = true
+      state.recent = false
+    },
+    setRecent: (state, action) => {
+      state.recent = true
+      state.ishome = true
+    },
+    closeRecent: (state, action) => {
+      state.recent = false
+      state.ishome = true
+    },
+    openApp: (state, action) => {
+      if(!action.payload) return;
+
+      var tmp = [...state.stack];
+      if(tmp.includes(action.payload)){
+        tmp.remove(action.payload);
+      }
+
+      tmp.push(action.payload);
+      state.stack = [...tmp];
+      state.ishome = false;
+      state.recent = false;
     }
   },
 });

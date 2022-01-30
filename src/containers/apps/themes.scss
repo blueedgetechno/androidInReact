@@ -1,0 +1,27 @@
+.app-wrappper{
+  --app-bg: #fefefe;
+  background: var(--app-bg);
+}
+
+.whatsapp-wrappper{
+  --app-bg: #fefefe;
+  background: var(--app-bg);
+}
+
+.whatsapp-viewport{
+  --app-bg: #fefefe;
+  --statusbg: var(--app-bg);
+  --navbg: var(--app-bg);
+}
+
+.youtube-wrappper{
+  --app-bg: #121212;
+  background: var(--app-bg);
+  color: #fefefe;
+}
+
+.youtube-viewport{
+  --app-bg: #121212;
+  --statusbg: var(--app-bg);
+  --navbg: var(--app-bg);
+}

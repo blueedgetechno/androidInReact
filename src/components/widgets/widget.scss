@@ -177,3 +177,68 @@
   padding: 0.5em;
   border-radius: 1em;
 }
+
+.weather-container{
+  box-sizing: border-box;
+  background: #fefefe;
+  border-radius: 1em;
+  padding: 0.6em 1em;
+  position: absolute;
+  inset: 0.5em 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--med-txt);
+  letter-spacing: 1px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  .city-container{
+    display: flex;
+
+    span{
+      font-size: 1rem;
+    }
+  }
+
+  .weather-date{
+    font-size: 0.9em;
+    font-weight: 100;
+    color: var(--gray-txt);
+  }
+
+  .main-weather{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .today-temperature{
+    font-size: 3em;
+    font-weight: 100;
+    margin-left: 0.3em;
+  }
+
+  .weather-pred-container{
+    display: flex;
+    justify-content: space-between;
+
+    .weather-pred{
+      margin: 0 0.8em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pred-day{
+      font-size: 0.8em;
+    }
+  }
+}
+
+.short-weather-container{
+  .today-temperature{
+    font-size: 2.5em;
+    margin-left: 0.1em;
+  }
+}

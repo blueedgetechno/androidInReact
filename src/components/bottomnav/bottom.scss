@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: background-color 200ms ease-in-out;
 }
 
 .bt-nav-container{
@@ -15,6 +16,12 @@
     padding: 0.5em;
     color: var(--txt-col);
     // filter: drop-shadow(1px 1px 4px rgba(254, 254, 254, 0.6));
+  }
+
+  &[data-invert="true"]{
+    .uicon{
+      color: var(--gray-txt);
+    }
   }
 
   .bar-icon{
