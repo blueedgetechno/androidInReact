@@ -6,3 +6,4 @@ import './index.scss';
 
 export * from './whatsapp';
 export * from './youtube';
+export * from './playstore';

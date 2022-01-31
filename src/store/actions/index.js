@@ -18,16 +18,11 @@ export const dispatchAction = (e) => {
     payload: e.target.dataset.payload,
   };
 
-  if (action.type) {
-    // console.log(action);
-    store.dispatch(action);
-  }
+  if (action.type) store.dispatch(action);
 };
 
 export const dispatchAct = (action) => {
-  if(action.type){
-    store.dispatch(action);
-  }
+  if(action.type) store.dispatch(action);
 }
 
 export const fetchBatteryStatus = () => {

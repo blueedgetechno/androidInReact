@@ -5,11 +5,12 @@ import {Icon, Image, LazyComponent} from '../../../components/utils';
 import {dispatchAction, dispatchAct} from "../../../store/actions";
 
 const AppContainer = ({app, show, count}) => {
+  const clstring = `${app.payload}-wrapper`;
 
   return (
-    <div className={"app-wrappper "+`${app.payload}-wrappper`} data-open={show}>
+    <div className={"app-wrapper "+clstring} id={clstring} data-open={show}>
       <div className="app-icon-container">
-        <Icon className="mdShad" src={"apps/bg/" + app.icon} w={72} action="home/setHome"/>
+        <Icon className="mdShad" src={"apps/" + app.icon} w={72} action="home/setHome"/>
         <span>{count}</span>
       </div>
     </div>

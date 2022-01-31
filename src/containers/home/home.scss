@@ -181,6 +181,34 @@
   border-radius: 2em;
   // overflow: hidden;
   position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  transition-property: opacity, transform;
+
+  &[data-rem="true"]{
+    animation: fade-up 600ms ease-in-out;
+  }
+}
+
+.closing-all-apps .mini-app-container{
+  animation: fade-up 600ms ease-in-out;
+}
+
+@keyframes fade-up {
+  0%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  33%{
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100%{
+    opacity: 0;
+    transform: translateY(-50%);
+  }
 }
 
 .mini-app-icon{
@@ -193,7 +221,51 @@
 
   .uicon{
     width: 20%;
-    border-radius: 36%;
+    border-radius: 40%;
     // width: max-content;
   }
+}
+
+.close-recent-container{
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+
+  .close-all-btn{
+    padding: 0.5em 3em;
+    border-radius: 2em;
+    color: var(--comp-txt);
+    background: rgba(68, 68, 68, 0.25);
+  }
+}
+
+.no-recent-container{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  color: var(--med-txt);
+}
+
+.mini-canvas-holder{
+  width: 100%;
+  height: 100%;
+  border-radius: 2em;
+  overflow: hidden;
+
+  canvas{
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.mini-app-wrapper{
+  height: 100%;
+  border-radius: 0;
 }

@@ -17,9 +17,9 @@ const AppContainer = ({app, show, count}) => {
   );
 }
 
-export const YoutubeApp = () => {
+export const PlaystoreApp = () => {
   const [count, setCount] = useState(0);
-  const app = useSelector(state => state.home.apps.youtube || {});
+  const app = useSelector(state => state.home.apps.playstore || {});
   const home = useSelector(state => state.home);
   const show = home.ishome==false && home.stack.at(-1)==app.payload;
 

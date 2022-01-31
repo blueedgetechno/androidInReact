@@ -73,3 +73,14 @@ body{
     opacity: 1;
   }
 }
+
+.press-in{
+  transition: transform 200ms ease-in-out;
+  &:active{
+    transform: scale(0.86);
+  }
+}
+
+.quick-trans{
+  transition: transform 100ms ease-in-out;
+}

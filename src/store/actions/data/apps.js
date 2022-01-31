@@ -135,6 +135,7 @@ var apps = [
   {
     name: 'Play Store',
     icon: 'playstore',
+    payload: 'playstore',
     type: 'app',
     padd: true
   },

@@ -2,7 +2,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Hammer from 'react-hammerjs';
 import Swiper from "react-slick";
-import html2canvas from 'html2canvas';
 
 import * as Widgets from "../../components/widgets/widget.js";
 import { Icon } from "../../components/utils.js";
@@ -31,7 +30,6 @@ function Home() {
   const viewportclass = openedapp ? openedapp + "-viewport":""
 
   const handleSwipe = (e)=>{
-    // console.log(e);
     setAction(e.type + " " + e.direction)
     if(e.direction === 16){
       dispatch({type: "quickpanel/open"});
@@ -74,12 +72,14 @@ function Home() {
 const AppWrapper = ({openedapp})=>{
   const home = useSelector((state) => state.home);
   const stack = useSelector((state) => state.home.stack);
+  const opened_apps = apps_order.filter(x => stack.includes(x));
   const appScroll = useRef();
 
   useEffect(()=>{
     if(stack.length){
       if(appScroll.current){
-        appScroll.current.slickGoTo(apps_order.indexOf(openedapp), true)
+        var appidx = opened_apps.indexOf(openedapp);
+        appScroll.current.slickGoTo(appidx, true)
       }
     }
   }, [stack])
@@ -93,35 +93,51 @@ const AppWrapper = ({openedapp})=>{
         swipe: false,
         speed: 200
       }} ref={appScroll}>
-      {[1,1][stack.length?1:0] && Object.keys(Applications).map(key=>{
-        var WinApp = Applications[key],
-            item = key.slice(0,key.length - 3).toLowerCase();
+      {opened_apps.map(item=>{
+        var key = item.capitalize()+"App",
+            WinApp = Applications[key];
 
-        if(stack.includes(item)) return <WinApp key={item}/>
+        return <WinApp key={item}/>
       })}
       </Swiper>
     </div>
   )
 }
 
-const MiniApp = ({app})=>{
+const MiniApp = ({app, handleSwipeUp})=>{
 
-  return app ? (
-    <Hammer>
-      <div className="mini-app-container prtclk" onClick={dispatchAction}
+  useEffect(()=>{
+    var cloneApp = document.getElementById(app.payload+"-wrapper");
+    if(cloneApp){
+      cloneApp = cloneApp.cloneNode(true);
+      cloneApp.removeAttribute('id');
+      cloneApp.removeAttribute('data-open');
+      cloneApp.classList.toggle('app-wrapper');
+      cloneApp.classList.toggle('mini-app-wrapper');
+      document.getElementById("mini-"+app.payload).appendChild(cloneApp);
+    }
+  }, [app.payload])
+
+  return (
+    <Hammer onSwipeUp={handleSwipeUp} direction="DIRECTION_ALL">
+      <div className="mini-app-container prtclk" onClick={dispatchAction} data-rem="false"
           data-action="home/openApp" data-payload={app.payload}>
         <div className="mini-app-icon">
           <Icon src={"apps/" + app.icon} data-padd={app.padd}/>
         </div>
+        <div className="mini-canvas-holder" id={"mini-"+app.payload}></div>
       </div>
     </Hammer>
-  ):null
+  )
 }
 
 const BrowseWrapper = ()=>{
   const home = useSelector((state) => state.home);
   const apps = useSelector(state => state.home.apps);
+  const [recent_lag, setLag] = useState(home.recent);
   const recentScroll = useRef();
+  const recentContainer = useRef();
+  var recents = [...home.stack];
 
   const closeRecent = (e) => {
     if (e.target.classList.contains("recent-apps-container") || home.stack.length==0) {
@@ -129,35 +145,72 @@ const BrowseWrapper = ()=>{
     }
   }
 
+  const closeAll = (e)=>{
+    if(recentContainer.current){
+      recentContainer.current.classList.toggle('closing-all-apps')
+      setTimeout(()=>{
+        recentContainer.current.classList.toggle('closing-all-apps')
+        dispatchAct({ type: "home/closeAllApps" });
+      }, 400)
+    }
+  }
+
+  const scrollRecentTo = (i, anim=false)=>{
+    if(recentScroll.current){
+      recentScroll.current.slickGoTo(i, anim)
+    }
+  }
+
+  const handleSwipeUp = (e)=>{
+    var payload = e.target.dataset.payload;
+    e.target.dataset.rem = true;
+
+    setTimeout(()=>{
+      var i = recents.indexOf(payload);
+      if(i!=0) scrollRecentTo(i - 1);
+      setTimeout(()=>{
+        e.target.dataset.rem = false;
+        dispatchAct({type: "home/closeApp", payload: payload})
+      }, 200)
+    },200)
+  }
+
   useEffect(()=>{
     if(home.stack.length && home.recent){
-      if(recentScroll.current){
-        recentScroll.current.slickGoTo(home.stack.length - 1)
-      }
+      scrollRecentTo(home.stack.length - 1)
+    }
+
+    if(home.recent) setLag(true)
+    else {
+      setTimeout(()=>{
+        setLag(false)
+      }, 500)
     }
   }, [home.recent])
 
   return (
     <div className="recent-apps-container backblur" onClick={closeRecent} data-hide={!home.recent}>
-      <div className="recent-slider" data-hide={!home.recent}>
+      <div className="recent-slider" data-hide={!home.recent} ref={recentContainer}>
         <Swiper className="recent-app-container" {...{
           dots: false,
           arrows: false,
           infinite: false,
+          initialSlide: home.stack.length,
           speed: 200
         }} ref={recentScroll}>
-        {/* {home.recent && home.stack.map(item => {
+        {recent_lag && home.stack.map((item,idx) => {
           var app = apps[item]
-          return <MiniApp app={app} key={item}/>
-        })} */}
-        {home.recent && Object.keys(Applications).map(key=>{
-          var WinApp = Applications[key],
-              item = key.slice(0,key.length - 3).toLowerCase();
-
-          var app = apps[item]
-          return <MiniApp app={app} key={item}/>
+          return <MiniApp app={app || {}} handleSwipeUp={handleSwipeUp} key={item}/>
         })}
         </Swiper>
+      </div>
+      {home.stack.length==0?(
+        <div className="no-recent-container">
+          No recent tasks
+        </div>
+      ):null}
+      <div className="close-recent-container">
+        <div className="close-all-btn press-in quick-trans" onClick={closeAll}>Close all</div>
       </div>
     </div>
   )
