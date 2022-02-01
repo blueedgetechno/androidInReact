@@ -4,6 +4,19 @@ import {useSelector, useDispatch} from 'react-redux';
 import {Icon, Image, LazyComponent} from '../../../components/utils';
 import {dispatchAction, dispatchAct} from "../../../store/actions";
 
+export const PlaystoreApp = () => {
+  const [count, setCount] = useState(0);
+  const app = useSelector(state => state.home.apps.playstore || {});
+  const home = useSelector(state => state.home);
+  const show = home.ishome==false && home.stack.at(-1)==app.payload;
+
+  useEffect(()=>{
+    setCount(count + 1)
+  }, [home])
+
+  return <AppContainer app={app} show={show} count={count}/>
+}
+
 const AppContainer = ({app, show, count}) => {
   const clstring = `${app.payload}-wrapper`;
 
@@ -15,19 +28,4 @@ const AppContainer = ({app, show, count}) => {
       </div>
     </div>
   );
-}
-
-export const PlaystoreApp = () => {
-  const [count, setCount] = useState(0);
-  const app = useSelector(state => state.home.apps.playstore || {});
-  const home = useSelector(state => state.home);
-  const show = home.ishome==false && home.stack.at(-1)==app.payload;
-
-  useEffect(()=>{
-    setCount(count + 1)
-  }, [home])
-
-  return <LazyComponent show={show}>
-    <AppContainer app={app} show={show} count={count}/>
-  </LazyComponent>
 }

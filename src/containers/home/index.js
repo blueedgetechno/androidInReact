@@ -105,6 +105,7 @@ const AppWrapper = ({openedapp})=>{
 }
 
 const MiniApp = ({app, handleSwipeUp})=>{
+  const miniRef = useRef();
 
   useEffect(()=>{
     var cloneApp = document.getElementById(app.payload+"-wrapper");
@@ -114,7 +115,10 @@ const MiniApp = ({app, handleSwipeUp})=>{
       cloneApp.removeAttribute('data-open');
       cloneApp.classList.toggle('app-wrapper');
       cloneApp.classList.toggle('mini-app-wrapper');
-      document.getElementById("mini-"+app.payload).appendChild(cloneApp);
+
+      var parentDiv = miniRef.current;
+      parentDiv.innerHTML = "";
+      parentDiv.appendChild(cloneApp);
     }
   }, [app.payload])
 
@@ -125,7 +129,8 @@ const MiniApp = ({app, handleSwipeUp})=>{
         <div className="mini-app-icon">
           <Icon src={"apps/" + app.icon} data-padd={app.padd}/>
         </div>
-        <div className="mini-canvas-holder" id={"mini-"+app.payload}></div>
+        <div className="mini-app-holder" ref={miniRef}>
+        </div>
       </div>
     </Hammer>
   )
