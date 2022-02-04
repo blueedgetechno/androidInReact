@@ -13,6 +13,11 @@
   }
 }
 
+.app-inner-wrapper{
+  height: 100%;
+  overflow: hidden;
+}
+
 .app-icon-container{
   height: 70%;
   display: grid;
@@ -31,4 +36,9 @@
     transform: scale(1);
     opacity: 1;
   }
+}
+
+.full-hide{
+  height: 100%;
+  overflow: hidden;
 }

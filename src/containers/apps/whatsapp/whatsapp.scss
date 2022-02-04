@@ -1,0 +1,133 @@
+.wp-inner-wrapper{
+  // font-family: "Sans-serif";
+}
+
+.whatsapp-home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.whatsapp-top-nav{
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  padding: 0.5em 0.6em;
+  background: var(--teal);
+  color: var(--white);
+
+  .brand-name{
+    font-weight: 400;
+    font-size: 1.25em;
+    letter-spacing: 1px;
+  }
+
+  .w-nav-icons{
+    display: flex;
+
+    .uicon{
+      margin-left: 1em;
+    }
+  }
+}
+
+.home-nav-tab{
+  width: 100%;
+  background: var(--teal);
+  color: var(--white);
+
+  display: flex;
+  justify-content: space-between;
+
+  .tab-option{
+    font-weight: 200;
+    font-size: 0.88em;
+    padding: 0.5em;
+
+    &:nth-child(n + 2){
+      // opacity: 0.2;
+      flex-grow: 1;
+      text-align: center;
+    }
+  }
+}
+
+.whatsapp-home-page{
+  width: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+
+  .home-chats-container{
+    height: 100%;
+    overflow-y: scroll;
+  }
+}
+
+.home-chats{
+  height: max-content;
+  padding: 0.5em;
+  color: var(--med-txt);
+
+  .chat-container{
+    padding: 0.5em 0;
+    display: flex;
+
+    .short-info{
+      flex-grow: 1;
+      padding-left: 1em;
+    }
+
+    .imageCont{
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .chat-info{
+      display: flex;
+
+      .chat-name{
+        flex-grow: 1;
+        font-size: 1.1em;
+        font-weight: 600;
+      }
+
+      .chat-date{
+        font-size: 0.72em;
+        font-weight: 400;
+        color: var(--sat-txt);
+      }
+    }
+
+    .latest-message{
+      display: flex;
+      flex-grow: 1;
+      font-size: 0.84em;
+      font-weight: 500;
+      color: var(--sat-txt);
+
+      .uicon{
+        margin-right: 0.4em;
+      }
+    }
+
+    .chat-acts{
+      display: flex;
+
+      .unread{
+        font-size: 0.64em;
+        padding: 0.2em 0.76em;
+        border-radius: 50%;
+        margin: 0 0.4em;
+        color: var(--white);
+        background: var(--light-green);
+      }
+    }
+  }
+}
+
+.seentick{
+  &[data-payload="2"]{
+    color: var(--blue);
+  }
+}

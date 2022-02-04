@@ -12,7 +12,7 @@ var initialState = {
   favbar: []
 };
 
-var dev = "youtube"
+var dev = "whatsapp"
 if(process.env.REACT_APP_ENV=="development" && dev!=""){
   initialState.stack.push(dev);
   initialState.ishome = false;

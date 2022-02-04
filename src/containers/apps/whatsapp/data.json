@@ -1,0 +1,96 @@
+{
+  "chats": [
+    {
+      "name": "Spider Man",
+      "img": "hero.png"
+    },
+    {
+      "name": "Apoc Guy",
+      "img": "apoc.jfif"
+    },
+    {
+      "name": "Pink Vaper",
+      "img": "ava.jfif"
+    },
+    {
+      "name": "Dark Angel",
+      "img": "blank.jfif"
+    },
+    {
+      "name": "John Smith",
+      "img": "ceaser.jfif"
+    },
+    {
+      "name": "Grandmaster",
+      "img": "check.jfif"
+    },
+    {
+      "name": "IT group",
+      "img": "cube.jpg"
+    },
+    {
+      "name": "Nick Crowney",
+      "img": "echo.png"
+    },
+    {
+      "name": "New Yorkers",
+      "img": "end.png"
+    },
+    {
+      "name": "Sally right",
+      "img": "feel.jfif"
+    },
+    {
+      "name": "Dare Devil",
+      "img": "fine.jfif"
+    },
+    {
+      "name": "Hiker",
+      "img": "fire.png"
+    },
+    {
+      "name": "Marvel",
+      "img": "hero.png"
+    },
+    {
+      "name": "Builder",
+      "img": "iron.jpg"
+    },
+    {
+      "name": "Athelete",
+      "img": "liam.jfif"
+    },
+    {
+      "name": "Brian delta",
+      "img": "light.jfif"
+    },
+    {
+      "name": "Hope",
+      "img": "lion.jfif"
+    },
+    {
+      "name": "Modeler",
+      "img": "mac.jpg"
+    },
+    {
+      "name": "Sky trooper",
+      "img": "main.jpg"
+    },
+    {
+      "name": "Nerd Guy",
+      "img": "pic.jpg"
+    },
+    {
+      "name": "Influencer",
+      "img": "pose.jfif"
+    },
+    {
+      "name": "Conspiracy theorist",
+      "img": "real.jfif"
+    },
+    {
+      "name": "Yatch",
+      "img": "viva.jfif"
+    }
+  ]
+}

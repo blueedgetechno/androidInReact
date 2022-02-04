@@ -86,7 +86,7 @@ const AppWrapper = ({openedapp})=>{
 
   return (
     <div className="apps-wrapper" data-ninja="true">
-      <Swiper className="full-app-container" {...{
+      <Swiper className="full-app-container full-height-swiper" {...{
         dots: false,
         arrows: false,
         infinite: false,
@@ -196,7 +196,7 @@ const BrowseWrapper = ()=>{
   return (
     <div className="recent-apps-container backblur" onClick={closeRecent} data-hide={!home.recent}>
       <div className="recent-slider" data-hide={!home.recent} ref={recentContainer}>
-        <Swiper className="recent-app-container" {...{
+        <Swiper className="recent-app-container full-height-swiper" {...{
           dots: false,
           arrows: false,
           infinite: false,

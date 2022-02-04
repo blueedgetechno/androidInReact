@@ -7,6 +7,7 @@ import { dispatchAction } from "../store/actions";
 import * as FaIcons from "@fortawesome/free-solid-svg-icons";
 import * as FaRegIcons from "@fortawesome/free-regular-svg-icons";
 import * as MUIcons from "@mui/icons-material";
+import * as AllIcons from "./icons.js";
 
 export const MaterialIcon = (props) => {
   var icon = props.mui;
@@ -82,6 +83,15 @@ export const Icon = (props) => {
         <MaterialIcon {...props} />
       </div>
     );
+  }else if (props.icon) {
+    var CustomIcon = AllIcons[props.icon];
+    return (
+      <div className={classname} {...dataset} style={styles}
+        onClick={props.onClick || (props.action && dispatchAction)}
+        data-action={props.action} data-payload={props.payload}>
+        <CustomIcon {...props} />
+      </div>
+    );
   } else {
     return (
       <div className={classname} data-active={props.active} {...dataset}
@@ -98,22 +108,29 @@ export const Icon = (props) => {
 
 export const Image = (props) => {
   const dispatch = useDispatch();
-  var src = `/img/${(props.dir?props.dir+"/":"")+props.src}.png`;
-  if(props.ext){
-    src = props.src
+  var src = `/img/${(props.dir?props.dir+"/":"")+props.src}`;
+  if (props.src && !props.src.includes(".")) {
+    src += ".png";
   }
+
+  if(props.ext) src = props.src
 
   const errorHandler = (e)=>{
-    if(props.err){
-      e.target.src = props.err
-    }
+    if(props.err) e.target.src = props.err
   }
 
+  var dataset = {}
+  Object.entries(props).forEach(([key, value]) => {
+    if(key.includes("data-")){
+      dataset[key] = value;
+    }
+  });
+
   return (
-    <div className={`imageCont prtclk ${props.className||""}`} id={props.id} style={{
+    <div className={`imageCont prtclk ${props.className||''}`} id={props.id} style={{
       backgroundImage: props.back && `url(${src})`
-    }} data-back={props.back} onClick={props.onClick || (props.click && dispatchAction)}
-      data-action={props.click} data-payload={props.payload} data-var={props.var}>
+    }} data-back={props.back} onClick={props.onClick || (props.action && dispatchAction)}
+      data-action={props.action} data-payload={props.payload} {...dataset}>
         {!props.back?<img
           width={props.w}
           height={props.h}

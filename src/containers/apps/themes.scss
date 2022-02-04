@@ -6,11 +6,22 @@
 .whatsapp-wrapper, .playstore-wrapper{
   --app-bg: #fefefe;
   background: var(--app-bg);
+
+  --teal: #128c7e;
+  --teal-dark: #075e54;
+  --light-green: #25d366;
+  --white: #fefefe;
+  --blue: #34b7f1;
+  --check-blue: #34b7f1;
+  --bubble-green: #dcf8c6;
 }
 
 .whatsapp-viewport, .playstore-viewport{
   --app-bg: #fefefe;
-  --statusbg: var(--app-bg);
+  --teal: #128c7e;
+  --teal-dark: #075e54;
+
+  --statusbg: var(--teal);
   --navbg: var(--app-bg);
 }
 
