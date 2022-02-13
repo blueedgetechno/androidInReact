@@ -218,6 +218,7 @@
   flex-direction: column;
   align-items: center;
   transform: translateY(-50%);
+  z-index: 1;
 
   .uicon{
     width: 20%;
@@ -254,18 +255,20 @@
 }
 
 .mini-app-holder{
+  position: relative;
   width: 100%;
   height: 100%;
   border-radius: 2em;
   overflow: hidden;
-
-  canvas{
-    width: 100% !important;
-    height: 100% !important;
-  }
 }
 
 .mini-app-wrapper{
   height: 100%;
   border-radius: 0;
+}
+
+.recent-cover{
+  position: absolute;
+  inset: 0;
+  z-index: 10;
 }

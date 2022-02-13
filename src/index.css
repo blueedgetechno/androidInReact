@@ -57,7 +57,7 @@ body {
 }
 
 *::selection {
-  background: initial;
+  /* background: initial; */
 }
 
 code {

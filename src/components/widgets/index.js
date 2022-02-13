@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Calendar from 'react-calendar';
 
-import {Icon} from "../utils";
+import {Icon} from 'components/utils';
 import './widget.scss';
 
 const ClockDate = (props)=>{

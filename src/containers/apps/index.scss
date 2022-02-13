@@ -10,6 +10,10 @@
     transform: scale(0.58);
     opacity: 0;
     pointer-events: none;
+
+    *{
+      pointer-events: none;
+    }
   }
 }
 

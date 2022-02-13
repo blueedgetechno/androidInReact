@@ -1,12 +1,15 @@
-import React, {useState, useEffect, useRef} from "react";
-import { Icon } from "./utils.js";
-import { useSelector } from "react-redux";
-import Hammer from "react-hammerjs";
-import { dispatchAction } from "../store/actions";
-import { NetworkIcon, BatteryIcon } from "./icons.js";
+import React, {useState, useEffect, useRef} from 'react';
+import { useSelector } from 'react-redux';
+import Hammer from 'react-hammerjs';
+
 import parse from 'color-parse';
 import rgba from 'color-rgba';
-import "./main.scss";
+
+import { Icon } from 'components/utils';
+import { dispatchAction } from 'store/actions';
+import { NetworkIcon, BatteryIcon } from 'components/icons';
+
+import './main.scss';
 
 const StatusBar = (props) => {
   const [invert, setInvert] = useState(props.invert);

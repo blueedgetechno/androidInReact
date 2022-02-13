@@ -1,4 +1,4 @@
-import store from "../";
+import store from 'store';
 import apps from './data/apps';
 import {
   favbar,

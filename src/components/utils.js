@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { dispatchAction } from "../store/actions";
+import { dispatchAction } from 'store/actions';
 
-import * as FaIcons from "@fortawesome/free-solid-svg-icons";
-import * as FaRegIcons from "@fortawesome/free-regular-svg-icons";
-import * as MUIcons from "@mui/icons-material";
-import * as AllIcons from "./icons.js";
+import * as FaIcons from '@fortawesome/free-solid-svg-icons';
+import * as FaRegIcons from '@fortawesome/free-regular-svg-icons';
+import * as MUIcons from '@mui/icons-material';
+import * as AllIcons from 'components/icons';
 
 export const MaterialIcon = (props) => {
   var icon = props.mui;

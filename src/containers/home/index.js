@@ -1,16 +1,16 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import Hammer from 'react-hammerjs';
-import Swiper from "react-slick";
+import Swiper from 'react-slick';
 
-import * as Widgets from "../../components/widgets/widget.js";
-import { Icon } from "../../components/utils.js";
-import QuickPanel from '../../components/quickpanel';
-import StatusBar from '../../components/statusbar';
-import BottomNav from '../../components/bottomnav';
-import { dispatchAction, dispatchAct } from "../../store/actions";
+import * as Widgets from 'components/widgets';
+import { Icon } from 'components/utils';
+import QuickPanel from 'components/quickpanel';
+import StatusBar from 'components/statusbar';
+import BottomNav from 'components/bottomnav';
+import { dispatchAction, dispatchAct } from 'store/actions';
 
-import * as Applications from '../apps';
+import * as Applications from 'containers/apps';
 
 import './home.scss';
 
@@ -24,7 +24,6 @@ function Home() {
   const home = useSelector((state) => state.home);
   const favbar = useSelector((state) => state.home.favbar);
   const apps = useSelector((state) => state.home.apps);
-  const dispatch = useDispatch();
 
   const openedapp = !home.ishome && home.stack.at(-1);
   const viewportclass = openedapp ? openedapp + "-viewport":""
@@ -32,7 +31,7 @@ function Home() {
   const handleSwipe = (e)=>{
     setAction(e.type + " " + e.direction)
     if(e.direction === 16){
-      dispatch({type: "quickpanel/open"});
+      dispatchAct({type: "quickpanel/open"});
     }
 
     if(true){
@@ -41,6 +40,18 @@ function Home() {
       }
     }
   }
+
+  useEffect(()=>{
+    if(apps && apps[apps_order[0]] && !apps[apps_order[0]].payload){
+      var tmp = {...apps}
+      apps_order.map(x=>{
+        tmp[x] = {...apps[x]}
+        tmp[x].payload = x
+      })
+
+      dispatchAct({type: "home/setApps",payload: tmp})
+    }
+  }, [apps])
 
   return (
     <div className={"viewport " + viewportclass}>
@@ -62,7 +73,7 @@ function Home() {
           })}
         </div>
         <AppWrapper openedapp={openedapp}/>
-        <BrowseWrapper/>
+        <RecentWrapper/>
       </div>
       <BottomNav bg={openedapp && "var(--navbg)"} invert={home.ishome?false:null}/>
     </div>
@@ -124,19 +135,19 @@ const MiniApp = ({app, handleSwipeUp})=>{
 
   return (
     <Hammer onSwipeUp={handleSwipeUp} direction="DIRECTION_ALL">
-      <div className="mini-app-container prtclk" onClick={dispatchAction} data-rem="false"
-          data-action="home/openApp" data-payload={app.payload}>
+      <div className="mini-app-container" data-rem="false">
         <div className="mini-app-icon">
           <Icon src={"apps/" + app.icon} data-padd={app.padd}/>
         </div>
-        <div className="mini-app-holder" ref={miniRef}>
-        </div>
+        <div className="mini-app-holder" ref={miniRef}></div>
+        <div className="recent-cover" onClick={dispatchAction}
+          data-action="home/openApp" data-payload={app.payload}></div>
       </div>
     </Hammer>
   )
 }
 
-const BrowseWrapper = ()=>{
+const RecentWrapper = ()=>{
   const home = useSelector((state) => state.home);
   const apps = useSelector(state => state.home.apps);
   const [recent_lag, setLag] = useState(home.recent);
@@ -189,7 +200,7 @@ const BrowseWrapper = ()=>{
     else {
       setTimeout(()=>{
         setLag(false)
-      }, 500)
+      }, 600)
     }
   }, [home.recent])
 

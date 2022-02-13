@@ -121,6 +121,7 @@ i[data-flip="true"] {
 .downbug::after {
   content: "";
   position: absolute;
+  z-index: 1;
   left: 0;
   bottom: -2px;
   width: 100%;

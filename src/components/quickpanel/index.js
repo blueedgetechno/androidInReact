@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { dispatchAction } from "../../store/actions";
-import Hammer, { displayName, propTypes } from "react-hammerjs";
-import { Icon } from "../utils";
-import StatusBar from "../../components/statusbar";
-import Swiper from "react-slick";
-
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Hammer, { displayName, propTypes } from 'react-hammerjs';
 import Slider from '@mui/material/Slider';
+import Swiper from 'react-slick';
 
-import "./qkpanel.scss";
+import { Icon } from 'components/utils';
+import StatusBar from 'components/statusbar';
+import { dispatchAction } from 'store/actions';
+
+import './qkpanel.scss';
 
 const DateObj = (props) => {
   const date = useSelector((state) => state.global.date);

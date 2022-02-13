@@ -135,7 +135,6 @@ var apps = [
   {
     name: 'Play Store',
     icon: 'playstore',
-    payload: 'playstore',
     type: 'app',
     padd: true
   },
@@ -277,12 +276,10 @@ var apps = [
   },{
     name: 'WhatsApp',
     icon: 'whatsapp',
-    payload: 'whatsapp',
     type: 'app'
   },{
     name: 'Youtube',
     icon: 'youtube',
-    payload: 'youtube',
     type: 'app',
     padd: true
   }

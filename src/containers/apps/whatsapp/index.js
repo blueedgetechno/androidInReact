@@ -1,29 +1,90 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {Icon, Image, LazyComponent} from '../../../components/utils';
-import {dispatchAction, dispatchAct} from "../../../store/actions";
-import Swiper from "react-slick";
+import {Icon, Image, LazyComponent} from 'components/utils';
+import {dispatchAction, dispatchAct} from 'store/actions';
+import Swiper from 'react-slick';
 
 import './whatsapp.scss';
 import wdata from './data.json';
+
+import {StatusScreen, ChatScreen, CallLogs, minifyTime, NavBar} from './elements'
 
 export const WhatsappApp = () => {
   const app = useSelector(state => state.home.apps.whatsapp || {});
   const home = useSelector(state => state.home);
   const show = home.ishome==false && home.stack.at(-1)==app.payload;
+  const pagetree = app && app.pagetree || {
+    "main": {
+      "chat" : {}
+    }
+  }
+
+  useEffect(()=>{
+    if(app && !app.pagetree){
+      dispatchAct({type: "home/setApp", payload: {
+        id: app.payload,
+        data: {
+          ... app,
+          pagetree: pagetree,
+          path: ['main','chat']
+        }
+      }})
+    }
+
+    // console.log(app.path);
+  }, [app])
 
   return <AppContainer app={app} show={show}/>
 }
 
-const AppContainer = ({app, show}) => {
-  const [value, setValue] = React.useState('1');
+const AppContainer = ({app, show, pagetree}) => {
+  const [tab, setTab] = React.useState(1);
+  const homeSwiper = useRef();
   const clstring = `${app.payload}-wrapper`;
+  const path = app.path || ["main"];
+
+  const tabSetter = (hmswiper)=>{
+    if(!hmswiper) return
+
+    var swidth = hmswiper.style.width,
+        swleft = hmswiper.style.transform;
+
+    swidth = swidth.replace("px","")
+    swleft = swleft.replace("translate3d(","").replace("px, 0px, 0px)","")
+
+    try{
+      swidth = parseInt(swidth)
+      swleft = Math.abs(parseInt(swleft))
+
+      var tb = Math.round((swleft*4)/swidth)
+      tb = Math.max(0, Math.min(3, tb))
+      setTab(tb)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+  const swipehandler = ()=>{
+    if(homeSwiper.current){
+      var hmswiper = document.querySelector('.whatsapp-home-swiper .slick-track');
+      tabSetter(hmswiper)
+      setTimeout(()=>{
+        tabSetter(hmswiper)
+      },200)
+    }
+  }
+
+  const checkstate = (comp)=>{
+    return path.includes(comp) ? (
+      path.at(-1) == comp ? 1 : 2
+    ) : 0;
+  }
 
   return (
     <div className={"app-wrapper "+clstring} id={clstring} data-open={show}>
       <div className="app-inner-wrapper wp-inner-wrapper">
-        <div className="whatsapp-home full-hide upbug">
+        <div className='whatsapp-home full-hide upbug scale-trans' data-vis={checkstate('main')}>
           <div className="whatsapp-top-nav downbug">
             <div className="brand-name">WhatsApp</div>
             <div className="w-nav-icons">
@@ -31,42 +92,46 @@ const AppContainer = ({app, show}) => {
               <Icon mui="MoreVert"/>
             </div>
           </div>
-          <div className="home-nav-tab">
-            <div className="tab-option">
-              <Icon mui="PhotoCamera" round w={22}/>
-            </div>
-            <div className="tab-option">CHATS</div>
-            <div className="tab-option">STATUS</div>
-            <div className="tab-option">CALLS</div>
-          </div>
+          <NavBar className="home-nav-tab" tab={tab} options={[
+            <Icon mui="PhotoCamera" round w={22}/>,"CHATS","STATUS","CALLS"
+          ]}/>
           <div className="whatsapp-home-page">
-            <Swiper className="full-height-swiper" {...{
+            <Swiper className="whatsapp-home-swiper full-height-swiper" {...{
               dots: false,
               arrows: false,
               infinite: false,
-              initialSlide: 0,
+              initialSlide: tab,
               speed: 200
-            }}>
-              <ChatScreen/>
-              <ChatScreen/>
-              <ChatScreen/>
+            }} onSwipe={swipehandler} ref={homeSwiper}>
+              <CameraScreen/>
+              <AllChatScreen/>
+              <StatusScreen/>
+              <CallLogs/>
             </Swiper>
           </div>
         </div>
+        <ChatScreen checkstate={checkstate}/>
       </div>
     </div>
   );
 }
 
-const ChatScreen = ()=>{
+const CameraScreen = ()=>{
+  return (
+    <div>Camera</div>
+  )
+}
+
+const AllChatScreen = ()=>{
 
   return (
     <div className="home-chats-container medScroll">
       <div className="home-chats">
         {wdata.chats.map((chat,i) => {
           return(
-            <div className="chat-container" key={i}>
-              <Image src={chat.img} dir="icon/pfp" w={48}/>
+            <div className="chat-container prtclk active-dark-lit" key={i} onClick={dispatchAction}
+              data-action="home/navApp" data-payload="whatsapp.chat">
+              <Image src={chat.img} dir="asset/whatsapp/pfp" w={48}/>
               <div className="short-info">
                 <div className="chat-info">
                   <div className="chat-name">{chat.name}</div>

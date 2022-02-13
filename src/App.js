@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 
-import Background from './components/background';
-import Home from './containers/home';
-import {loadSettings} from './store/actions/index';
+import Background from 'components/background';
+import Home from 'containers/home';
+import {loadSettings} from 'store/actions/index';
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import './App.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 function App() {
 

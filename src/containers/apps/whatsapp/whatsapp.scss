@@ -1,124 +1,150 @@
-.wp-inner-wrapper{
+.teal-green {
+  color: var(--teal);
+}
+
+.wp-inner-wrapper {
   // font-family: "Sans-serif";
 }
 
-.whatsapp-home{
+.whatsapp-home {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.whatsapp-top-nav{
+.whatsapp-top-nav {
   width: 100%;
   display: flex;
   position: relative;
   justify-content: space-between;
   padding: 0.5em 0.6em;
+  padding-left: 0.2em;
   background: var(--teal);
   color: var(--white);
 
-  .brand-name{
+  .brand-name {
     font-weight: 400;
     font-size: 1.25em;
+    padding-left: 0.4em;
     letter-spacing: 1px;
   }
 
-  .w-nav-icons{
+  .w-nav-icons {
     display: flex;
 
-    .uicon{
+    .uicon {
       margin-left: 1em;
     }
   }
 }
 
-.home-nav-tab{
+.w-nav-tab {
   width: 100%;
-  background: var(--teal);
-  color: var(--white);
-
   display: flex;
   justify-content: space-between;
+  position: relative;
 
-  .tab-option{
+  .nav-slider {
+    height: 4px;
+    position: absolute;
+    background: var(--white);
+    bottom: 0;
+    transition: all 200ms ease-in-out;
+  }
+
+  .tab-option {
     font-weight: 200;
     font-size: 0.88em;
     padding: 0.5em;
+    opacity: 0.5;
+    flex-grow: 1;
+    text-align: center;
+    margin: 0 0.5em;
 
-    &:nth-child(n + 2){
-      // opacity: 0.2;
-      flex-grow: 1;
-      text-align: center;
+    &[value="true"] {
+      opacity: 1;
     }
   }
 }
 
-.whatsapp-home-page{
+.home-nav-tab {
+  background: var(--teal);
+  color: var(--white);
+
+  .tab-option:first-child {
+    flex-grow: 0;
+    margin: 0;
+  }
+}
+
+.whatsapp-home-page {
   width: 100%;
   flex-grow: 1;
   overflow: hidden;
 
-  .home-chats-container{
+  .call-logs-container,
+  .chats-status-container,
+  .home-chats-container {
     height: 100%;
     overflow-y: scroll;
   }
 }
 
-.home-chats{
+.home-chats {
   height: max-content;
   padding: 0.5em;
   color: var(--med-txt);
 
-  .chat-container{
+  .chat-container {
     padding: 0.5em 0;
     display: flex;
 
-    .short-info{
+    .short-info {
       flex-grow: 1;
       padding-left: 1em;
     }
 
-    .imageCont{
+    .imageCont {
       border-radius: 50%;
       overflow: hidden;
     }
 
-    .chat-info{
+    .chat-info {
       display: flex;
 
-      .chat-name{
+      .chat-name {
         flex-grow: 1;
         font-size: 1.1em;
         font-weight: 600;
       }
 
-      .chat-date{
+      .chat-date {
         font-size: 0.72em;
         font-weight: 400;
         color: var(--sat-txt);
       }
     }
 
-    .latest-message{
+    .latest-message {
       display: flex;
       flex-grow: 1;
       font-size: 0.84em;
       font-weight: 500;
       color: var(--sat-txt);
 
-      .uicon{
+      .uicon {
         margin-right: 0.4em;
       }
     }
 
-    .chat-acts{
+    .chat-acts {
       display: flex;
 
-      .unread{
+      .unread {
         font-size: 0.64em;
         padding: 0.2em 0.76em;
         border-radius: 50%;
-        margin: 0 0.4em;
+        margin: 0 0.5em;
         color: var(--white);
         background: var(--light-green);
       }
@@ -126,8 +152,107 @@
   }
 }
 
-.seentick{
-  &[data-payload="2"]{
+.seentick {
+  &[data-payload="2"] {
     color: var(--blue);
+    fill: var(--blue);
+  }
+}
+
+.call-logs,
+.chats-status,
+.my-status {
+  height: max-content;
+  padding: 0.25em 1em;
+  color: var(--med-txt);
+
+  .call-log,
+  .chat-status {
+    display: flex;
+    align-items: center;
+    // margin: 1em 0;
+    margin-bottom: 1em;
+
+    .status-preview-container {
+      position: relative;
+      // background: var(--teal);
+      border-radius: 50%;
+      padding: 3px;
+      // overflow: hidden;
+      .status-preview {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+
+        .notviewed {
+          stroke: var(--teal);
+        }
+
+        .viewed {
+          stroke: var(--light-txt);
+        }
+      }
+
+      .imageCont {
+        border: 1px solid var(--white);
+      }
+    }
+  }
+}
+
+.status-date {
+  font-size: 0.8em;
+  font-weight: 500;
+  color: var(--light-txt);
+}
+
+.my-status {
+  padding: 0.75em 1em;
+
+  .chat-status {
+    margin: 0;
+  }
+}
+
+.call-logs {
+  padding-top: 0.5em;
+
+  .status-date {
+    display: flex;
+
+    .callConnected,
+    .callMade {
+      color: var(--light-green);
+    }
+
+    .callMissed {
+      color: #eb3434;
+    }
+  }
+}
+
+.scale-trans{
+  opacity: 1;
+  transform: scale(1);
+  transition: 200ms ease-in-out;
+  pointer-events: auto;
+  transition-property: transform, opacity;
+
+  &[data-vis="0"]{
+    transform: scale(0.9);
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  &[data-vis="2"]{
+    transform: scale(1.1);
+    pointer-events: none;
+    opacity: 0;
   }
 }

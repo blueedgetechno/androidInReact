@@ -8,10 +8,29 @@ body{
   --comp-clr: #e6e6e6;
   --gray-txt: #555;
   --sat-txt: #777;
+  --mid-txt: #888;
   --clrPrm: #0067c0;
   --scroll: rgb(255 255 255 / 80%);
 
+  --white: #fefefe;
+  --black: #010101;
   --active-blue: #0181fd;
+}
+
+.med-txt{
+  color: var(--med-txt);
+}
+
+.comp-txt{
+  color: var(--comp-txt);
+}
+
+.gray-txt{
+  color: var(--gray-txt);
+}
+
+.sat-txt{
+  color: var(--sat-txt);
 }
 
 .backblur{
@@ -74,6 +93,26 @@ body{
   }
 }
 
+@keyframes pop-up {
+  from{
+    transform: scale(0.5);
+  }
+
+  to{
+    transform: scale(1);
+  }
+}
+
+@keyframes pop-up2 {
+  from{
+    transform: scale(0.5);
+  }
+
+  to{
+    transform: scale(1);
+  }
+}
+
 .press-in{
   transition: transform 200ms ease-in-out;
   &:active{
@@ -83,4 +122,25 @@ body{
 
 .quick-trans{
   transition: transform 100ms ease-in-out;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.active-light-lit{
+  transition: all 200ms ease-in-out;
+
+  &:active{
+    background: rgba(254, 254, 254, 0.25);
+  }
+}
+
+.active-dark-lit{
+  transition: all 200ms ease-in-out;
+
+  &:active{
+    background: rgba(0, 0, 0, 0.25);
+  }
 }

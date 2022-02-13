@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef} from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {Icon} from "../utils";
+import React, { useState, useEffect, useRef} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {Icon} from 'components/utils';
 import parse from 'color-parse';
 import rgba from 'color-rgba';
 
@@ -42,7 +42,7 @@ const BottomNav = (props) => {
       <div className="bt-nav-container" data-invert={invert}>
         <Icon className="bar-icon" fafa="faBars" w={16} action="home/setRecent"/>
         <Icon mui="CropSquare" w={20} action="home/setHome"/>
-        <Icon mui="ArrowBackIos" w={20}/>
+        <Icon mui="ArrowBackIos" w={20} action="home/goBack"/>
       </div>
     </div>
   );

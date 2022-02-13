@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {Icon, Image, LazyComponent} from '../../../components/utils';
-import {dispatchAction, dispatchAct} from "../../../store/actions";
+import {Icon, Image, LazyComponent} from 'components/utils';
+import {dispatchAction, dispatchAct} from 'store/actions';
 
 export const PlaystoreApp = () => {
   const [count, setCount] = useState(0);
