@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ReactPlayer from 'react-player';
+
+import Slider from '@mui/material/Slider';
 
 import { dispatchAction } from 'store/actions';
-
 import * as FaIcons from '@fortawesome/free-solid-svg-icons';
 import * as FaRegIcons from '@fortawesome/free-regular-svg-icons';
 import * as MUIcons from '@mui/icons-material';
 import * as AllIcons from 'components/icons';
+
+const {round, floor, random, min, max, abs} = Math;
 
 export const MaterialIcon = (props) => {
   var icon = props.mui;
@@ -113,7 +117,9 @@ export const Image = (props) => {
     src += ".png";
   }
 
-  if(props.ext) src = props.src
+  if (props.ext || (props.src && props.src.includes("http"))) {
+    src = props.src;
+  }
 
   const errorHandler = (e)=>{
     if(props.err) e.target.src = props.err
@@ -138,6 +144,77 @@ export const Image = (props) => {
           data-var={props.var}
           loading={props.lazy && "lazy"}
           src={src} alt="" onError={errorHandler}/>:null}
+    </div>
+  )
+}
+
+const formatseconds = (sec)=>{
+  if (!sec) return "00:00";
+  var res = floor(sec / 60);
+  res += ':';
+  sec %= 60;
+  if (sec < 10) res += "0";
+  res += sec;
+
+  return res;
+}
+
+export const Video = (props) => {
+  const dispatch = useDispatch();
+  const [play, setPlay] = useState(props.autoplay);
+  const [prog, setProg] = useState(0); // time elapsed
+  const [perProg, setPerProg] = useState(0); // time elapsed in %
+
+  var src = `/img/${(props.dir?props.dir+"/":"")+props.src}`;
+  if (props.src && !props.src.includes(".")) src += ".mp4";
+
+  if (props.ext || (props.src && props.src.includes("http"))) {
+    src = props.src;
+  }
+
+  const className = `vidCont ${props.inactive?'prtclk':''} ${props.className||''}`.trim()
+  var dataset = {}
+  Object.entries(props).forEach(([key, value]) => {
+    if(key.includes("data-")){
+      dataset[key] = value
+    }
+  });
+
+  const handlePause = (e) => setPlay(false)
+  const handlePlay = (e) => setPlay(true)
+
+  const handleProg = (e)=>{
+    setProg(floor(e.playedSeconds))
+    setPerProg(e.played)
+  }
+
+  return (
+    <div className={className} id={props.id}
+      onClick={props.onClick || (props.action && dispatchAction)}
+      data-action={props.action} data-payload={props.payload} {...dataset} tabIndex="1">
+        {!props.playIcon && play &&
+          <Icon className="play-icon" mui="Pause" round w={48} onClick={handlePause}/>}
+        {!props.playIcon && !play &&
+          <Icon className="play-icon opacity-100" mui="PlayArrow" round w={48} onClick={handlePlay}/>}
+        {props.playIcon}
+        <ReactPlayer className="react-video"
+          url={src}
+          width={props.w || "auto"}
+          height={props.h || "auto"}
+          controls={props.controls} playing={props.play || play}
+          onPlay={props.onPlay || handlePlay} onPause={props.onPause || handlePause}
+          onProgress={props.onProgress || handleProg} onEnded={props.onEnded || handlePause}/>
+        {props.cstmctrl && (
+          <div className="video-control-container">
+            <span className="prog-text">{formatseconds(prog)}</span>
+            <Slider size="small"
+              className="video-progress"
+              value={perProg*100}
+              defaultValue={0}
+            />
+            <span className="prog-text">{formatseconds(floor(prog/perProg))}</span>
+          </div>
+        )}
     </div>
   )
 }

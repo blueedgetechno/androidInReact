@@ -6,9 +6,15 @@ import {dispatchAction, dispatchAct} from 'store/actions';
 import Swiper from 'react-slick';
 
 import './whatsapp.scss';
-import wdata from './data.json';
 
-import {StatusScreen, ChatScreen, CallLogs, minifyTime, NavBar} from './elements'
+import {
+  NavBar,
+  minifyTime,
+  StatusScreen,
+  ChatScreen,
+  CallLogs,
+  MediaViewer
+} from './elements'
 
 export const WhatsappApp = () => {
   const app = useSelector(state => state.home.apps.whatsapp || {});
@@ -31,15 +37,13 @@ export const WhatsappApp = () => {
         }
       }})
     }
-
-    // console.log(app.path);
   }, [app])
 
   return <AppContainer app={app} show={show}/>
 }
 
 const AppContainer = ({app, show, pagetree}) => {
-  const [tab, setTab] = React.useState(1);
+  const [tab, setTab] = useState(1);
   const homeSwiper = useRef();
   const clstring = `${app.payload}-wrapper`;
   const path = app.path || ["main"];
@@ -111,6 +115,7 @@ const AppContainer = ({app, show, pagetree}) => {
           </div>
         </div>
         <ChatScreen checkstate={checkstate}/>
+        <MediaViewer/>
       </div>
     </div>
   );
@@ -123,29 +128,57 @@ const CameraScreen = ()=>{
 }
 
 const AllChatScreen = ()=>{
+  const wdata = useSelector(state => state.whatsapp);
+  const contacts = useSelector(state => state.whatsapp.chats);
+
+  const clickChat = (e)=>{
+    var id = e.target.getAttribute("value");
+
+    dispatchAct({
+      type: "whatsapp/setProp",
+      payload: {key: "curr", value: id}
+    })
+
+    dispatchAct({
+      type: "home/navApp",
+      payload: "whatsapp.chat"
+    })
+  }
+
+  useEffect(()=>{
+    dispatchAct({type: 'home/setAppKey', payload:{
+      id: 'whatsapp', key: 'comp', value: wdata.comp
+    }})
+  }, [wdata.comp])
 
   return (
     <div className="home-chats-container medScroll">
       <div className="home-chats">
-        {wdata.chats.map((chat,i) => {
+        {contacts && contacts.map((contact,i) => {
+          if(!contact.chat || !contact.chat.length) return null
+          var lastmsg = contact.chat.at(-1)
+
           return(
-            <div className="chat-container prtclk active-dark-lit" key={i} onClick={dispatchAction}
-              data-action="home/navApp" data-payload="whatsapp.chat">
-              <Image src={chat.img} dir="asset/whatsapp/pfp" w={48}/>
+            <div className="all-chat-container prtclk active-dark-lit" key={i} onClick={clickChat} value={i}>
+              <Image src={contact.img} dir="asset/whatsapp/pfp" w={48}/>
               <div className="short-info">
                 <div className="chat-info">
-                  <div className="chat-name">{chat.name}</div>
-                  <div className="chat-date">8:30 PM</div>
+                  <div className="chat-name">{contact.name}</div>
+                  <div className="chat-date">{new Date(lastmsg.time).time12()}</div>
                 </div>
-                <div className="flex">
+                <div className="latest-message-container">
                   <div className="latest-message">
-                    <Icon className="seentick" mui={["Done","DoneAll"][i%3?1:0]} w={12}
-                      payload={i%3}/>
-                    <span>Okay! I will do it by tomorrow</span>
+                    {lastmsg.type=="2"?(
+                      <Icon className="seentick" mui={lastmsg.seen==0?"Done":null}
+                        icon={lastmsg.seen>0?"seentick":null} w={14} payload={lastmsg.seen}/>
+                    ):null}
+                    {lastmsg.media=="Photo"?<Icon mui="Photo" w={14}/>:null}
+                    {lastmsg.media=="Video"?<Icon mui="Videocam" w={14}/>:null}
+                    <span className="last-msg-txt">{lastmsg.msg || lastmsg.media}</span>
                   </div>
                   <div className="chat-acts">
-                    {Math.random()<0.5?<div className="unread">{Math.floor(1 + Math.random()*8)}</div>:null}
-                    {i<3 ? <Icon icon="pinned" fill="#687881"/>: null}
+                    {/* {Math.random()<0.5?<div className="unread">{Math.floor(1 + Math.random()*8)}</div>:null} */}
+                    {/* {i<3 ? <Icon icon="pinned" fill="#687881"/>: null} */}
                   </div>
                 </div>
               </div>

@@ -47,7 +47,7 @@ i[data-flip="true"] {
   transition: 400ms ease-in-out;
 }
 
-.imageCont {
+.imageCont, .vidCont{
   position: relative;
   display: grid;
   place-items: center;

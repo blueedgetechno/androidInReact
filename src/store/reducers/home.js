@@ -41,6 +41,12 @@ const Home = createSlice({
         state.apps[action.payload.id] = action.payload.data
       }
     },
+    setAppKey: (state, action) => {
+      var {id, key, value} = action.payload;
+      if(state.apps[id]){
+        state.apps[id][key] = value
+      }
+    },
     navApp: (state, action) => {
       var [id, page] = action.payload.split("."),
           tmp_path = searchpath({...state.apps[id].pagetree}, page)
@@ -50,16 +56,18 @@ const Home = createSlice({
       }
     },
     goBack: (state, action) => {
-      if(!state.ishome && !state.recent && state.stack.length){
-        var cr_app = state.stack.at(-1), tmp = {...state.apps[cr_app]};
-        if(tmp.path && tmp.path.length){
-          if(tmp.path.length==1){ // set home
-            state.ishome = true
-            state.recent = false
-          }else{
-            tmp.path.pop()
-            state.apps[cr_app] = {...tmp}
-          }
+      if(state.ishome || state.recent || !state.stack.length) return
+      var cr_app = state.stack.at(-1),
+          tmp = {...state.apps[cr_app]}
+      if(tmp.comp) return
+
+      if(tmp.path && tmp.path.length){
+        if(tmp.path.length==1){ // set home
+          state.ishome = true
+          state.recent = false
+        }else{
+          tmp.path.pop()
+          state.apps[cr_app] = {...tmp}
         }
       }
     },
@@ -100,14 +108,23 @@ const Home = createSlice({
       var tmp = [...state.stack]
       if(tmp.includes(action.payload)){
         tmp.remove(action.payload)
+        if(state.apps[action.payload]){
+          state.apps[action.payload].comp = false
+          state.apps[action.payload].path = ['main']
+        }
       }
 
       state.stack = [...tmp]
     },
     closeAllApps: (state, action) => {
       var tmp = []
-      state.stack = [...tmp]
 
+      for (var i = 0; i < state.stack.length; i++) {
+        state.apps[state.stack[i]].comp = false
+        state.apps[state.stack[i]].path = ['main']
+      }
+
+      state.stack = [...tmp]
       state.ishome = true
       state.recent = false
     }

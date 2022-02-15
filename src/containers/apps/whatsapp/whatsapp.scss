@@ -17,8 +17,7 @@
   display: flex;
   position: relative;
   justify-content: space-between;
-  padding: 0.5em 0.6em;
-  padding-left: 0.2em;
+  padding: 0.5em 0.6em 0.5em 0.2em;
   background: var(--teal);
   color: var(--white);
 
@@ -95,13 +94,14 @@
   padding: 0.5em;
   color: var(--med-txt);
 
-  .chat-container {
+  .all-chat-container {
     padding: 0.5em 0;
     display: flex;
 
     .short-info {
       flex-grow: 1;
-      padding-left: 1em;
+      margin-left: 0.8em;
+      position: relative;
     }
 
     .imageCont {
@@ -125,15 +125,33 @@
       }
     }
 
-    .latest-message {
+    .latest-message-container{
       display: flex;
+      position: absolute;
+      width: 100%;
+    }
+
+    .latest-message {
       flex-grow: 1;
+      display: flex;
       font-size: 0.84em;
       font-weight: 500;
       color: var(--sat-txt);
+      fill: var(--sat-txt);
+      position: relative;
+      max-width: 100%;
 
       .uicon {
-        margin-right: 0.4em;
+        margin-right: 0.2em;
+      }
+
+      span {
+        overflow: hidden;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
       }
     }
 
@@ -237,20 +255,20 @@
   }
 }
 
-.scale-trans{
+.scale-trans {
   opacity: 1;
   transform: scale(1);
   transition: 200ms ease-in-out;
   pointer-events: auto;
   transition-property: transform, opacity;
 
-  &[data-vis="0"]{
+  &[data-vis="0"] {
     transform: scale(0.9);
     pointer-events: none;
     opacity: 0;
   }
 
-  &[data-vis="2"]{
+  &[data-vis="2"] {
     transform: scale(1.1);
     pointer-events: none;
     opacity: 0;

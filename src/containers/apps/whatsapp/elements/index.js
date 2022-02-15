@@ -3,9 +3,8 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import TextField from '@mui/material/TextField';
 
-import {Icon, Image} from 'components/utils.js';
+import {Icon, Image, Video} from 'components/utils.js';
 import {dispatchAction, dispatchAct} from 'store/actions';
-import wdata from '../data.json';
 
 import './extra.scss';
 
@@ -58,7 +57,39 @@ export const NavBar = (props)=>{
   )
 }
 
+export const MediaViewer = () => {
+  const media = useSelector(state => state.whatsapp.media || {});
+
+  return (
+    <div className="media-viewer-container" value={!media.vis && "hide"}>
+      <div className="whatsapp-top-nav">
+        <div className="chat-profile-container flex items-center">
+          <div className="chat-profile active-light-lit">
+            <Icon mui="ArrowBack" w={20} action="home/goBack"/>
+          </div>
+          <div className="chat-name flex-column font-thin mx-4">
+            <span>{media.name}</span>
+            <span>{new Date(media.time).pastdatetime()}</span>
+          </div>
+        </div>
+        <div className="w-nav-icons">
+          <Icon mui="Reply" flip/>
+          <Icon mui="MoreVert"/>
+        </div>
+      </div>
+      <div className="media-screen">
+        {media.type=="Photo" && <Image src={media.src} dir="asset/whatsapp/chats"/>}
+        {media.type=="Video" && (
+          <Video src={media.src} dir="asset/whatsapp/chats" h="100%" cstmctrl/>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export const StatusScreen = (props)=>{
+  const wdata = useSelector(state => state.whatsapp);
+  const contacts = useSelector(state => state.whatsapp.chats);
 
   const CalculateArc = ({n,i,viewed})=>{
     var gz = n==1 ? 0 : 3;
@@ -93,7 +124,7 @@ export const StatusScreen = (props)=>{
       </div>
       <div className="gray-txt text-sm px-6 py-2">Recent updates</div>
       <div className="chats-status px-2 py-1">
-        {wdata.chats.map((chat,i) => {
+        {contacts && contacts.map((chat,i) => {
           var s = chat.name,
               randv = s.split("").map(x => x.charCodeAt()).reduce((b,c) => 2*b + 3*c);
           var nos = 1 + randv%8,
@@ -124,11 +155,13 @@ export const StatusScreen = (props)=>{
 }
 
 export const CallLogs = ()=>{
+  const wdata = useSelector(state => state.whatsapp);
+  const contacts = useSelector(state => state.whatsapp.chats);
 
   return (
     <div className="call-logs-container medScroll">
       <div className="call-logs px-2 py-1">
-        {wdata.chats.map((chat,i) => {
+        {contacts && contacts.map((chat,i) => {
           var randv = chat.name.split("").map(x => x.charCodeAt()).reduce((b,c) => 2*b + 3*c);
           var callst = randv%3, callsticon = callst!=2?"CallReceived":"CallMade",
               className = callst == 0? "callMissed":(callst==1?"callConnected":"callMade"),
@@ -145,7 +178,7 @@ export const CallLogs = ()=>{
                 </div>
               </div>
               {calltype=="ph"?<Icon className="teal-green" mui="Call" rounded/>:
-                                <Icon className="teal-green" mui="Videocam"/>}
+                              <Icon className="teal-green" mui="Videocam"/>}
             </div>
           )
         })}
@@ -156,12 +189,35 @@ export const CallLogs = ()=>{
 
 export const ChatScreen = (props)=>{
   const [msg, setMsg] = useState("");
-
-  const msgstring = `Help us keep running heywhatsthematterthisisallfinetrustmewearejustconducting\nIf you don't mind tech-related ads (no tracking or remarketing), and want to keep us running, please whitelist MUI in your blocker.\nThank you! ❤️`
+  const chatscreen = useRef();
+  const wdata = useSelector(state => state.whatsapp);
+  const contact = useSelector(state => {
+    return (
+      state.whatsapp.chats && state.whatsapp.chats[state.whatsapp.curr]
+    ) || {}
+  })
 
   const handleMsg = (e)=>{
     setMsg(e.target.value)
   }
+
+  const mediaHandler = (e)=>{
+    var ele = e.target;
+    const payload = {
+      type: ele.dataset.type,
+      src: ele.dataset.src,
+      name: ele.dataset.name,
+      time: ele.dataset.time
+    }
+
+    dispatchAct({type: "whatsapp/setMedia", payload: payload})
+  }
+
+  useEffect(()=>{
+    if(chatscreen.current){
+      chatscreen.current.scrollBy(0, chatscreen.current.scrollHeight + 100)
+    }
+  }, [wdata.curr])
 
   return(
     <div className="chat-screen-container flex-column scale-trans" data-vis={props.checkstate('chat')}>
@@ -170,9 +226,9 @@ export const ChatScreen = (props)=>{
           <div className="chat-profile prtclk active-light-lit"
             onClick={dispatchAction} data-action="home/goBack">
             <Icon mui="ArrowBack" w={20}/>
-            <Image className="rounded-full overflow-hidden" src="hero" dir="asset/whatsapp/pfp" w={36}/>
+            <Image className="rounded-full overflow-hidden" src={contact.img} dir="asset/whatsapp/pfp" w={36}/>
           </div>
-          <div className="chat-name text-lg font-thin mx-2">Spider Man</div>
+          <div className="chat-name text-lg font-thin mx-2">{contact.name}</div>
         </div>
         <div className="w-nav-icons">
           <Icon mui="Videocam"/>
@@ -183,27 +239,78 @@ export const ChatScreen = (props)=>{
       <div className="chat-screen flex-column" style={{
         background: 'url(/img/asset/whatsapp/background.png)'
       }}>
-        <div className="chat-container">
+        <div className="chat-container medScroll" ref={chatscreen}>
           <div className="chat-scroll-container">
-            {wdata.chats[0].chat.map((item, i) => {
-              return (
-                <div className="chat-toast" value={item.type}>
+            <div className="chat-toast" value="1">
+              <div className="msg-toast">
+                🔓 Messages and calls are end-to-end open. It's Facebook, what else would you expect. Privacy go brrr.
+              </div>
+            </div>
+            {contact.chat && contact.chat.map((item, i) => {
+              var arr = [], prev = i>0 && contact.chat[i-1];
+
+              if(i==0 || new Date(prev.time).getDate() != new Date(item.time).getDate()){
+                arr.push(
+                  <div className="chat-toast" value="1" key={"msg-"+i}>
+                    <div className="msg-toast">
+                      {new Date(item.time).pastdate()}
+                    </div>
+                  </div>
+                )
+              }
+
+              arr.push(
+                <div className="chat-toast" value={item.type} key={i}>
                   {item.type!="1"?(
-                    <div className={`msg-box ${item.type=="0"?'in-msg':'out-msg'}`}>
-                      <pre>
-                        {item.msg}
+                    <div className={'msg-box ' +
+                      (item.type=='0'?'in-msg':'out-msg') +
+                      (!prev || prev.type!=item.type ? ' first-msg':'')
+                    }>
+                      {item.media=="Photo"?(
+                        <Image src={item.src} dir="asset/whatsapp/chats"
+                          data-type={item.media} data-name={
+                            item.type=='0'? (item.name || contact.name): "You"
+                          } onClick={mediaHandler} data-time={item.time}
+                          data-src={item.src}/>
+                      ):null}
+                      {item.media=="Video"?(
+                        <Video
+                          src={item.src} inactive
+                          dir="asset/whatsapp/chats"
+                          data-type={item.media} data-name={
+                            item.type=='0'? (item.name || contact.name): "You"
+                          } onClick={mediaHandler}
+                          data-time={item.time}
+                          data-src={item.src}/>
+                      ):null}
+                      {item.msg?(
+                        <pre>
+                          {item.msg}
+                          <div className="chat-date">
+                            <span>{new Date(item.time || 0).time12()}</span>
+                            {item.type=="2"?(
+                              item.seen?<Icon className="seentick" icon="seentick" w={14} payload={item.seen}/>:
+                                  <Icon className="seentick" mui="Done" w={14} payload={0}/>
+                            ):null}
+                          </div>
+                        </pre>
+                      ):(
                         <div className="chat-date">
-                          <span>12:43 AM</span>
-                          {i%3?<Icon className="seentick" icon="seentick" w={14} payload={i%3}/>:
-                              <Icon className="seentick" mui="Done" w={14} payload={0}/>}
+                          <span>{new Date(item.time || 0).time12()}</span>
+                          {item.type=="2"?(
+                            item.seen?<Icon className="seentick" icon="seentick" w={14} payload={item.seen}/>:
+                                <Icon className="seentick" mui="Done" w={14} payload={0}/>
+                          ):null}
                         </div>
-                      </pre>
+                      )}
                     </div>
                   ):(
                     <div className="msg-toast">{item.msg}</div>
                   )}
                 </div>
               )
+
+              return arr
             })}
           </div>
         </div>

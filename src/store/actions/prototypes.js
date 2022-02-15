@@ -26,3 +26,55 @@ String.prototype.count = function(c) {
 String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
+
+Date.prototype.time12 = function() {
+  return this.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric"
+  })
+};
+
+Date.prototype.time24 = function() {
+  return this.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false
+  })
+};
+
+Date.prototype.pastdate = function() {
+  if(this.toDateString() == new Date().toDateString()) return "Today"
+  else if (this.toDateString() == new Date(new Date() - 24*3600000).toDateString()) {
+    return "Yesterday"
+  }else{
+    return this.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    })
+  }
+};
+
+Date.prototype.pastdatetime = function() {
+  var timestr = "", cdate = new Date();
+  if(this.toDateString() == cdate.toDateString()) timestr = "Today"
+  else if (this.toDateString() == new Date(cdate - 24*36*1e5).toDateString()) {
+    timestr = "Yesterday"
+  }else if(this.getFullYear() == cdate.getFullYear()){
+    timestr = this.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric"
+    })
+  }else{
+    timestr = this.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "numeric",
+      year: "2-digit"
+    })
+  }
+
+  timestr += ", "
+  timestr += this.time12()
+
+  return timestr
+};

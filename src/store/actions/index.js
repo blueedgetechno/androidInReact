@@ -10,7 +10,11 @@ import {
 import axios from 'axios';
 import './prototypes.js';
 
-export const gene_name = () => Math.random().toString(36).substring(2, 10).toLowerCase()
+import whatsapp_data from './data/whatsapp.json';
+
+const {round, floor, random, min, max, abs} = Math;
+
+export const gene_name = () => random().toString(36).substring(2, 10).toLowerCase()
 
 export const dispatchAction = (e) => {
   var action = {
@@ -169,7 +173,7 @@ export const loadApps = ()=>{
     homelist[page2apps[i].icon] = {
       page: 2,
       type: 'app',
-      row: [Math.floor(i/4) + 1, Math.floor(i/4) + 2],
+      row: [floor(i/4) + 1, floor(i/4) + 2],
       col: [(i%4)+1,(i%4)+2]
     }
   }
@@ -179,7 +183,7 @@ export const loadApps = ()=>{
     homelist[page3apps[i].icon] = {
       page: 3,
       type: 'app',
-      row: [Math.floor(i/4) + 1, Math.floor(i/4) + 2],
+      row: [floor(i/4) + 1, floor(i/4) + 2],
       col: [(i%4)+1,(i%4)+2]
     }
   }
@@ -191,4 +195,39 @@ export const loadApps = ()=>{
     }});
   });
 
+  loadWhatsApp();
+}
+
+const loadWhatsApp = ()=>{
+  var tmp = {...whatsapp_data};
+  tmp.curr = 3;
+
+  for (var i = 0; i < tmp.chats.length; i++) {
+    var cont = tmp.chats[i];
+    if(!cont.chat){
+      cont.chat = []
+      continue
+    }
+
+    var tdate = new Date(new Date() - round(random()*60)*60*1000)
+    for (var j = cont.chat.length - 1; j >= 0; j--) {
+      cont.chat[j].time = tdate.toISOString();
+      if(cont.chat[j].type=="2"){
+        cont.chat[j].seen = j+1 == cont.chat.length ? floor(random()*3) : 2;
+      }
+      tdate = new Date(tdate - round(random()*300)*60*1000)
+    }
+
+    tmp.chats[i] = {...cont};
+  }
+
+  tmp.media = {
+    vis: true,
+    name: 'You',
+    type: 'Video',
+    src: 'meme.mp4',
+    time: new Date(new Date() - 60*24*36*1e5).toISOString()
+  }
+
+  store.dispatch({type: 'whatsapp/setData', payload: tmp});
 }
