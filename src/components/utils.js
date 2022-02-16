@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactPlayer from 'react-player';
@@ -166,6 +166,7 @@ const formatseconds = (sec)=>{
 
 export const Video = (props) => {
   const dispatch = useDispatch();
+  const vidplayer = useRef();
   const [play, setPlay] = useState(props.autoplay);
   const [prog, setProg] = useState(0); // time elapsed
   const [perProg, setPerProg] = useState(0); // time elapsed in %
@@ -193,6 +194,15 @@ export const Video = (props) => {
     setPerProg(e.played)
   }
 
+  const handleSliderChange = (e)=>{
+    if(!vidplayer.current) return
+
+    var ip = e.target.value/100
+    vidplayer.current.seekTo(ip, 'fraction')
+    setPerProg(ip);
+    setProg(floor(ip*vidplayer.current.getDuration()));
+  }
+
   return (
     <div className={className} id={props.id}
       onClick={props.onClick || (props.action && dispatchAction)}
@@ -203,7 +213,7 @@ export const Video = (props) => {
           <Icon className="play-icon opacity-100" mui="PlayArrow" round w={48} onClick={handlePlay}/>}
         {props.playIcon}
         <ReactPlayer className="react-video"
-          url={src}
+          url={src} ref={vidplayer}
           width={props.w || "auto"}
           height={props.h || "auto"}
           controls={props.controls} playing={props.play || play}
@@ -216,6 +226,7 @@ export const Video = (props) => {
               className="video-progress"
               value={perProg*100}
               defaultValue={0}
+              onChange={handleSliderChange}
             />
             <span className="prog-text">{formatseconds(floor(prog/perProg))}</span>
           </div>

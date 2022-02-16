@@ -200,7 +200,7 @@ export const loadApps = ()=>{
 
 const loadWhatsApp = ()=>{
   var tmp = {...whatsapp_data};
-  tmp.curr = 4;
+  tmp.curr = 0;
 
   for (var i = 0; i < tmp.chats.length; i++) {
     var cont = tmp.chats[i];
@@ -209,12 +209,16 @@ const loadWhatsApp = ()=>{
       continue
     }
 
-    var tdate = new Date(new Date() - round(random()*60)*60*1000)
+    var tdate = new Date(new Date() - round(random()*60)*60*1000),
+        replied = false;
+
     for (var j = cont.chat.length - 1; j >= 0; j--) {
       cont.chat[j].time = tdate.toISOString();
       if(cont.chat[j].type=="2"){
-        cont.chat[j].seen = j+1 == cont.chat.length ? floor(random()*3) : 2;
-      }
+        cont.chat[j].seen = (j+1 == cont.chat.length) && !replied ?
+                              floor(random()*3) : 2;
+      }else replied = true
+
       tdate = new Date(tdate - round(random()*300)*60*1000)
     }
 
@@ -222,9 +226,8 @@ const loadWhatsApp = ()=>{
   }
 
   tmp.media = {}
-
   // tmp.media = {
-  //   vis: !true,
+  //   vis: true,
   //   name: 'You',
   //   type: 'Video',
   //   src: 'meme.mp4',

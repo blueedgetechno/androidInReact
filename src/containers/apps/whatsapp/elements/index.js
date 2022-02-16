@@ -8,22 +8,6 @@ import {dispatchAction, dispatchAct} from 'store/actions';
 
 import './extra.scss';
 
-export const minifyTime = (t)=>{
-  if(t < 60) return `${t} min ago`
-  else{
-    var d1 = new Date(),
-        d2 = new Date(d1 - t*60*1000);
-
-    var timestr = "";
-    if(d2.getDate() == d1.getDate()) timestr += "Today, "
-    else timestr += "Yesterday, "
-
-    timestr += d2.toLocaleTimeString("en-US",{hour:"numeric",minute:"numeric"})
-
-    return timestr
-  }
-}
-
 export const NavBar = (props)=>{
   const [swidth, setWidth] = useState(0);
   const [offLeft, setLeft] = useState(0);
@@ -44,7 +28,8 @@ export const NavBar = (props)=>{
     <div className={`w-nav-tab ${props.className || ""}`} ref={navbar}>
       {props.options && props.options.map((opt,i) => {
         return (
-          <div className="tab-option" value={props.tab == i} key={i}>
+          <div className="tab-option active-light-lit prtclk"  key={i}
+              value={props.tab == i} data-id={i} onClick={props.onClick}>
             {opt}
           </div>
         )
@@ -144,7 +129,7 @@ export const StatusScreen = (props)=>{
               </div>
               <div className="status-info flex flex-col mx-4">
                 <div className="chat-name">{chat.name}</div>
-                <div className="status-date">{minifyTime(minago)}</div>
+                <div className="status-date">{new Date().minifyTime(minago)}</div>
               </div>
             </div>
           )
@@ -174,7 +159,7 @@ export const CallLogs = ()=>{
                 <div className="chat-name">{chat.name}</div>
                 <div className="status-date">
                   <Icon className={className} mui={callsticon} w={14}/>
-                  <span>{minifyTime(minago)}</span>
+                  <span>{new Date().minifyTime(minago)}</span>
                 </div>
               </div>
               {calltype=="ph"?<Icon className="teal-green" mui="Call" rounded/>:
@@ -188,7 +173,7 @@ export const CallLogs = ()=>{
 }
 
 export const ChatScreen = (props)=>{
-  const [msg, setMsg] = useState("");
+  const [msg, setMsg] = useState('');
   const chatscreen = useRef();
   const wdata = useSelector(state => state.whatsapp);
   const contact = useSelector(state => {
@@ -218,14 +203,15 @@ export const ChatScreen = (props)=>{
 
     for (var i = 0; i < arr.length; i++) {
       try{
-        var url = (!arr[i].startsWith("http") ? "https://":"") + arr[i] , urlobj
+        var url = (!arr[i].startsWith("http") ? "https://":"") + arr[i] ,
+            urlobj = null;
 
         if(isValidURL(url)) urlobj = new URL(url)
         if(!urlobj) throw new Error()
 
         if(txtstr.length) tmp.push(txtstr.join(' '))
         txtstr = []
-        tmp.push(<a href={urlobj.origin} target="_blank" key={i}> {arr[i]} </a>)
+        tmp.push(<a href={urlobj.href} target="_blank" key={i}> {arr[i]} </a>)
       }catch(e){
         txtstr.push(arr[i])
       }
@@ -236,11 +222,33 @@ export const ChatScreen = (props)=>{
     return tmp
   }
 
+  const sendMessage = ()=>{
+    dispatchAct({
+      type: "whatsapp/sendMsg",
+      payload: {
+        id: wdata.curr,
+        msg: msg
+      }
+    })
+
+    setMsg("")
+  }
+
+  const scrollToEnd = ()=>{
+    chatscreen.current.scrollBy(0, chatscreen.current.scrollHeight + 100)
+  }
+
   useEffect(()=>{
-    if(chatscreen.current){
-      chatscreen.current.scrollBy(0, chatscreen.current.scrollHeight + 100)
+    if(props.checkstate('chat') && chatscreen.current){
+      scrollToEnd()
+      setTimeout(scrollToEnd, 200)
+      dispatchAct({type: "whatsapp/setChatProp", payload: {
+        id: wdata.curr,
+        key: "seen",
+        value: true
+      }})
     }
-  }, [wdata.curr])
+  }, [wdata.curr, contact.chat])
 
   return(
     <div className="chat-screen-container flex-column scale-trans" data-vis={props.checkstate('chat')}>
@@ -347,7 +355,7 @@ export const ChatScreen = (props)=>{
           </div>
           {msg.length==0?(
             <Icon className="mic-icon" mui="Mic" h={24}/>
-          ):<Icon className="send-icon" mui="Send" h={24}/>}
+          ):<Icon className="send-icon press-in" mui="Send" h={24} onClick={sendMessage}/>}
         </div>
       </div>
     </div>

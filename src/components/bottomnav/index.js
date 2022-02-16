@@ -40,9 +40,9 @@ const BottomNav = (props) => {
       backgroundColor: props.bg
     }} ref={navBar}>
       <div className="bt-nav-container" data-invert={invert}>
-        <Icon className="bar-icon" fafa="faBars" w={16} action="home/setRecent"/>
-        <Icon mui="CropSquare" w={20} action="home/setHome"/>
-        <Icon mui="ArrowBackIos" w={20} action="home/goBack"/>
+        <Icon className="bar-icon press-in" fafa="faBars" w={16} action="home/setRecent"/>
+        <Icon className="press-in" mui="CropSquare" w={20} action="home/setHome"/>
+        <Icon className="press-in" mui="ArrowBackIos" w={20} action="home/goBack"/>
       </div>
     </div>
   );

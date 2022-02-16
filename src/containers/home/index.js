@@ -89,7 +89,7 @@ const AppWrapper = ({openedapp})=>{
   useEffect(()=>{
     if(stack.length){
       if(appScroll.current){
-        var appidx = opened_apps.indexOf(openedapp);
+        var appidx = opened_apps.indexOf(openedapp)
         appScroll.current.slickGoTo(appidx, true)
       }
     }

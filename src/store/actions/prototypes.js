@@ -55,6 +55,17 @@ Date.prototype.pastdate = function() {
   }
 };
 
+Date.prototype.minifyTime = function(t) {
+  if(t < 60) return `${t} min ago`
+  else{
+    var d = new Date(new Date() - t*60*1000),
+        timestr = d.pastdate() + ', '
+
+    timestr += d.time12()
+    return timestr
+  }
+}
+
 Date.prototype.pastdatetime = function() {
   var timestr = "", cdate = new Date();
   if(this.toDateString() == cdate.toDateString()) timestr = "Today"

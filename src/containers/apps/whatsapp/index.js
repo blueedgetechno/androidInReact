@@ -9,7 +9,6 @@ import './whatsapp.scss';
 
 import {
   NavBar,
-  minifyTime,
   StatusScreen,
   ChatScreen,
   CallLogs,
@@ -33,7 +32,7 @@ export const WhatsappApp = () => {
         data: {
           ... app,
           pagetree: pagetree,
-          path: ['main','chat']
+          path: ['main']
         }
       }})
     }
@@ -43,14 +42,13 @@ export const WhatsappApp = () => {
 }
 
 const AppContainer = ({app, show, pagetree}) => {
-  const [tab, setTab] = useState(1);
+  const [tab, setTab] = useState(2);
   const homeSwiper = useRef();
   const clstring = `${app.payload}-wrapper`;
   const path = app.path || ["main"];
 
   const tabSetter = (hmswiper)=>{
     if(!hmswiper) return
-
     var swidth = hmswiper.style.width,
         swleft = hmswiper.style.transform;
 
@@ -69,9 +67,17 @@ const AppContainer = ({app, show, pagetree}) => {
     }
   }
 
+  const clickTabHandler = (e)=>{
+    var id = e.target.dataset.id
+    if(homeSwiper.current){
+      setTab(id)
+      homeSwiper.current.slickGoTo(id, false)
+    }
+  }
+
   const swipehandler = ()=>{
     if(homeSwiper.current){
-      var hmswiper = document.querySelector('.whatsapp-home-swiper .slick-track');
+      var hmswiper = document.querySelector('.app-wrapper .whatsapp-home-swiper .slick-track');
       tabSetter(hmswiper)
       setTimeout(()=>{
         tabSetter(hmswiper)
@@ -86,7 +92,7 @@ const AppContainer = ({app, show, pagetree}) => {
   }
 
   return (
-    <div className={"app-wrapper "+clstring} id={clstring} data-open={show}>
+    <div className={"app-wrapper " + clstring} id={clstring} data-open={show}>
       <div className="app-inner-wrapper wp-inner-wrapper">
         <div className='whatsapp-home full-hide upbug scale-trans' data-vis={checkstate('main')}>
           <div className="whatsapp-top-nav downbug">
@@ -98,7 +104,7 @@ const AppContainer = ({app, show, pagetree}) => {
           </div>
           <NavBar className="home-nav-tab" tab={tab} options={[
             <Icon mui="PhotoCamera" round w={22}/>,"CHATS","STATUS","CALLS"
-          ]}/>
+          ]} onClick={clickTabHandler}/>
           <div className="whatsapp-home-page">
             <Swiper className="whatsapp-home-swiper full-height-swiper" {...{
               dots: false,
@@ -177,7 +183,7 @@ const AllChatScreen = ()=>{
                     <span className="last-msg-txt">{lastmsg.msg || lastmsg.media}</span>
                   </div>
                   <div className="chat-acts">
-                    {/* {Math.random()<0.5?<div className="unread">{Math.floor(1 + Math.random()*8)}</div>:null} */}
+                    {lastmsg.type=="0" && !contact.seen && <div className="unread">{1}</div>}
                     {/* {i<3 ? <Icon icon="pinned" fill="#687881"/>: null} */}
                   </div>
                 </div>

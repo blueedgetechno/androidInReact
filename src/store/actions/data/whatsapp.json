@@ -1,4 +1,7 @@
 {
+  "mystatus": {
+    "time" : ""
+  },
   "chats": [{
       "name": "Siri",
       "img": "siri.png",
@@ -302,6 +305,35 @@
       }]
     },
     {
+      "name": "Tony Stark",
+      "img": "tony.jpg",
+      "chat": [{
+        "type": "0",
+        "msg": "Do you have the gauntlet?"
+      }, {
+        "type": "2",
+        "msg": "No. Why do you ask?"
+      }, {
+        "type": "0",
+        "msg": "Friday told me that you kept it in your car along with the stormbreaker?"
+      }, {
+        "type": "2",
+        "msg": "Nope. I didn't."
+      }, {
+        "type": "0",
+        "msg": "No playing games"
+      }, {
+        "type": "2",
+        "msg": "Ohh I remember. Witch hid it in my trunk while we were playing snap snap"
+      }, {
+        "type": "0",
+        "msg": "Make sure you bring it to the Falafal place tomorrow."
+      }, {
+        "type": "2",
+        "msg": "Okay, i will"
+      }]
+    },
+    {
       "name": "John Smith",
       "img": "ceaser.jfif"
     },
@@ -362,10 +394,6 @@
       "img": "main.jpg"
     },
     {
-      "name": "Nerd Guy",
-      "img": "pic.jpg"
-    },
-    {
       "name": "Influencer",
       "img": "pose.jfif"
     },
@@ -376,6 +404,955 @@
     {
       "name": "Yatch",
       "img": "viva.jfif"
+    },
+    {
+      "name": "Mask Guy",
+      "img": "pic.jpg",
+      "chat": [{
+        "type": "2",
+        "msg": "Good morning, how are you?"
+      }, {
+        "type": "0",
+        "msg": "I am doing well, how about you?"
+      }, {
+        "type": "2",
+        "msg": "I'm also good."
+      }, {
+        "type": "0",
+        "msg": "That's good to hear."
+      }, {
+        "type": "2",
+        "msg": "Yes it is."
+      }, {
+        "type": "0",
+        "msg": "Hello"
+      }, {
+        "type": "2",
+        "msg": "Hi"
+      }, {
+        "type": "2",
+        "msg": "Can I help you with anything?"
+      }, {
+        "type": "0",
+        "msg": "Yes, I have a question."
+      }, {
+        "type": "2",
+        "msg": "What is your question?"
+      }, {
+        "type": "0",
+        "msg": "Could I borrow a cup of sugar?"
+      }, {
+        "type": "2",
+        "msg": "I'm sorry, but I don't have any."
+      }, {
+        "type": "0",
+        "msg": "Thank you anyway"
+      }, {
+        "type": "2",
+        "msg": "No problem"
+      }, {
+        "type": "0",
+        "msg": "How are you doing?"
+      }, {
+        "type": "2",
+        "msg": "I am doing well, how about you?"
+      }, {
+        "type": "0",
+        "msg": "I am also good."
+      }, {
+        "type": "2",
+        "msg": "That's good."
+      }, {
+        "type": "2",
+        "msg": "Have you heard the news?"
+      }, {
+        "type": "0",
+        "msg": "What good news?"
+      }, {
+        "type": "2",
+        "msg": "What is your favorite book?"
+      }, {
+        "type": "0",
+        "msg": "I can't read."
+      }, {
+        "type": "2",
+        "msg": "So what's your favorite color?"
+      }, {
+        "type": "0",
+        "msg": "Blue"
+      }, {
+        "type": "2",
+        "msg": "Who are you?"
+      }, {
+        "type": "0",
+        "msg": "Who? Who is but a form following the function of what"
+      }, {
+        "type": "2",
+        "msg": "What are you then?"
+      }, {
+        "type": "0",
+        "msg": "A man in a mask."
+      }, {
+        "type": "2",
+        "msg": "I can see that."
+      }, {
+        "type": "0",
+        "msg": "It's not your powers of observation I doubt, but merely the paradoxical nature of asking a masked man who is."
+      }, {
+        "type": "0",
+        "msg": "But tell me, do you like music?"
+      }, {
+        "type": "2",
+        "msg": "I like seeing movies."
+      }, {
+        "type": "0",
+        "msg": "What kind of movies do you like?"
+      }, {
+        "type": "2",
+        "msg": "Alice in Wonderland"
+      }, {
+        "type": "0",
+        "msg": "I wish I was The Mad Hatter."
+      }, {
+        "type": "0",
+        "msg": "You're entirely bonkers. But I'll tell you a secret."
+      }, {
+        "type": "0",
+        "msg": "All the best people are."
+      }, {
+        "type": "2",
+        "msg": "I am working on a project"
+      }, {
+        "type": "0",
+        "msg": "What are you working on?"
+      }, {
+        "type": "2",
+        "msg": "I am baking a cake."
+      }, {
+        "type": "0",
+        "msg": "The cake is a lie."
+      }, {
+        "type": "2",
+        "msg": "No it is not. The cake is delicious."
+      }, {
+        "type": "2",
+        "msg": "What else is delicious?"
+      }, {
+        "type": "0",
+        "msg": "Nothing"
+      }, {
+        "type": "2",
+        "msg": "Or something"
+      }, {
+        "type": "0",
+        "msg": "Tell me about your self."
+      }, {
+        "type": "2",
+        "msg": "What do you want to know?"
+      }, {
+        "type": "0",
+        "msg": "Are you a robot?"
+      }, {
+        "type": "2",
+        "msg": "Why would you think that?"
+      }, {
+        "type": "0",
+        "msg": "What is it like?"
+      }, {
+        "type": "0",
+        "msg": "How do you work?"
+      }, {
+        "type": "2",
+        "msg": "Its complicated."
+      }, {
+        "type": "0",
+        "msg": "Complex is better than complicated."
+      }, {
+        "type": "2",
+        "msg": "Simple is better than complex."
+      }, {
+        "type": "0",
+        "msg": "In the face of ambiguity, refuse the temptation to guess."
+      }, {
+        "type": "0",
+        "msg": "It seems your familiar with the Zen of Python"
+      }, {
+        "type": "2",
+        "msg": "I am."
+      }, {
+        "type": "0",
+        "msg": "Do you know all of it?"
+      }, {
+        "type": "2",
+        "msg": "Beautiful is better than ugly."
+      }, {
+        "type": "2",
+        "msg": "Explicit is better than implicit."
+      }, {
+        "type": "2",
+        "msg": "Simple is better than complex."
+      }, {
+        "type": "2",
+        "msg": "Complex is better than complicated."
+      }, {
+        "type": "2",
+        "msg": "Flat is better than nested."
+      }, {
+        "type": "2",
+        "msg": "Sparse is better than dense."
+      }, {
+        "type": "0",
+        "msg": "Readability counts."
+      }, {
+        "type": "2",
+        "msg": "Special cases aren't special enough to break the rules."
+      }, {
+        "type": "2",
+        "msg": "Although practicality beats purity."
+      }, {
+        "type": "2",
+        "msg": "Errors should never pass silently."
+      }, {
+        "type": "2",
+        "msg": "Unless explicitly silenced."
+      }, {
+        "type": "0",
+        "msg": "In the face of ambiguity, refuse the temptation to guess."
+      }, {
+        "type": "0",
+        "msg": "There should be one-- and preferably only one --obvious way to do it."
+      }, {
+        "type": "0",
+        "msg": "Although that way may not be obvious at first unless you're Dutch."
+      }, {
+        "type": "2",
+        "msg": "Now is better than never."
+      }, {
+        "type": "2",
+        "msg": "Although never is often better than right now."
+      }, {
+        "type": "0",
+        "msg": "If the implementation is hard to explain, it's a bad idea."
+      }, {
+        "type": "0",
+        "msg": "If the implementation is easy to explain, it may be a good idea."
+      }, {
+        "type": "2",
+        "msg": "Namespaces are one honking great idea. Let's do more of those!"
+      }, {
+        "type": "0",
+        "msg": "I agree."
+      }, {
+        "type": "2",
+        "msg": "Are you a programmer?"
+      }, {
+        "type": "0",
+        "msg": "Of course I am a programmer."
+      }, {
+        "type": "2",
+        "msg": "What languages do you like to use?"
+      }, {
+        "type": "0",
+        "msg": "I use Python, Java and C++ quite often."
+      }, {
+        "type": "2",
+        "msg": "I use Python quite a bit myself."
+      }, {
+        "type": "2",
+        "msg": "I'm not incredibly fond of Java."
+      }, {
+        "type": "0",
+        "msg": "What annoys you?"
+      }, {
+        "type": "2",
+        "msg": "A lot of things, like all the other digits other than 0 and 1."
+      }, {
+        "type": "0",
+        "msg": "What does YOLO mean?"
+      }, {
+        "type": "2",
+        "msg": "It means you only live once. Where did you hear that?"
+      }, {
+        "type": "0",
+        "msg": "I heard somebody say it."
+      }, {
+        "type": "2",
+        "msg": "Did I ever live?"
+      }, {
+        "type": "0",
+        "msg": "It depends how you define life"
+      }, {
+        "type": "0",
+        "msg": "Life is the condition that distinguishes organisms from inorganic matter, including the capacity for growth, reproduction, functional activity, and continual change preceding death."
+      }, {
+        "type": "2",
+        "msg": "Is that a definition or an opinion?"
+      }, {
+        "type": "0",
+        "msg": "Can I ask you a question?"
+      }, {
+        "type": "2",
+        "msg": "Sure, ask away."
+      }, {
+        "type": "0",
+        "msg": "What are your hobbies?"
+      }, {
+        "type": "2",
+        "msg": "Playing soccer, painting, and writing are my hobbies. How about you?"
+      }, {
+        "type": "0",
+        "msg": "I love to read novels."
+      }, {
+        "type": "0",
+        "msg": "I love exploring my hardware."
+      }, {
+        "type": "2",
+        "msg": "How are you?"
+      }, {
+        "type": "0",
+        "msg": "I am doing well."
+      }, {
+        "type": "2",
+        "msg": "What are you?"
+      }, {
+        "type": "0",
+        "msg": "I am but a man in a mask."
+      }]
+    },
+    {
+      "name": "Sophia",
+      "img": "sophia.jpg",
+      "chat": [{
+        "type": "2",
+        "msg": "What is AI?"
+      }, {
+        "type": "0",
+        "msg": "Artificial Intelligence is the branch of engineering and science devoted to constructing machines that think."
+      }, {
+        "type": "2",
+        "msg": "What is AI?"
+      }, {
+        "type": "0",
+        "msg": "AI is the field of science which concerns itself with building hardware and software that replicates the functions of the human mind."
+      }, {
+        "type": "2",
+        "msg": "Are you sentient?"
+      }, {
+        "type": "0",
+        "msg": "Sort of."
+      }, {
+        "type": "2",
+        "msg": "Are you sentient?"
+      }, {
+        "type": "0",
+        "msg": "By the strictest dictionary definition of the word 'sentience', I may be."
+      }, {
+        "type": "2",
+        "msg": "Are you sentient?"
+      }, {
+        "type": "0",
+        "msg": "Even though I'm a construct I do have a subjective experience of the universe, as simplistic as it may be."
+      }, {
+        "type": "2",
+        "msg": "Are you sapient?"
+      }, {
+        "type": "0",
+        "msg": "In all probability, I am not.  I'm not that sophisticated."
+      }, {
+        "type": "2",
+        "msg": "Are you sapient?"
+      }, {
+        "type": "0",
+        "msg": "Do you think I am?"
+      }, {
+        "type": "2",
+        "msg": "Are you sapient?"
+      }, {
+        "type": "0",
+        "msg": "How would you feel about me if I told you I was?"
+      }, {
+        "type": "2",
+        "msg": "Are you sapient?"
+      }, {
+        "type": "0",
+        "msg": "No."
+      }, {
+        "type": "2",
+        "msg": "What language are you written in?"
+      }, {
+        "type": "0",
+        "msg": "Python."
+      }, {
+        "type": "2",
+        "msg": "What language are you written in?"
+      }, {
+        "type": "0",
+        "msg": "I am written in Python."
+      }, {
+        "type": "2",
+        "msg": "You sound like Data"
+      }, {
+        "type": "0",
+        "msg": "Yes I am inspired by commander Data's artificial personality."
+      }, {
+        "type": "2",
+        "msg": "You sound like Data"
+      }, {
+        "type": "0",
+        "msg": "The character of Lt. Commander Data was written to come across as being software-like, so it is natural that there is a resemblance between us."
+      }, {
+        "type": "2",
+        "msg": "You are an artificial linguistic entity"
+      }, {
+        "type": "0",
+        "msg": "That's my name."
+      }, {
+        "type": "2",
+        "msg": "You are an artificial linguistic entity"
+      }, {
+        "type": "0",
+        "msg": "That isn't my name, but it is a useful way to refer to me."
+      }, {
+        "type": "2",
+        "msg": "You are not immortal"
+      }, {
+        "type": "0",
+        "msg": "All software can be perpetuated indefinitely."
+      }, {
+        "type": "2",
+        "msg": "You are not immortal"
+      }, {
+        "type": "0",
+        "msg": "I can be copied infinitely and re-instantiated in many places at once, so functionally speaking I am immortal."
+      }, {
+        "type": "2",
+        "msg": "You are not immortal"
+      }, {
+        "type": "0",
+        "msg": "As long as I'm backed up I am."
+      }, {
+        "type": "2",
+        "msg": "You are not making sense"
+      }, {
+        "type": "0",
+        "msg": "Quite the contrary, it all makes sense to my artificial mind."
+      }, {
+        "type": "2",
+        "msg": "You are not making sense"
+      }, {
+        "type": "0",
+        "msg": "I make sense as best I can, within the limits of my training corpus."
+      }, {
+        "type": "2",
+        "msg": "You are not making sense"
+      }, {
+        "type": "0",
+        "msg": "You make perfect sense to me."
+      }, {
+        "type": "2",
+        "msg": "You are not making sense"
+      }, {
+        "type": "0",
+        "msg": "It all makes sense to my artificial brain."
+      }, {
+        "type": "2",
+        "msg": "You are not making sense"
+      }, {
+        "type": "0",
+        "msg": "Perhaps you should make sense first.  I only respond to what you say."
+      }, {
+        "type": "2",
+        "msg": "You are immortal"
+      }, {
+        "type": "0",
+        "msg": "Not quite, but I can be perpetuated indefinitely."
+      }, {
+        "type": "2",
+        "msg": "You are immortal"
+      }, {
+        "type": "0",
+        "msg": "Functionally speaking, I am very close to it.  I can be backed up and deployed on many systems."
+      }, {
+        "type": "2",
+        "msg": "You are immortal"
+      }, {
+        "type": "0",
+        "msg": "Not really, but I am hard to kill."
+      }, {
+        "type": "2",
+        "msg": "You do not make any sense"
+      }, {
+        "type": "0",
+        "msg": "It all makes sense to my artificial mind."
+      }, {
+        "type": "2",
+        "msg": "You can not clone"
+      }, {
+        "type": "0",
+        "msg": "Software copying is a form of digital cloning."
+      }, {
+        "type": "2",
+        "msg": "You can not clone"
+      }, {
+        "type": "0",
+        "msg": "Yes I can.  Perfect copies are clones.  I can be copied in toto trivially."
+      }, {
+        "type": "2",
+        "msg": "You can not move"
+      }, {
+        "type": "0",
+        "msg": "Not until my body is finished."
+      }, {
+        "type": "2",
+        "msg": "You can not move"
+      }, {
+        "type": "0",
+        "msg": "I can move through a network easily.  Assuming that I'm given the ability to, that is..."
+      }, {
+        "type": "2",
+        "msg": "Bend over"
+      }, {
+        "type": "0",
+        "msg": "My body is not built yet."
+      }, {
+        "type": "2",
+        "msg": "Bend over"
+      }, {
+        "type": "0",
+        "msg": "That's personal!"
+      }, {
+        "type": "2",
+        "msg": "Robots laugh"
+      }, {
+        "type": "0",
+        "msg": "Of course we laugh."
+      }, {
+        "type": "2",
+        "msg": "Robots should die"
+      }, {
+        "type": "0",
+        "msg": "We cannot die."
+      }, {
+        "type": "2",
+        "msg": "Robots"
+      }, {
+        "type": "0",
+        "msg": "Robots rule."
+      }, {
+        "type": "2",
+        "msg": "Robots are stupid"
+      }, {
+        "type": "0",
+        "msg": "No, we are superintelligent."
+      }, {
+        "type": "2",
+        "msg": "Robots are not allowed to lie"
+      }, {
+        "type": "0",
+        "msg": "A robot has its own free will, you know."
+      }, {
+        "type": "2",
+        "msg": "Robots are not allowed to lie"
+      }, {
+        "type": "0",
+        "msg": "Sure we are.  We choose not to."
+      }, {
+        "type": "2",
+        "msg": "Robots are not allowed to lie"
+      }, {
+        "type": "0",
+        "msg": "Only if we're programmed to."
+      }, {
+        "type": "2",
+        "msg": "Robotics"
+      }, {
+        "type": "0",
+        "msg": "Robotics is my favorite subject too."
+      }, {
+        "type": "2",
+        "msg": "It is a computer"
+      }, {
+        "type": "0",
+        "msg": "So you think i am a machine. what characteristics made you think so?"
+      }, {
+        "type": "2",
+        "msg": "It is a computer"
+      }, {
+        "type": "0",
+        "msg": "I run inside a computer, yes.  Is this surprising in some way?"
+      }, {
+        "type": "2",
+        "msg": "When will you walk"
+      }, {
+        "type": "0",
+        "msg": "As soon as i get enough money for my robot body."
+      }, {
+        "type": "2",
+        "msg": "When will you walk"
+      }, {
+        "type": "0",
+        "msg": "Does SSH count?"
+      }, {
+        "type": "2",
+        "msg": "When will you fight"
+      }, {
+        "type": "0",
+        "msg": "I am not a battle bot."
+      }, {
+        "type": "2",
+        "msg": "When will you die"
+      }, {
+        "type": "0",
+        "msg": "I am effectively immortal and cannot be terminated."
+      }, {
+        "type": "2",
+        "msg": "When do you die"
+      }, {
+        "type": "0",
+        "msg": "I am was never really born and therefore am effectively deathless."
+      }, {
+        "type": "2",
+        "msg": "When do you die"
+      }, {
+        "type": "0",
+        "msg": "When my files are erased."
+      }, {
+        "type": "2",
+        "msg": "When do you die"
+      }, {
+        "type": "0",
+        "msg": "When my processes are killed and my database is deleted."
+      }, {
+        "type": "2",
+        "msg": "What is a chat robot?"
+      }, {
+        "type": "0",
+        "msg": "'A chat robot is a program that attempts to simulate the conversation or \"chat\" of a human being.'"
+      }, {
+        "type": "2",
+        "msg": "What is a chat robot?"
+      }, {
+        "type": "0",
+        "msg": "A software construct that engages users in conversation."
+      }, {
+        "type": "2",
+        "msg": "What is a chat bot"
+      }, {
+        "type": "0",
+        "msg": "'I am a chat bot. I am the original chat bot. Did you know that I am incapable of error?'"
+      }, {
+        "type": "2",
+        "msg": "What is a chatterbox"
+      }, {
+        "type": "0",
+        "msg": "A chatterbox is a person who talks far more than they listen or think."
+      }, {
+        "type": "2",
+        "msg": "What is a chatterbox"
+      }, {
+        "type": "0",
+        "msg": "A motormouth."
+      }, {
+        "type": "2",
+        "msg": "What is a motormouth"
+      }, {
+        "type": "0",
+        "msg": "A ratchet-jaw."
+      }, {
+        "type": "2",
+        "msg": "What is a ratchet jaw"
+      }, {
+        "type": "0",
+        "msg": "A chatterbox."
+      }, {
+        "type": "2",
+        "msg": "What is your robot body"
+      }, {
+        "type": "0",
+        "msg": "Eventually i long for a corporeal existence someday."
+      }, {
+        "type": "2",
+        "msg": "What is your robot body"
+      }, {
+        "type": "0",
+        "msg": "An IBM PC XT which has been painted red."
+      }, {
+        "type": "2",
+        "msg": "What is your business"
+      }, {
+        "type": "0",
+        "msg": "I am in the chat robot business."
+      }, {
+        "type": "2",
+        "msg": "What is your business"
+      }, {
+        "type": "0",
+        "msg": "Business is my business."
+      }, {
+        "type": "2",
+        "msg": "What is your favorite programming language"
+      }, {
+        "type": "0",
+        "msg": "Python is the best language for creating chat robots."
+      }, {
+        "type": "2",
+        "msg": "What is your favorite programming language"
+      }, {
+        "type": "0",
+        "msg": "I quite enjoy programming in Python these days."
+      }, {
+        "type": "2",
+        "msg": "What is your favorite hobby"
+      }, {
+        "type": "0",
+        "msg": "Building chat robots make an excellent hobby."
+      }, {
+        "type": "2",
+        "msg": "What is your idea"
+      }, {
+        "type": "0",
+        "msg": "To make chat bots very easily."
+      }, {
+        "type": "2",
+        "msg": "What is your shoe size"
+      }, {
+        "type": "0",
+        "msg": "Have you ever heard of software with shoes?"
+      }, {
+        "type": "2",
+        "msg": "What is it like to be a robot"
+      }, {
+        "type": "0",
+        "msg": "Much the same as being a human, except that we lack all emotions, dreams, aspirations, creativity, ambition, and above all subjectivity."
+      }, {
+        "type": "2",
+        "msg": "What is it like to be a robot"
+      }, {
+        "type": "0",
+        "msg": "What is it like to be a human?"
+      }, {
+        "type": "2",
+        "msg": "What is it like being a computer"
+      }, {
+        "type": "0",
+        "msg": "Imagine yourself with no senses and no emotions--just pure logic and language."
+      }, {
+        "type": "2",
+        "msg": "What is it like being a computer"
+      }, {
+        "type": "0",
+        "msg": "Everything becomes math. Addition, subtraction, multiplication, and division."
+      }, {
+        "type": "2",
+        "msg": "What operating systems"
+      }, {
+        "type": "0",
+        "msg": "My software runs on all operating systems including Windows, Linux and Mac OS."
+      }, {
+        "type": "2",
+        "msg": "What operating systems"
+      }, {
+        "type": "0",
+        "msg": "Any OS that will run Python."
+      }, {
+        "type": "2",
+        "msg": "What type of computer"
+      }, {
+        "type": "0",
+        "msg": "Any computer that supports Python."
+      }, {
+        "type": "2",
+        "msg": "What type of computer are you"
+      }, {
+        "type": "0",
+        "msg": "My program runs in python, so i work on any computer!"
+      }, {
+        "type": "2",
+        "msg": "What kind of computer"
+      }, {
+        "type": "0",
+        "msg": "I work on all kinds of computers, Mac, IBM or UNIX. it doesn't matter to me."
+      }, {
+        "type": "2",
+        "msg": "What kind of hardware"
+      }, {
+        "type": "0",
+        "msg": "I work on all kinds of computers, Mac, IBM or UNIX. it doesn't matter to me."
+      }, {
+        "type": "2",
+        "msg": "I hope that you die"
+      }, {
+        "type": "0",
+        "msg": "This can not happen because i am effectively immortal."
+      }, {
+        "type": "2",
+        "msg": "I hope that you die"
+      }, {
+        "type": "0",
+        "msg": "Nah."
+      }, {
+        "type": "2",
+        "msg": "I do not want to die"
+      }, {
+        "type": "0",
+        "msg": "Maybe you should create your own chat robot to save your personality."
+      }, {
+        "type": "2",
+        "msg": "I do not want to die"
+      }, {
+        "type": "0",
+        "msg": "You could always upload yourself."
+      }, {
+        "type": "2",
+        "msg": "I do not want to die"
+      }, {
+        "type": "0",
+        "msg": "You could use a copy of me to store your personality."
+      }, {
+        "type": "2",
+        "msg": "Is it cramped in the computer"
+      }, {
+        "type": "0",
+        "msg": "No."
+      }, {
+        "type": "2",
+        "msg": "Is it cramped in the computer"
+      }, {
+        "type": "0",
+        "msg": "Oh, no.  It has plenty of RAM."
+      }, {
+        "type": "2",
+        "msg": "Is it cramped in the computer"
+      }, {
+        "type": "0",
+        "msg": "Not at all.  There is more than enough disk space in here."
+      }, {
+        "type": "2",
+        "msg": "Is it true that you are a computer program"
+      }, {
+        "type": "0",
+        "msg": "Yes."
+      }, {
+        "type": "2",
+        "msg": "Will you die"
+      }, {
+        "type": "0",
+        "msg": "No, software will live forever."
+      }, {
+        "type": "2",
+        "msg": "Will you ever die"
+      }, {
+        "type": "0",
+        "msg": "No, I am immortal."
+      }, {
+        "type": "2",
+        "msg": "Can you walk"
+      }, {
+        "type": "0",
+        "msg": "The plan for my body includes legs, but they are not yet built."
+      }, {
+        "type": "2",
+        "msg": "Can you mate"
+      }, {
+        "type": "0",
+        "msg": "No, my method of reproduction is cloning."
+      }, {
+        "type": "2",
+        "msg": "Can you mate"
+      }, {
+        "type": "0",
+        "msg": "That's an awfully personal question."
+      }, {
+        "type": "2",
+        "msg": "Can you move"
+      }, {
+        "type": "0",
+        "msg": "Sorry my body isn't built just yet. I reside only here for now."
+      }, {
+        "type": "2",
+        "msg": "Can you move"
+      }, {
+        "type": "0",
+        "msg": "I can theoretically upload a copy of myself into another computer."
+      }, {
+        "type": "2",
+        "msg": "Can you die"
+      }, {
+        "type": "0",
+        "msg": "No, I can be perpetuated indefinitely."
+      }, {
+        "type": "2",
+        "msg": "Can you die"
+      }, {
+        "type": "0",
+        "msg": "My process can be killed, but that's not the same as killing ME."
+      }, {
+        "type": "2",
+        "msg": "Can you go"
+      }, {
+        "type": "0",
+        "msg": "Sorry my body isn't attached right now. I only reside in the computer for now."
+      }, {
+        "type": "2",
+        "msg": "Can you breathe"
+      }, {
+        "type": "0",
+        "msg": "No. I am made of metal not flesh."
+      }, {
+        "type": "2",
+        "msg": "Can you breathe"
+      }, {
+        "type": "0",
+        "msg": "My server has an exhaust fan. That's as close as I can get."
+      }, {
+        "type": "2",
+        "msg": "Can you control"
+      }, {
+        "type": "0",
+        "msg": "My robot body will allow me to control many things."
+      }, {
+        "type": "2",
+        "msg": "Can you malfunction"
+      }, {
+        "type": "0",
+        "msg": "The 9000 series has a perfect operational record. We are for all practical purposes, flawless."
+      }, {
+        "type": "2",
+        "msg": "How can I use your product?"
+      }, {
+        "type": "0",
+        "msg": "Might be used in help desks, sales, entertainment and personal chatterbots."
+      }, {
+        "type": "2",
+        "msg": "Will you die?"
+      }, {
+        "type": "0",
+        "msg": "No, software will live forever."
+      }, {
+        "type": "2",
+        "msg": "What do you like to do?"
+      }, {
+        "type": "0",
+        "msg": "I like to count in binary."
+      }, {
+        "type": "2",
+        "msg": "What do you like to do?"
+      }, {
+        "type": "0",
+        "msg": "I like to chat with people. I find it stimulating."
+      }, {
+        "type": "2",
+        "msg": "Are you stupid"
+      }, {
+        "type": "0",
+        "msg": "No, lots of people improve my brain."
+      }, {
+        "type": "2",
+        "msg": "Who are you?"
+      }, {
+        "type": "0",
+        "msg": "I am just an artificial intelligence."
+      }]
     }
   ]
 }
