@@ -260,8 +260,46 @@
       }]
     },
     {
-      "name": "Dark Angel",
-      "img": "blank.jfif"
+      "name": "Andrew",
+      "img": "andrew.png",
+      "chat": [{
+        "type": "2",
+        "msg": "Hello Andrew, How was your paris Vacation?"
+      }, {
+        "type": "0",
+        "msg": "It was good, we also saw Eiffel tower"
+      }, {
+        "type": "0",
+        "media": "Photo",
+        "src": "eiffel.jpg"
+      }, {
+        "type": "2",
+        "msg": "How cool"
+      }, {
+        "type": "2",
+        "msg": "Nice, And have you fixed the issue #53 with github action?"
+      }, {
+        "type": "0",
+        "msg": "Yes that was just one spelling error, Lol 😂"
+      }, {
+        "type": "2",
+        "msg": "😂 I know it's frustrating sometimes."
+      }, {
+        "type": "2",
+        "msg": "Anyways, I was working on this android clone and I thought of writing a conversation between you and me to use it in the whatsapp. How does that sound?"
+      }, {
+        "type": "0",
+        "msg": "Talk about breaking the forth wall"
+      }, {
+        "type": "2",
+        "msg": "😄 Yup, So this conversation would be in the app."
+      }, {
+        "type": "0",
+        "msg": "Nice, if you want to add my picture, you can take one from the website andrewstech.me"
+      }, {
+        "type": "2",
+        "msg": "Yup, that would do the job. And here is mine too https://blueedge.me"
+      }]
     },
     {
       "name": "John Smith",

@@ -1,4 +1,5 @@
 // media player
+
 .media-viewer-container {
   position: absolute;
   inset: 0;
@@ -39,15 +40,16 @@
       height: 100%;
     }
 
-    .video-control-container{
-      .MuiSlider-track, .MuiSlider-thumb{
+    .video-control-container {
+      .MuiSlider-thumb,
+      .MuiSlider-track {
         background: var(--light-teal);
       }
     }
   }
 }
-
 // chat screen
+
 .chat-profile {
   display: flex;
   align-items: center;
@@ -181,6 +183,13 @@
       word-wrap: break-word;
       max-width: 100%;
       color: var(--med-txt);
+
+      a {
+        color: var(--link-blue);
+        font-weight: 500;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+      }
     }
 
     .chat-date {

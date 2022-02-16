@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import TextField from '@mui/material/TextField';
 
-import {Icon, Image, Video} from 'components/utils.js';
+import {Icon, Image, Video, isValidURL} from 'components/utils.js';
 import {dispatchAction, dispatchAct} from 'store/actions';
 
 import './extra.scss';
@@ -213,6 +213,29 @@ export const ChatScreen = (props)=>{
     dispatchAct({type: "whatsapp/setMedia", payload: payload})
   }
 
+  const processLinks = (txt)=>{
+    var arr = txt.split(' '), tmp = [], txtstr = [];
+
+    for (var i = 0; i < arr.length; i++) {
+      try{
+        var url = (!arr[i].startsWith("http") ? "https://":"") + arr[i] , urlobj
+
+        if(isValidURL(url)) urlobj = new URL(url)
+        if(!urlobj) throw new Error()
+
+        if(txtstr.length) tmp.push(txtstr.join(' '))
+        txtstr = []
+        tmp.push(<a href={urlobj.origin} target="_blank" key={i}> {arr[i]} </a>)
+      }catch(e){
+        txtstr.push(arr[i])
+      }
+    }
+
+    if(txtstr.length) tmp.push(txtstr.join(' '))
+
+    return tmp
+  }
+
   useEffect(()=>{
     if(chatscreen.current){
       chatscreen.current.scrollBy(0, chatscreen.current.scrollHeight + 100)
@@ -285,7 +308,7 @@ export const ChatScreen = (props)=>{
                       ):null}
                       {item.msg?(
                         <pre>
-                          {item.msg}
+                          {processLinks(item.msg)}
                           <div className="chat-date">
                             <span>{new Date(item.time || 0).time12()}</span>
                             {item.type=="2"?(

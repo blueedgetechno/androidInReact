@@ -148,6 +148,11 @@ export const Image = (props) => {
   )
 }
 
+export const isValidURL = (str)=>{
+  var res = str.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+  return (res !== null)
+};
+
 const formatseconds = (sec)=>{
   if (!sec) return "00:00";
   var res = floor(sec / 60);

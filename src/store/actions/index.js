@@ -200,7 +200,7 @@ export const loadApps = ()=>{
 
 const loadWhatsApp = ()=>{
   var tmp = {...whatsapp_data};
-  tmp.curr = 3;
+  tmp.curr = 4;
 
   for (var i = 0; i < tmp.chats.length; i++) {
     var cont = tmp.chats[i];
@@ -221,13 +221,15 @@ const loadWhatsApp = ()=>{
     tmp.chats[i] = {...cont};
   }
 
-  tmp.media = {
-    vis: true,
-    name: 'You',
-    type: 'Video',
-    src: 'meme.mp4',
-    time: new Date(new Date() - 60*24*36*1e5).toISOString()
-  }
+  tmp.media = {}
+
+  // tmp.media = {
+  //   vis: !true,
+  //   name: 'You',
+  //   type: 'Video',
+  //   src: 'meme.mp4',
+  //   time: new Date(new Date() - 60*24*36*1e5).toISOString()
+  // }
 
   store.dispatch({type: 'whatsapp/setData', payload: tmp});
 }
