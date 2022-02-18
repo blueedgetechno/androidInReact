@@ -4,6 +4,7 @@ var initialState = {};
 const closeExtras = (state, action) => {
   if(action.type != 'home/closeAllApps' && action.payload != "whatsapp") return
   state.media.vis = false
+  state.status.vis = false
 }
 
 const WhatsApp = createSlice({
@@ -31,6 +32,11 @@ const WhatsApp = createSlice({
       // to not goback and just turn it off
       state.comp = true
     },
+    setStatus: (state, action) => {
+      state.status.vis = true
+      state.status.id = action.payload || -1;
+      state.comp = true
+    },
     sendMsg: (state, action) => {
       var contact = {...state.chats[action.payload.id]}
       if(!contact) return
@@ -52,6 +58,7 @@ const WhatsApp = createSlice({
   extraReducers: {
     'home/goBack': (state, action) => {
       state.media.vis = false
+      state.status.vis = false
       state.comp = false
     },
     'home/closeApp': closeExtras,

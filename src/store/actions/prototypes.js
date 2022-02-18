@@ -1,3 +1,5 @@
+const {round, floor, random, min, max, abs} = Math;
+
 Array.prototype.remove = function(a) {
   var idx = this.indexOf(a)
   for (var i = idx; i < this.length - 1; i++) {
@@ -56,6 +58,8 @@ Date.prototype.pastdate = function() {
 };
 
 Date.prototype.minifyTime = function(t) {
+  if(!t) t = round((new Date() - this)/(60*1000))
+
   if(t < 60) return `${t} min ago`
   else{
     var d = new Date(new Date() - t*60*1000),

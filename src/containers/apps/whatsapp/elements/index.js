@@ -72,8 +72,63 @@ export const MediaViewer = () => {
   )
 }
 
-export const StatusScreen = (props)=>{
+export const StatusScreen = ()=>{
+  const [idx, setIdx] = useState(2)
+  const stdata = useSelector(state => state.whatsapp.status || {})
+  const contact = useSelector(state => {
+    var tmp = {}
+    if(stdata.id == -1) tmp = state.whatsapp.self
+    else tmp = state.whatsapp.chats && state.whatsapp.chats[stdata.id]
+    return tmp || {}
+  })
+
+  return (
+    <div className="status-container" value={!stdata.vis && "hide"}>
+      <div className="whatsapp-top-nav">
+        <div className="progress-bar-container">
+          {contact.status && contact.status.map((st,i) => {
+            return (
+              <div className='progress-bar' data-lit={i<idx} key={i}>
+                {i==idx && <div className="progress-fill" style={{
+                  width: "100%"
+                }}></div>}
+              </div>
+            )
+          })}
+        </div>
+        <div className="chat-profile-container flex items-center">
+          <div className="chat-profile active-light-lit">
+            <Icon mui="ArrowBack" w={20} action="home/goBack"/>
+            <Image className="rounded-full overflow-hidden"
+              src={contact.img} dir="asset/whatsapp/pfp" w={36}/>
+          </div>
+          <div className="chat-name flex-column font-thin mb-1">
+            <span>{stdata.id == -1 ? "You" : contact.name}</span>
+            <span>
+              {new Date(contact.status && contact.status.at(-1).time).minifyTime()}
+            </span>
+          </div>
+        </div>
+      </div>
+      {contact.status?(
+        <div className="media-screen">
+          {contact.status[idx].media=="Photo" && <Image src={contact.status[idx].src} dir="asset/whatsapp/"/>}
+          {contact.status[idx].media=="Video" && (
+            <Video
+              src={contact.status[idx].src}
+              dir="asset/whatsapp/" h="100%"
+              playIcon autoplay clickToggle muted
+            />
+          )}
+        </div>
+      ):null}
+    </div>
+  )
+}
+
+export const AllStatusScreen = (props)=>{
   const wdata = useSelector(state => state.whatsapp);
+  const myself = useSelector(state => state.whatsapp.self);
   const contacts = useSelector(state => state.whatsapp.chats);
 
   const CalculateArc = ({n,i,viewed})=>{
@@ -89,47 +144,50 @@ export const StatusScreen = (props)=>{
 
   return (
     <div className="chats-status-container medScroll">
-      <div className="my-status">
+      <div className="my-status active-dark-lit">
         <div className="chat-status">
           <div className="status-preview-container">
             <div className="status-preview">
               <svg viewBox="0 0 104 104" xmlns="http://www.w3.org/2000/svg">
-                {[...Array(3)].map((x,i)=>{
-                  return <CalculateArc n={3} i={i} viewed key={i}/>
+                {myself && myself.status.map((status,i)=>{
+                  return <CalculateArc n={myself.status.length} i={i} viewed key={i}/>
                 })}
               </svg>
             </div>
-            <Image className="rounded-full rounded" src="blue.jpg" dir="asset/whatsapp/pfp" w={48}/>
+            <Image className="rounded-full rounded" src={myself && myself.img}
+                    dir="asset/whatsapp/pfp" w={48}/>
           </div>
           <div className="status-info flex flex-col mx-4">
             <div className="chat-name">My status</div>
-            <div className="status-date">Today, 10:08 AM</div>
+            <div className="status-date">
+              {myself && new Date(myself.status.at(-1).time).minifyTime()}
+            </div>
           </div>
         </div>
       </div>
-      <div className="gray-txt text-sm px-6 py-2">Recent updates</div>
-      <div className="chats-status px-2 py-1">
-        {contacts && contacts.map((chat,i) => {
-          var s = chat.name,
-              randv = s.split("").map(x => x.charCodeAt()).reduce((b,c) => 2*b + 3*c);
-          var nos = 1 + randv%8,
-              minago = (randv*13)%1440
-
-          return(
-            <div className="chat-status" key={i}>
+      <div className="gray-txt text-sm px-6">Recent updates</div>
+      <div className="chats-status">
+        {contacts && contacts.map((contact,i) => {
+          if(!contact.status || !contact.status.length) return null
+          return (
+            <div className="chat-status active-dark-lit prtclk" onClick={dispatchAction}
+              data-action="whatsapp/setStatus" data-payload={i} key={i}>
               <div className="status-preview-container">
                 <div className="status-preview">
                   <svg viewBox="0 0 104 104" xmlns="http://www.w3.org/2000/svg">
-                    {[...Array(nos)].map((x,i)=>{
-                      return <CalculateArc n={nos} i={i} key={i} viewed={i%2==0}/>
+                    {contact.status.map((status,i)=>{
+                      return <CalculateArc n={contact.status.length}
+                              i={i} key={i} viewed={status.seen}/>
                     })}
                   </svg>
                 </div>
-                <Image className="rounded-full rounded" src={chat.img} dir="asset/whatsapp/pfp" w={48}/>
+                <Image className="rounded-full rounded" src={contact.img} dir="asset/whatsapp/pfp" w={48}/>
               </div>
               <div className="status-info flex flex-col mx-4">
-                <div className="chat-name">{chat.name}</div>
-                <div className="status-date">{new Date().minifyTime(minago)}</div>
+                <div className="chat-name">{contact.name}</div>
+                <div className="status-date">
+                  {new Date(contact.status.at(-1).time).minifyTime()}
+                </div>
               </div>
             </div>
           )
@@ -145,7 +203,7 @@ export const CallLogs = ()=>{
 
   return (
     <div className="call-logs-container medScroll">
-      <div className="call-logs px-2 py-1">
+      <div className="call-logs">
         {contacts && contacts.map((chat,i) => {
           var randv = chat.name.split("").map(x => x.charCodeAt()).reduce((b,c) => 2*b + 3*c);
           var callst = randv%3, callsticon = callst!=2?"CallReceived":"CallMade",
@@ -257,7 +315,8 @@ export const ChatScreen = (props)=>{
           <div className="chat-profile prtclk active-light-lit"
             onClick={dispatchAction} data-action="home/goBack">
             <Icon mui="ArrowBack" w={20}/>
-            <Image className="rounded-full overflow-hidden" src={contact.img} dir="asset/whatsapp/pfp" w={36}/>
+            <Image className="rounded-full overflow-hidden"
+                  src={contact.img} dir="asset/whatsapp/pfp" w={36}/>
           </div>
           <div className="chat-name text-lg font-thin mx-2">{contact.name}</div>
         </div>

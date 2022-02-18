@@ -1,6 +1,6 @@
-// media player
+// media player && status screen
 
-.media-viewer-container {
+.media-viewer-container, .status-container{
   position: absolute;
   inset: 0;
   background: #010101;
@@ -16,6 +16,7 @@
     color: var(--light-txt);
     position: absolute;
     top: 0;
+    padding: 0.5em;
     z-index: 1;
 
     .chat-name {
@@ -48,6 +49,36 @@
     }
   }
 }
+
+.status-container .whatsapp-top-nav{
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-bar-container{
+  display: flex;
+  height: 2px;
+  border-radius: 1em;
+  margin-bottom: 0.5em;
+
+  .progress-bar{
+    flex-grow: 1;
+    background: var(--med-txt);
+    margin: 0 1.5px;
+
+    &[data-lit="true"]{
+      background: var(--white);
+    }
+
+    .progress-fill{
+      width: 100%;
+      height: 100%;
+      background: var(--white);
+      transition: width 200ms ease-in-out;
+    }
+  }
+}
+
 // chat screen
 
 .chat-profile {
@@ -264,5 +295,20 @@
     background: var(--msg-toast);
     box-shadow: 1px 1px 1px rgba(18, 18, 18, 0.25);
     word-spacing: 2px;
+  }
+}
+
+// all status
+.status-date {
+  font-size: 0.8em;
+  font-weight: 500;
+  color: var(--light-txt);
+}
+
+.my-status {
+  padding: 0.5em 0;
+
+  .chat-status {
+    margin: 0;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import {useSelector} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactPlayer from 'react-player';
 
@@ -111,7 +111,6 @@ export const Icon = (props) => {
 };
 
 export const Image = (props) => {
-  const dispatch = useDispatch();
   var src = `/img/${(props.dir?props.dir+"/":"")+props.src}`;
   if (props.src && !props.src.includes(".")) {
     src += ".png";
@@ -165,11 +164,10 @@ const formatseconds = (sec)=>{
 }
 
 export const Video = (props) => {
-  const dispatch = useDispatch();
-  const vidplayer = useRef();
-  const [play, setPlay] = useState(props.autoplay);
+  const [play, setPlay] = useState(null);
   const [prog, setProg] = useState(0); // time elapsed
   const [perProg, setPerProg] = useState(0); // time elapsed in %
+  const vidplayer = useRef();
 
   var src = `/img/${(props.dir?props.dir+"/":"")+props.src}`;
   if (props.src && !props.src.includes(".")) src += ".mp4";
@@ -178,7 +176,7 @@ export const Video = (props) => {
     src = props.src;
   }
 
-  const className = `vidCont ${props.inactive?'prtclk':''} ${props.className||''}`.trim()
+  const className = `vidCont ${(props.inactive || props.clickToggle)?'prtclk':''} ${props.className||''}`.trim()
   var dataset = {}
   Object.entries(props).forEach(([key, value]) => {
     if(key.includes("data-")){
@@ -188,6 +186,7 @@ export const Video = (props) => {
 
   const handlePause = (e) => setPlay(false)
   const handlePlay = (e) => setPlay(true)
+  const togglePlay = (e) => setPlay(!play)
 
   const handleProg = (e)=>{
     setProg(floor(e.playedSeconds))
@@ -204,19 +203,17 @@ export const Video = (props) => {
   }
 
   return (
-    <div className={className} id={props.id}
-      onClick={props.onClick || (props.action && dispatchAction)}
-      data-action={props.action} data-payload={props.payload} {...dataset} tabIndex="1">
+    <div className={className} id={props.id} onClick={ props.onClick ||
+        (props.action && dispatchAction) || (props.clickToggle && togglePlay)
+      } data-action={props.action} data-payload={props.payload} {...dataset} tabIndex="1">
         {!props.playIcon && play &&
           <Icon className="play-icon" mui="Pause" round w={48} onClick={handlePause}/>}
         {!props.playIcon && !play &&
           <Icon className="play-icon opacity-100" mui="PlayArrow" round w={48} onClick={handlePlay}/>}
         {props.playIcon}
-        <ReactPlayer className="react-video"
-          url={src} ref={vidplayer}
-          width={props.w || "auto"}
-          height={props.h || "auto"}
-          controls={props.controls} playing={props.play || play}
+        <ReactPlayer className="react-video" url={src}
+          width={props.w || "auto"} height={props.h || "auto"} ref={vidplayer}
+          playing={props.play || play} volume={props.muted ? 0 : 1} controls={props.controls}
           onPlay={props.onPlay || handlePlay} onPause={props.onPause || handlePause}
           onProgress={props.onProgress || handleProg} onEnded={props.onEnded || handlePause}/>
         {props.cstmctrl && (

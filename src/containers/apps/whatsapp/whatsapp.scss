@@ -125,7 +125,7 @@
       }
     }
 
-    .latest-message-container{
+    .latest-message-container {
       display: flex;
       position: absolute;
       width: 100%;
@@ -147,7 +147,6 @@
 
       span {
         overflow: hidden;
-
         display: -webkit-box;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
@@ -181,15 +180,14 @@
 .chats-status,
 .my-status {
   height: max-content;
-  padding: 0.25em 1em;
   color: var(--med-txt);
 
   .call-log,
   .chat-status {
     display: flex;
     align-items: center;
-    // margin: 1em 0;
-    margin-bottom: 1em;
+    padding: 0.5em 1em;
+    // margin-bottom: 1em;
 
     .status-preview-container {
       position: relative;
@@ -221,20 +219,6 @@
         border: 1px solid var(--white);
       }
     }
-  }
-}
-
-.status-date {
-  font-size: 0.8em;
-  font-weight: 500;
-  color: var(--light-txt);
-}
-
-.my-status {
-  padding: 0.75em 1em;
-
-  .chat-status {
-    margin: 0;
   }
 }
 

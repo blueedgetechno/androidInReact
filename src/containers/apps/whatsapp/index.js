@@ -9,6 +9,7 @@ import './whatsapp.scss';
 
 import {
   NavBar,
+  AllStatusScreen,
   StatusScreen,
   ChatScreen,
   CallLogs,
@@ -115,13 +116,14 @@ const AppContainer = ({app, show, pagetree}) => {
             }} onSwipe={swipehandler} ref={homeSwiper}>
               <CameraScreen/>
               <AllChatScreen/>
-              <StatusScreen/>
+              <AllStatusScreen/>
               <CallLogs/>
             </Swiper>
           </div>
         </div>
         <ChatScreen checkstate={checkstate}/>
         <MediaViewer/>
+        <StatusScreen/>
       </div>
     </div>
   );

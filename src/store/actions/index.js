@@ -198,34 +198,59 @@ export const loadApps = ()=>{
   loadWhatsApp();
 }
 
+const randomTimes = (c = 1, b = 60, f = 60)=>{
+  var tmptime = new Date(new Date() - round(random()*b)*60*1000),
+      arr = []
+
+  while(c>0){
+    arr.push(tmptime)
+    tmptime = new Date(tmptime - round(random()*f)*60*1000)
+    c -= 1
+  }
+
+  return arr
+}
+
 const loadWhatsApp = ()=>{
   var tmp = {...whatsapp_data};
   tmp.curr = 0;
 
+  var tmptimes = randomTimes(tmp.self.status.length).reverse()
+  for (var i = tmp.self.status.length - 1; i>=0; i--) {
+    tmp.self.status[i].time = tmptimes[i].toISOString()
+  }
+
   for (var i = 0; i < tmp.chats.length; i++) {
-    var cont = tmp.chats[i];
-    if(!cont.chat){
-      cont.chat = []
-      continue
-    }
+    var cont = tmp.chats[i]
 
-    var tdate = new Date(new Date() - round(random()*60)*60*1000),
-        replied = false;
+    if(cont.status){
+      var tdates = randomTimes(cont.chat.length,720,20).reverse()
+      for (var j = cont.status.length - 1; j >= 0; j--) {
+        cont.status[j].time = tdates[j].toISOString()
+      }
+    }else cont.status = []
 
-    for (var j = cont.chat.length - 1; j >= 0; j--) {
-      cont.chat[j].time = tdate.toISOString();
-      if(cont.chat[j].type=="2"){
-        cont.chat[j].seen = (j+1 == cont.chat.length) && !replied ?
-                              floor(random()*3) : 2;
-      }else replied = true
+    if(cont.chat){
+      var tdates = randomTimes(cont.chat.length,60,300).reverse(),
+          replied = false;
 
-      tdate = new Date(tdate - round(random()*300)*60*1000)
-    }
+      for (var j = cont.chat.length - 1; j >= 0; j--) {
+        cont.chat[j].time = tdates[j].toISOString()
+        if(cont.chat[j].type=="2"){
+          cont.chat[j].seen = (j+1 == cont.chat.length) && !replied ?
+                                floor(random()*3) : 2;
+        }else replied = true
+      }
+    }else cont.chat = []
 
     tmp.chats[i] = {...cont};
   }
 
   tmp.media = {}
+  tmp.status = {
+    vis: true,
+    id: -1
+  }
   // tmp.media = {
   //   vis: true,
   //   name: 'You',

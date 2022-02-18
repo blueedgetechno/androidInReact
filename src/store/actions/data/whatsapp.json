@@ -1,10 +1,37 @@
 {
-  "mystatus": {
-    "time" : ""
+  "self": {
+    "name": "Blue",
+    "img": "blue.jpg",
+    "status": [{
+      "caption": "Cats are cute 😺",
+      "media": "Photo",
+      "src": "chats/cat.jpg"
+    }, {
+      "caption": "Should I be feeling guilty for laughing at this 🤣😂",
+      "media": "Video",
+      "src": "chats/meme.mp4"
+    }, {
+      "caption": "Should I be feeling guilty for laughing at this 🤣😂",
+      "media": "Video",
+      "src": "chats/meme.mp4"
+    }, {
+      "caption": "Should I be feeling guilty for laughing at this 🤣😂",
+      "media": "Video",
+      "src": "chats/meme.mp4"
+    }]
   },
   "chats": [{
       "name": "Siri",
       "img": "siri.png",
+      "status": [{
+        "caption": "Cats are cute 😺",
+        "media": "Photo",
+        "src": "chats/cat.jpg"
+      }, {
+        "caption": "Should I be feeling guilty for laughing at this 🤣😂",
+        "media": "Video",
+        "src": "chats/meme.mp4"
+      }],
       "chat": [{
           "type": "0",
           "msg": "Hello Blue"
@@ -265,6 +292,17 @@
     {
       "name": "Andrew",
       "img": "andrew.png",
+      "status": [{
+          "caption": "Eiffel tower, so high",
+          "media": "Photo",
+          "src": "chats/eiffel.jpg"
+        },
+        {
+          "caption": "Disneyland, Paris. Hell of a fun",
+          "media": "Photo",
+          "src": "chats/disneyland.jpg"
+        }
+      ],
       "chat": [{
         "type": "2",
         "msg": "Hello Andrew, How was your paris Vacation?"
@@ -342,20 +380,8 @@
       "img": "check.jfif"
     },
     {
-      "name": "IT group",
-      "img": "cube.jpg"
-    },
-    {
       "name": "Nick Crowney",
       "img": "echo.png"
-    },
-    {
-      "name": "New Yorkers",
-      "img": "end.png"
-    },
-    {
-      "name": "Sally right",
-      "img": "feel.jfif"
     },
     {
       "name": "Dare Devil",
@@ -370,16 +396,8 @@
       "img": "hero.png"
     },
     {
-      "name": "Builder",
-      "img": "iron.jpg"
-    },
-    {
       "name": "Athelete",
       "img": "liam.jfif"
-    },
-    {
-      "name": "Brian delta",
-      "img": "light.jfif"
     },
     {
       "name": "Hope",
