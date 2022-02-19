@@ -13,7 +13,7 @@
 
   .whatsapp-top-nav {
     background: none;
-    color: var(--light-txt);
+    color: var(--comp-txt);
     position: absolute;
     top: 0;
     padding: 0.5em;
@@ -25,7 +25,6 @@
       }
 
       span:nth-child(2) {
-        margin-left: 0.25em;
         font-size: 0.64em;
         line-height: 0.75em;
       }
@@ -50,9 +49,38 @@
   }
 }
 
-.status-container .whatsapp-top-nav{
-  display: flex;
-  flex-direction: column;
+.status-container{
+
+  .whatsapp-top-nav{
+    display: flex;
+    flex-direction: column;
+
+    .imageCont{
+      margin: 0 0.5em;
+    }
+  }
+
+  .status-msg-container{
+    height: 100%;
+    background: #2e92ee;
+    display: grid;
+    place-items: center;
+    padding: 1em;
+    text-align: center;
+    font-size: 2em;
+    color: var(--comp-txt);
+  }
+
+  .caption-container{
+    position: absolute;
+    bottom: 1.5em;
+    padding: 0.5em 0;
+    width: 100%;
+    color: var(--white);
+    background: rgba(1, 1, 1, 0.5);
+    font-weight: 500;
+    text-align: center;
+  }
 }
 
 .progress-bar-container{
@@ -63,7 +91,7 @@
 
   .progress-bar{
     flex-grow: 1;
-    background: var(--med-txt);
+    background: rgba(136, 136, 136, 0.5);
     margin: 0 1.5px;
 
     &[data-lit="true"]{
@@ -71,10 +99,10 @@
     }
 
     .progress-fill{
-      width: 100%;
+      // width: 0;
       height: 100%;
       background: var(--white);
-      transition: width 200ms ease-in-out;
+      transition: width 200ms linear;
     }
   }
 }

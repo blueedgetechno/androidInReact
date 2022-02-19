@@ -164,7 +164,7 @@ const formatseconds = (sec)=>{
 }
 
 export const Video = (props) => {
-  const [play, setPlay] = useState(null);
+  const [play, setPlay] = useState(props.autoplay);
   const [prog, setProg] = useState(0); // time elapsed
   const [perProg, setPerProg] = useState(0); // time elapsed in %
   const vidplayer = useRef();

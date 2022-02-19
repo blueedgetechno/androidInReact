@@ -3,22 +3,27 @@
     "name": "Blue",
     "img": "blue.jpg",
     "status": [{
-      "caption": "Cats are cute 😺",
-      "media": "Photo",
-      "src": "chats/cat.jpg"
-    }, {
-      "caption": "Should I be feeling guilty for laughing at this 🤣😂",
-      "media": "Video",
-      "src": "chats/meme.mp4"
-    }, {
-      "caption": "Should I be feeling guilty for laughing at this 🤣😂",
-      "media": "Video",
-      "src": "chats/meme.mp4"
-    }, {
-      "caption": "Should I be feeling guilty for laughing at this 🤣😂",
-      "media": "Video",
-      "src": "chats/meme.mp4"
-    }]
+        "msg": "“I took a test in Existentialism. I left all the answers blank and got 100.” - Woody Allen.",
+        "bg": "#be7ee7"
+      },{
+        "caption": "Cats are cute 😺",
+        "media": "Photo",
+        "src": "chats/cat.jpg"
+      }, {
+        "caption": "Eiffel tower, so high",
+        "media": "Photo",
+        "src": "chats/eiffel.jpg"
+      }, {
+        "caption": "Should I be feeling guilty for laughing at this 🤣😂",
+        "media": "Video",
+        "src": "chats/meme.mp4"
+      },
+      {
+        "caption": "Disneyland, Paris. Hell of a fun",
+        "media": "Photo",
+        "src": "chats/disneyland.jpg"
+      }
+    ]
   },
   "chats": [{
       "name": "Siri",

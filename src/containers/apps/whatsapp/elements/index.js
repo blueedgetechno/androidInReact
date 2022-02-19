@@ -63,7 +63,8 @@ export const MediaViewer = () => {
         </div>
       </div>
       <div className="media-screen">
-        {media.type=="Photo" && <Image src={media.src} dir="asset/whatsapp/chats"/>}
+        {media.type=="Photo" &&
+          <Image src={media.src} dir="asset/whatsapp/chats"/>}
         {media.type=="Video" && (
           <Video src={media.src} dir="asset/whatsapp/chats" h="100%" cstmctrl/>
         )}
@@ -73,7 +74,9 @@ export const MediaViewer = () => {
 }
 
 export const StatusScreen = ()=>{
-  const [idx, setIdx] = useState(2)
+  const [idx, setIdx] = useState(0)
+  const [viewper, setPercent] = useState(0)
+  const [paused, setPaused] = useState(false)
   const stdata = useSelector(state => state.whatsapp.status || {})
   const contact = useSelector(state => {
     var tmp = {}
@@ -82,15 +85,70 @@ export const StatusScreen = ()=>{
     return tmp || {}
   })
 
+  const photoProgressBool = ()=>{
+    return stdata.vis && contact.status && contact.status[idx].media!="Video" && !paused;
+  }
+
+  const progressPhoto = ()=>{
+    if(!photoProgressBool()) return
+    if(viewper<idx+1) setPercent(viewper + 0.02)
+    else{
+      setPercent(idx+1)
+      if(idx < contact.status.length - 1){
+        setIdx(idx + 1)
+      }else{
+        setIdx(0)
+        dispatchAct({type: "home/goBack"})
+      }
+    }
+  }
+
+  const skipNext = ()=>{
+    // setPaused(true)
+    setPercent(idx+1)
+    if(idx < contact.status.length - 1){
+      setIdx(idx + 1)
+    }else{
+      setIdx(0)
+      dispatchAct({type: "home/goBack"})
+    }
+  }
+
+  const handleProg = (e)=>{
+    if(e.played<1) setPercent(idx + e.played)
+    else{
+      setPercent(idx+1)
+      if(idx < contact.status.length - 1){
+        setIdx(idx + 1)
+      }else{
+        setIdx(0)
+        dispatchAct({type: "home/goBack"})
+      }
+    }
+  }
+
+  useEffect(()=>{
+    if(photoProgressBool() && !paused){
+      setTimeout(progressPhoto, 100)
+    }
+  },[viewper,stdata.vis,idx,paused,contact.status])
+
+  useEffect(()=>{
+    if(!stdata.vis && (idx!=0 || viewper!=0)){
+      setIdx(0)
+      setPercent(0)
+    }
+  }, [stdata.vis, idx, viewper])
+
   return (
     <div className="status-container" value={!stdata.vis && "hide"}>
       <div className="whatsapp-top-nav">
         <div className="progress-bar-container">
-          {contact.status && contact.status.map((st,i) => {
+          {stdata.vis && contact.status && contact.status.map((st,i) => {
             return (
               <div className='progress-bar' data-lit={i<idx} key={i}>
                 {i==idx && <div className="progress-fill" style={{
-                  width: "100%"
+                  width: `${(viewper-i)*100}%`
                 }}></div>}
               </div>
             )
@@ -110,17 +168,25 @@ export const StatusScreen = ()=>{
           </div>
         </div>
       </div>
-      {contact.status?(
-        <div className="media-screen">
-          {contact.status[idx].media=="Photo" && <Image src={contact.status[idx].src} dir="asset/whatsapp/"/>}
+      {stdata.vis && contact.status?(
+        <>
+        <div className="media-screen prtclk" onClick={skipNext}>
+          {contact.status[idx].media=="Photo" &&
+            <Image src={contact.status[idx].src} dir="asset/whatsapp/"/>}
           {contact.status[idx].media=="Video" && (
-            <Video
-              src={contact.status[idx].src}
-              dir="asset/whatsapp/" h="100%"
-              playIcon autoplay clickToggle muted
-            />
+            <Video src={contact.status[idx].src} h="100%" dir="asset/whatsapp/"
+              playIcon autoplay onProgress={handleProg} play={!paused}/>
+          )}
+          {contact.status[idx].msg && (
+            <div className="status-msg-container">
+              {contact.status[idx].msg}
+            </div>
           )}
         </div>
+        {contact.status[idx].caption && (
+          <div className="caption-container">{contact.status[idx].caption}</div>
+        )}
+        </>
       ):null}
     </div>
   )
@@ -137,20 +203,23 @@ export const AllStatusScreen = (props)=>{
         offset = `${75 + 300*(i/n) - 2*gz}%`
 
     return (
-      <circle className={viewed?"viewed":"notviewed"} cx="52" cy="52" r="50" fill="none"
-        strokeLinecap="round" strokeWidth="4" strokeDashoffset={offset} strokeDasharray={dash}></circle>
+      <circle className={viewed?"viewed":"notviewed"} cx="52" cy="52"
+        r="50" fill="none" strokeLinecap="round" strokeWidth="4"
+        strokeDashoffset={offset} strokeDasharray={dash}></circle>
     )
   }
 
   return (
     <div className="chats-status-container medScroll">
-      <div className="my-status active-dark-lit">
+      <div className="my-status active-dark-lit prtclk" onClick={dispatchAction}
+        data-action="whatsapp/setStatus" data-payload={-1}>
         <div className="chat-status">
           <div className="status-preview-container">
             <div className="status-preview">
               <svg viewBox="0 0 104 104" xmlns="http://www.w3.org/2000/svg">
                 {myself && myself.status.map((status,i)=>{
-                  return <CalculateArc n={myself.status.length} i={i} viewed key={i}/>
+                  return <CalculateArc n={myself.status.length}
+                                        i={i} viewed key={i}/>
                 })}
               </svg>
             </div>
@@ -170,8 +239,8 @@ export const AllStatusScreen = (props)=>{
         {contacts && contacts.map((contact,i) => {
           if(!contact.status || !contact.status.length) return null
           return (
-            <div className="chat-status active-dark-lit prtclk" onClick={dispatchAction}
-              data-action="whatsapp/setStatus" data-payload={i} key={i}>
+            <div className="chat-status active-dark-lit prtclk" data-payload={i}
+              onClick={dispatchAction} data-action="whatsapp/setStatus" key={i}>
               <div className="status-preview-container">
                 <div className="status-preview">
                   <svg viewBox="0 0 104 104" xmlns="http://www.w3.org/2000/svg">
@@ -181,7 +250,8 @@ export const AllStatusScreen = (props)=>{
                     })}
                   </svg>
                 </div>
-                <Image className="rounded-full rounded" src={contact.img} dir="asset/whatsapp/pfp" w={48}/>
+                <Image className="rounded-full rounded" src={contact.img}
+                        dir="asset/whatsapp/pfp" w={48}/>
               </div>
               <div className="status-info flex flex-col mx-4">
                 <div className="chat-name">{contact.name}</div>

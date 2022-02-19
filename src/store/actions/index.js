@@ -15,7 +15,6 @@ import whatsapp_data from './data/whatsapp.json';
 const {round, floor, random, min, max, abs} = Math;
 
 export const gene_name = () => random().toString(36).substring(2, 10).toLowerCase()
-
 export const dispatchAction = (e) => {
   var action = {
     type: e.target.dataset.action,
@@ -248,7 +247,7 @@ const loadWhatsApp = ()=>{
 
   tmp.media = {}
   tmp.status = {
-    vis: true,
+    vis: !true,
     id: -1
   }
   // tmp.media = {
