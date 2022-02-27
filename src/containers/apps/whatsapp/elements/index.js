@@ -138,6 +138,12 @@ export const StatusScreen = ()=>{
       setIdx(0)
       setPercent(0)
     }
+
+    if(stdata.id){
+      dispatchAct({type: "whatsapp/setViewStatus", payload: {
+        id: stdata.id, count: idx + 1
+      }})
+    }
   }, [stdata.vis, idx, viewper])
 
   return (
@@ -200,7 +206,7 @@ export const AllStatusScreen = (props)=>{
   const CalculateArc = ({n,i,viewed})=>{
     var gz = n==1 ? 0 : 3;
     var dash = `${300/n - 2*gz}% ${300*(1 - 1/n) + 2*gz}%`,
-        offset = `${75 + 300*(i/n) - 2*gz}%`
+        offset = `${75 + 300*((i+1)/n) - 2*gz}%`
 
     return (
       <circle className={viewed?"viewed":"notviewed"} cx="52" cy="52"
@@ -239,8 +245,8 @@ export const AllStatusScreen = (props)=>{
         {contacts && contacts.map((contact,i) => {
           if(!contact.status || !contact.status.length) return null
           return (
-            <div className="chat-status active-dark-lit prtclk" data-payload={i}
-              onClick={dispatchAction} data-action="whatsapp/setStatus" key={i}>
+            <div className="chat-status active-dark-lit prtclk" data-payload={contact.id}
+              onClick={dispatchAction} data-action="whatsapp/setStatus" key={contact.id}>
               <div className="status-preview-container">
                 <div className="status-preview">
                   <svg viewBox="0 0 104 104" xmlns="http://www.w3.org/2000/svg">
@@ -379,7 +385,8 @@ export const ChatScreen = (props)=>{
   }, [wdata.curr, contact.chat])
 
   return(
-    <div className="chat-screen-container flex-column scale-trans" data-vis={props.checkstate('chat')}>
+    <div className="chat-screen-container flex-column scale-trans"
+        data-vis={props.checkstate('chat')}>
       <div className="whatsapp-top-nav downbug">
         <div className="chat-profile-container flex items-center">
           <div className="chat-profile prtclk active-light-lit"
@@ -486,6 +493,79 @@ export const ChatScreen = (props)=>{
             <Icon className="mic-icon" mui="Mic" h={24}/>
           ):<Icon className="send-icon press-in" mui="Send" h={24} onClick={sendMessage}/>}
         </div>
+      </div>
+    </div>
+  )
+}
+
+export const AllContacts = (props)=>{
+  const wdata = useSelector(state => state.whatsapp);
+  const contacts = useSelector(state => state.whatsapp.chats || []);
+
+  const clickContact = (e)=>{
+    var id = e.target.getAttribute("value");
+
+    dispatchAct({
+      type: "whatsapp/setProp",
+      payload: {key: "curr", value: id}
+    })
+
+    dispatchAct({
+      type: "home/navApp",
+      payload: "whatsapp.chat"
+    })
+  }
+
+  return (
+    <div className="contacts-container scale-trans"
+        data-vis={props.checkstate('contact')}>
+      <div className="whatsapp-top-nav">
+        <div className="chat-profile-container flex items-center">
+          <div className="chat-profile active-light-lit">
+            <Icon mui="ArrowBack" w={20} action="home/goBack"/>
+          </div>
+          <div className="chat-name flex-column font-thin mx-4">
+            <span className="text-lg">Select Contacts</span>
+            <span className="text-xs">
+              {contacts.length} contact{contacts.length>1?"s":""}
+            </span>
+          </div>
+        </div>
+        <div className="w-nav-icons">
+          <Icon mui="Search"/>
+          <Icon mui="MoreVert"/>
+        </div>
+      </div>
+      <div className="all-contacts medScroll">
+        <div className="contact-cotainer active-dark-lit prtclk">
+          <Icon className="rounded-full rounded" mui="Group" w={24}/>
+          <div className="flex flex-col ml-4 flex-grow">
+            <div className="chat-name">New group</div>
+          </div>
+        </div>
+        <div className="contact-cotainer active-dark-lit prtclk">
+          <Icon className="rounded-full rounded" mui="PersonAdd" w={22}/>
+          <div className="flex flex-col ml-4 flex-grow">
+            <div className="chat-name">New contact</div>
+          </div>
+        </div>
+        {contacts && [...contacts].sort((a,b)=> {
+          return a.name>b.name?1:-1
+        }).map(contact => {
+          return(
+            <div className="contact-cotainer active-dark-lit prtclk"
+                  key={contact.id} onClick={clickContact} value={contact.id}>
+              <Image className="rounded-full rounded"
+                src={contact.img} dir="asset/whatsapp/pfp" w={38}/>
+              <div className="flex flex-col ml-4 flex-grow">
+                <div className="chat-name">{contact.name}</div>
+                <div className="status-date">
+                  {contact.bio}
+                </div>
+              </div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

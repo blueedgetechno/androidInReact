@@ -37,6 +37,20 @@ const WhatsApp = createSlice({
       state.status.id = action.payload || -1;
       state.comp = true
     },
+    setViewStatus: (state, action) => {
+      var {id, count} = action.payload
+      if(id==-1) return
+
+      var contact = state.chats[id]
+      if(!contact) return
+
+      for (var i = 0; i < contact.status.length; i++) {
+        if(i<count) contact.status[i].seen = true
+        else break
+      }
+
+      state.chats[id] = {...contact}
+    },
     sendMsg: (state, action) => {
       var contact = {...state.chats[action.payload.id]}
       if(!contact) return

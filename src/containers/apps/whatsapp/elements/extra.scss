@@ -93,16 +93,17 @@
     flex-grow: 1;
     background: rgba(136, 136, 136, 0.5);
     margin: 0 1.5px;
+    overflow: hidden;
 
     &[data-lit="true"]{
       background: var(--white);
     }
 
     .progress-fill{
-      // width: 0;
+      width: 0;
       height: 100%;
       background: var(--white);
-      transition: width 200ms linear;
+      transition: width 400ms linear;
     }
   }
 }

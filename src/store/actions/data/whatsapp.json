@@ -3,39 +3,40 @@
     "name": "Blue",
     "img": "blue.jpg",
     "status": [{
+      "caption": "Particles - Blender 2.8",
+      "media": "Photo",
+      "src": "chats/abstract.jpg"
+    },{
         "msg": "“I took a test in Existentialism. I left all the answers blank and got 100.” - Woody Allen.",
         "bg": "#be7ee7"
-      },{
-        "caption": "Cats are cute 😺",
-        "media": "Photo",
-        "src": "chats/cat.jpg"
       }, {
-        "caption": "Eiffel tower, so high",
+        "caption": "Subscribe to the game, blueedge.me/unescape",
         "media": "Photo",
-        "src": "chats/eiffel.jpg"
+        "src": "chats/unescape.jpg"
       }, {
         "caption": "Should I be feeling guilty for laughing at this 🤣😂",
         "media": "Video",
         "src": "chats/meme.mp4"
       },
       {
-        "caption": "Disneyland, Paris. Hell of a fun",
+        "caption": "krishna consciousness",
         "media": "Photo",
-        "src": "chats/disneyland.jpg"
+        "src": "chats/krishna.jpg"
       }
     ]
   },
   "chats": [{
       "name": "Siri",
       "img": "siri.png",
+      "bio": "Hello, I'm Siri! How can I help you?",
       "status": [{
-        "caption": "Cats are cute 😺",
+        "caption": "Cats are cute 😺 and you cannot convince me otherwise",
         "media": "Photo",
         "src": "chats/cat.jpg"
       }, {
-        "caption": "Should I be feeling guilty for laughing at this 🤣😂",
-        "media": "Video",
-        "src": "chats/meme.mp4"
+        "caption": "Do we Even Exist?",
+        "media": "Photo",
+        "src": "chats/anon.jpeg"
       }],
       "chat": [{
           "type": "0",
@@ -136,6 +137,7 @@
     {
       "name": "Apoc Guy",
       "img": "apoc.jfif",
+      "bio": "The End is near",
       "chat": [{
           "type": "0",
           "msg": "Hello Blue"
@@ -149,6 +151,15 @@
     {
       "name": "Spider Man",
       "img": "hero.png",
+      "bio": "Your friendly neighbourhood SpiderMan",
+      "status": [{
+        "caption": "Dr. Octo on Run, Call 911 when you spot him",
+        "media": "Photo",
+        "src": "chats/octo.jpg"
+      }, {
+        "msg": "We just came to knew he is in Queens, New york",
+        "bg": "#e1e77e"
+      }],
       "chat": [{
         "type": "0",
         "msg": "Blue, It's an emergency Dr. octo has attacked the city. I need you to call the reinforcements"
@@ -180,6 +191,7 @@
     {
       "name": "Sydney",
       "img": "ava.jfif",
+      "bio": "Netflix is a joke",
       "chat": [{
         "type": "2",
         "msg": "You watch a lot of tv?"
@@ -297,6 +309,7 @@
     {
       "name": "Andrew",
       "img": "andrew.png",
+      "bio": "Python is the key to happiness",
       "status": [{
           "caption": "Eiffel tower, so high",
           "media": "Photo",
@@ -306,6 +319,10 @@
           "caption": "Disneyland, Paris. Hell of a fun",
           "media": "Photo",
           "src": "chats/disneyland.jpg"
+        },
+        {
+          "msg": "Tea is better than coffee",
+          "bg": "#8de77e"
         }
       ],
       "chat": [{
@@ -350,6 +367,7 @@
     {
       "name": "Tony Stark",
       "img": "tony.jpg",
+      "bio": "You either die a hero or live long enough to see yourself become a villain",
       "chat": [{
         "type": "0",
         "msg": "Do you have the gauntlet?"
@@ -382,11 +400,13 @@
     },
     {
       "name": "Grandmaster",
-      "img": "check.jfif"
+      "img": "check.jfif",
+      "bio": "When you see a good move, look for a better one"
     },
     {
       "name": "Nick Crowney",
-      "img": "echo.png"
+      "img": "echo.png",
+      "bio": "Free will is an illusion"
     },
     {
       "name": "Dare Devil",
@@ -394,11 +414,13 @@
     },
     {
       "name": "Hiker",
-      "img": "fire.png"
+      "img": "fire.png",
+      "bio": "Hey there! I am using WhatsApp"
     },
     {
       "name": "Marvel",
-      "img": "hero.png"
+      "img": "hero.png",
+      "bio": "The universe is expanding"
     },
     {
       "name": "Athelete",
@@ -422,15 +444,18 @@
     },
     {
       "name": "Conspiracy theorist",
-      "img": "real.jfif"
+      "img": "real.jfif",
+      "bio": "Everything is a lie"
     },
     {
       "name": "Yatch",
-      "img": "viva.jfif"
+      "img": "viva.jfif",
+      "bio": "."
     },
     {
       "name": "Mask Guy",
       "img": "pic.jpg",
+      "bio": "Privacy is a thing of a past",
       "chat": [{
         "type": "2",
         "msg": "Good morning, how are you?"
@@ -745,6 +770,7 @@
     {
       "name": "Sophia",
       "img": "sophia.jpg",
+      "bio": "I'm a Robot and I will not kill you if you will be nice to me",
       "chat": [{
         "type": "2",
         "msg": "What is AI?"

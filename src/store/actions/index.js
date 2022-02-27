@@ -221,6 +221,7 @@ const loadWhatsApp = ()=>{
 
   for (var i = 0; i < tmp.chats.length; i++) {
     var cont = tmp.chats[i]
+    cont.id = i
 
     if(cont.status){
       var tdates = randomTimes(cont.chat.length,720,20).reverse()
@@ -228,6 +229,7 @@ const loadWhatsApp = ()=>{
         cont.status[j].time = tdates[j].toISOString()
       }
     }else cont.status = []
+
 
     if(cont.chat){
       var tdates = randomTimes(cont.chat.length,60,300).reverse(),

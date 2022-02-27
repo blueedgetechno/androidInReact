@@ -10,6 +10,7 @@ import './whatsapp.scss';
 import {
   NavBar,
   AllStatusScreen,
+  AllContacts,
   StatusScreen,
   ChatScreen,
   CallLogs,
@@ -22,7 +23,8 @@ export const WhatsappApp = () => {
   const show = home.ishome==false && home.stack.at(-1)==app.payload;
   const pagetree = app && app.pagetree || {
     "main": {
-      "chat" : {}
+      "chat" : {},
+      "contact" : {}
     }
   }
 
@@ -43,7 +45,7 @@ export const WhatsappApp = () => {
 }
 
 const AppContainer = ({app, show, pagetree}) => {
-  const [tab, setTab] = useState(2);
+  const [tab, setTab] = useState(1);
   const homeSwiper = useRef();
   const clstring = `${app.payload}-wrapper`;
   const path = app.path || ["main"];
@@ -119,9 +121,18 @@ const AppContainer = ({app, show, pagetree}) => {
               <AllStatusScreen/>
               <CallLogs/>
             </Swiper>
+            {tab!=0 && (
+              <div className="quick-tool-container press-in">
+                {tab==1 && <Icon action="home/navApp" mui="Chat"
+                              payload="whatsapp.contact" w={24}/>}
+                {tab==2 && <Icon mui="PhotoCamera" round w={24}/>}
+                {tab==3 && <Icon mui="AddIcCall" rounded w={24}/>}
+              </div>
+            )}
           </div>
         </div>
         <ChatScreen checkstate={checkstate}/>
+        <AllContacts checkstate={checkstate}/>
         <MediaViewer/>
         <StatusScreen/>
       </div>
@@ -131,7 +142,7 @@ const AppContainer = ({app, show, pagetree}) => {
 
 const CameraScreen = ()=>{
   return (
-    <div>Camera</div>
+    <div className="camera-container"></div>
   )
 }
 
@@ -162,12 +173,31 @@ const AllChatScreen = ()=>{
   return (
     <div className="home-chats-container medScroll">
       <div className="home-chats">
-        {contacts && contacts.map((contact,i) => {
+        {contacts && [...contacts].sort((a,b)=>{
+          if(!a.chat || !b.chat) return 1
+          if(!a.chat.length) return -1
+          if(!b.chat.length) return 1
+
+          var a_lastmsg = a.chat.at(-1),
+              b_lastmsg = b.chat.at(-1)
+
+          var a_seen = a_lastmsg.type=="0" && !a.seen,
+              b_seen = b_lastmsg.type=="0" && !b.seen
+
+          if(a_seen ^ b_seen){
+            if(!a_seen) return 1
+            else return -1
+          }else{
+            if(new Date(a_lastmsg.time) > new Date(b_lastmsg.time)) return -1
+            else return 1
+          }
+        }).map((contact,i) => {
           if(!contact.chat || !contact.chat.length) return null
           var lastmsg = contact.chat.at(-1)
 
           return(
-            <div className="all-chat-container prtclk active-dark-lit" key={i} onClick={clickChat} value={i}>
+            <div className="all-chat-container prtclk active-dark-lit"
+                key={contact.id} onClick={clickChat} value={contact.id}>
               <Image src={contact.img} dir="asset/whatsapp/pfp" w={48}/>
               <div className="short-info">
                 <div className="chat-info">

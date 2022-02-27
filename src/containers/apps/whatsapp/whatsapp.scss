@@ -176,6 +176,23 @@
   }
 }
 
+.quick-tool-container {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  padding: 0.8em;
+  border-radius: 3em;
+  background: var(--light-teal);
+  color: var(--white);
+}
+
+.camera-container {
+  height: 100%;
+  overflow: hidden;
+  background: black;
+}
+
+.all-contacts,
 .call-logs,
 .chats-status,
 .my-status {
@@ -183,12 +200,12 @@
   color: var(--med-txt);
 
   .call-log,
-  .chat-status {
+  .chat-status,
+  .contact-cotainer {
     display: flex;
     align-items: center;
     padding: 0.5em 1em;
     // margin-bottom: 1em;
-
     .status-preview-container {
       position: relative;
       // background: var(--teal);
@@ -200,7 +217,7 @@
         width: 100%;
         height: 100%;
         inset: 0;
-
+        // transform: scale(-1, 1);
         svg {
           width: 100%;
           height: 100%;
@@ -256,5 +273,35 @@
     transform: scale(1.1);
     pointer-events: none;
     opacity: 0;
+  }
+}
+
+// all contacts container
+.contacts-container {
+  position: absolute;
+  inset: 0;
+
+  .contact-cotainer {
+    .imageCont, .uicon{
+      min-width: 38px;
+      min-height: 38px;
+      color: #fefefe;
+      background: var(--light-teal);
+    }
+  }
+}
+
+.all-contacts {
+  padding-top: 0.5em;
+  height: 100%;
+  overflow-y: scroll;
+
+  .status-date {
+    flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
   }
 }
