@@ -1,0 +1,81 @@
+.youtube-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.yt-top-nav, .yt-bottom-nav{
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  padding: 0.5em 0.6em;
+  color: var(--txt-col);
+
+  .y-nav-icons {
+    display: flex;
+
+    .uicon, .imageCont{
+      margin: 0 0.5em;
+    }
+  }
+}
+
+.yt-bottom-nav{
+  padding: 0.5em 2em;
+  color: var(--med-txt);
+  align-items: center;
+
+  .uicon{
+    font-size: 0.7em;
+  }
+}
+
+.yt-feed{
+  width: 100%;
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.yt-item-container{
+  margin-bottom: 0.5em;
+
+  .yt-vid-thumbnail{
+    min-height: 12em;
+    background: var(--comp-txt);
+  }
+
+  .yt-vid-info{
+    display: flex;
+    width: 100%;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    padding: 0 0.5em;
+
+    .imageCont{
+      min-width: 36px;
+
+      img{
+        border-radius: 2em;
+      }
+    }
+
+    .yt-vid-title{
+      font-size: 0.84em;
+      font-weight: 600;
+
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+    }
+
+    .yt-vid-extra{
+      font-size: 0.64em;
+      font-weight: 500;
+      color: var(--sat-txt);
+    }
+  }
+}

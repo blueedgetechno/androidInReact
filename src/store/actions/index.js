@@ -11,10 +11,11 @@ import axios from 'axios';
 import './prototypes.js';
 
 import whatsapp_data from './data/whatsapp.json';
+import youtube_data from './data/youtube.json';
 
 const {round, floor, random, min, max, abs} = Math;
 
-export const gene_name = () => random().toString(36).substring(2, 10).toLowerCase()
+export const gene_name = (x=10) => random().toString(36).substring(2, x).toLowerCase()
 export const dispatchAction = (e) => {
   var action = {
     type: e.target.dataset.action,
@@ -194,7 +195,8 @@ export const loadApps = ()=>{
     }});
   });
 
-  loadWhatsApp();
+  loadWhatsApp()
+  loadYouTube()
 }
 
 const randomTimes = (c = 1, b = 60, f = 60)=>{
@@ -261,4 +263,26 @@ const loadWhatsApp = ()=>{
   // }
 
   store.dispatch({type: 'whatsapp/setData', payload: tmp});
+}
+
+const loadYouTube = ()=>{
+  var tmp = {...youtube_data}
+
+  Object.keys(tmp.vids).forEach((key, i) => {
+    var ytvid = {...tmp.vids[key]}
+    ytvid.id = key
+    if(!ytvid.thumb) ytvid.thumb = `https://i.ytimg.com/vi/${key}/hqdefault.jpg`
+    if(typeof(ytvid.channel)!="string"){
+      var channel = {...ytvid.channel}
+      channel.id = gene_name(8)
+      tmp.channels[channel.id] = channel
+      ytvid.channel = channel.id
+    }
+
+    tmp.vids[key] = {...ytvid}
+  })
+
+  tmp.home = Object.keys(tmp.vids)
+
+  store.dispatch({type: 'youtube/setData', payload: tmp});
 }

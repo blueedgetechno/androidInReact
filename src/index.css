@@ -35,6 +35,7 @@ html, body{
   margin: 0;
   padding: 0;
   height: 100%;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewport='0 0 24 24' width='24' height='24'><circle cx='12' cy='12' r='12' style='fill: rgba(64, 64, 64, 0.2);'></circle><circle cx='12' cy='12' r='10' style='fill: rgba(0, 0, 0, 0.25);'></circle></svg>"), auto;
 }
 
 body {
@@ -68,18 +69,23 @@ code {
 #root{
   width: 100%;
   height: 100%;
+  display: grid;
+  place-items: center;
 }
 
 .App {
   position: relative;
   width: 100%;
   height: 100%;
+  max-width: 440px;
+  max-height: 100vh;
 }
 
 .appwrap {
   position: relative;
   height: 100%;
   z-index: 0;
+  overflow: hidden;
 }
 
 .redbd{
@@ -97,4 +103,21 @@ code {
 
 .ltShad {
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  background-color: transparent;
+}
+
+*:hover::-webkit-scrollbar-thumb{
+  background: rgba(32, 24, 148, 0.4);
+}
+
+*::-webkit-scrollbar-thumb {
+  width: 4px;
+  height: 4px;
+  border-radius: 10px;
+  background-color: transparent;
 }

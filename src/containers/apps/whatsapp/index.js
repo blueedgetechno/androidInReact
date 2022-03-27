@@ -44,7 +44,7 @@ export const WhatsappApp = () => {
   return <AppContainer app={app} show={show}/>
 }
 
-const AppContainer = ({app, show, pagetree}) => {
+const AppContainer = ({app, show}) => {
   const [tab, setTab] = useState(1);
   const homeSwiper = useRef();
   const clstring = `${app.payload}-wrapper`;
@@ -88,7 +88,7 @@ const AppContainer = ({app, show, pagetree}) => {
     }
   }
 
-  const checkstate = (comp)=>{
+  const checkstate = (comp) => {
     return path.includes(comp) ? (
       path.at(-1) == comp ? 1 : 2
     ) : 0;
@@ -122,7 +122,7 @@ const AppContainer = ({app, show, pagetree}) => {
               <CallLogs/>
             </Swiper>
             {tab!=0 && (
-              <div className="quick-tool-container press-in">
+              <div className="quick-wtool-container press-in">
                 {tab==1 && <Icon action="home/navApp" mui="Chat"
                               payload="whatsapp.contact" w={24}/>}
                 {tab==2 && <Icon mui="PhotoCamera" round w={24}/>}

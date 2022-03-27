@@ -230,7 +230,7 @@ export const AllStatusScreen = (props)=>{
               </svg>
             </div>
             <Image className="rounded-full rounded" src={myself && myself.img}
-                    dir="asset/whatsapp/pfp" w={48}/>
+                    dir="" w={48}/>
           </div>
           <div className="status-info flex flex-col mx-4">
             <div className="chat-name">My status</div>

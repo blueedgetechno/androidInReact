@@ -29,6 +29,16 @@ String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
+Number.prototype.quantf = function() {
+  if(this < 1000){
+    return this
+  }else if(this < 1e6){
+    return Math.floor(this/1000)+"K"
+  }else{
+    return Math.floor(this/1e5)/10 +"M"
+  }
+};
+
 Date.prototype.time12 = function() {
   return this.toLocaleTimeString("en-US", {
     hour: "numeric",

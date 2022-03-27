@@ -28,13 +28,14 @@
 }
 
 .youtube-wrapper{
-  --app-bg: #121212;
+  --app-bg: #ffffff;
+  --pm-txt: #121212;
   background: var(--app-bg);
-  color: #fefefe;
+  // color: #fefefe;
 }
 
 .youtube-viewport{
-  --app-bg: #121212;
+  --app-bg: #ffffff;
   --statusbg: var(--app-bg);
   --navbg: var(--app-bg);
 }

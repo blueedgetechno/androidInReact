@@ -3,28 +3,73 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import {Icon, Image, LazyComponent} from 'components/utils';
 import {dispatchAction, dispatchAct} from 'store/actions';
+import {Home} from './extra';
+import './youtube.scss';
 
 export const YoutubeApp = () => {
-  const [count, setCount] = useState(0);
-  const app = useSelector(state => state.home.apps.youtube || {});
-  const home = useSelector(state => state.home);
-  const show = home.ishome==false && home.stack.at(-1)==app.payload;
+  const app = useSelector(state => state.home.apps.youtube || {})
+  const home = useSelector(state => state.home)
+  const show = home.ishome==false && home.stack.at(-1)==app.payload
+  const pagetree = app && app.pagetree || {
+    "main": {
+      "home" : {},
+      "subs" : {},
+      "lib" : {}
+    }
+  }
 
   useEffect(()=>{
-    setCount(count + 1)
-  }, [home])
+    if(app && !app.pagetree){
+      dispatchAct({type: "home/setApp", payload: {
+        id: app.payload,
+        data: {
+          ... app,
+          pagetree: pagetree,
+          path: ['main']
+        }
+      }})
+    }
+  }, [app])
 
-  return <AppContainer app={app} show={show} count={count}/>
+  return <AppContainer app={app} show={show}/>
 }
 
-const AppContainer = ({app, show, count}) => {
-  const clstring = `${app.payload}-wrapper`;
+const AppContainer = ({app, show}) => {
+  const [tab, setTab] = useState(0)
+  const clstring = `${app.payload}-wrapper`
+
+  const changeTab = (e)=>{
+    if(e.target.dataset.payload){
+      setTab(e.target.dataset.payload)
+    }
+  }
 
   return (
     <div className={"app-wrapper "+clstring} id={clstring} data-open={show}>
-      <div className="app-icon-container">
-        <Icon className="mdShad" src={"apps/" + app.icon} w={72} action="home/setHome"/>
-        <span>{count}</span>
+      <div className="app-inner-wrapper yt-inner-wrapper">
+        <div className="youtube-home">
+          <div className="yt-top-nav">
+            <Image src="asset/youtube/namelogo" w={80}/>
+            <div className="y-nav-icons">
+              <Icon mui="Cast" w={18}/>
+              <Icon mui="NotificationsNone" round w={22}/>
+              <Icon mui="Search" w={22}/>
+              <Image className="rounded rounded-full" src="blue.jpg" w={22}/>
+            </div>
+          </div>
+          <Home/>
+          <div className="yt-bottom-nav">
+            <Icon className="active-dark-lit" mui="Home" w={24} label="Home"
+                  out={tab!=0} onClick={changeTab} payload={0}/>
+            <Icon className="active-dark-lit" mui="Explore" w={24} label="Explore"
+                  out={tab!=1} onClick={changeTab} payload={1}/>
+            <Icon mui="AddCircleOutline" w={36} round/>
+            <Icon className="active-dark-lit" mui="Subscriptions" w={24} label="Subscriptions"
+                  out={tab!=3} onClick={changeTab} payload={3}/>
+            <Icon className="active-dark-lit" mui="VideoLibrary" w={24} label="Library"
+                  out={tab!=4} onClick={changeTab} payload={4}/>
+          </div>
+        </div>
       </div>
     </div>
   );

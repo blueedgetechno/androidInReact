@@ -9,6 +9,7 @@ import homeReducer from "./reducers/home";
 import widgetReducer from "./reducers/widget";
 
 import WhatsAppReducer from './reducers/apps/whatsapp';
+import YouTubeReducer from './reducers/apps/youtube';
 
 const allReducers = {
   wallpaper: wallReducer,
@@ -16,7 +17,8 @@ const allReducers = {
   global: globalReducer,
   home: homeReducer,
   widget: widgetReducer,
-  whatsapp: WhatsAppReducer
+  whatsapp: WhatsAppReducer,
+  youtube: YouTubeReducer
 };
 
 const store = configureStore({

@@ -44,7 +44,7 @@ export const Icon = (props) => {
     src += ".png";
   }
 
-  if (props.ext || (props.src && props.src.includes("http"))) {
+  if (props.ext || (props.src && props.src.startsWith("http"))) {
     src = props.src;
   }
 
@@ -59,6 +59,8 @@ export const Icon = (props) => {
   var styles = {
     borderRadius: props.radii
   }
+
+  const label = props.label!=null && <span>{props.label}</span>
 
   if (props.fafa) {
     return (
@@ -77,6 +79,7 @@ export const Icon = (props) => {
           }}
           icon={!props.reg ? FaIcons[props.fafa] : FaRegIcons[props.fafa]}
         />
+        {label}
       </div>
     );
   } else if (props.mui) {
@@ -85,6 +88,7 @@ export const Icon = (props) => {
         onClick={props.onClick || (props.action && dispatchAction)}
         data-action={props.action} data-payload={props.payload}>
         <MaterialIcon {...props} />
+        {label}
       </div>
     );
   }else if (props.icon) {
@@ -94,6 +98,7 @@ export const Icon = (props) => {
         onClick={props.onClick || (props.action && dispatchAction)}
         data-action={props.action} data-payload={props.payload}>
         <CustomIcon {...props} />
+        {label}
       </div>
     );
   } else {
@@ -105,6 +110,7 @@ export const Icon = (props) => {
           data-invert={props.invert} data-rounded={props.rounded}
           src={src} style={{ margin: props.margin}}
           alt={props.alt || ""}/>
+          {label}
       </div>
     );
   }
@@ -116,7 +122,7 @@ export const Image = (props) => {
     src += ".png";
   }
 
-  if (props.ext || (props.src && props.src.includes("http"))) {
+  if (props.ext || (props.src && props.src.startsWith("http"))) {
     src = props.src;
   }
 

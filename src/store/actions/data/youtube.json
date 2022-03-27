@@ -1,0 +1,114 @@
+{
+  "home": [
+    "3izFMB91K_Q",
+    "KRvv0QdruMQ",
+    "6GlFF4BsO10",
+    "TRxf5hLZih4",
+    "6SrsZVdU740"
+  ],
+  "vids": {
+    "3izFMB91K_Q": {
+      "thumb": "curves.jpg",
+      "channel": "zachstar",
+      "title": "Curves we (mostly) don't learn in high school (and applications)",
+      "views": 729921,
+      "upload": "2020-02-20T18:30:00.000Z"
+    },
+    "KRvv0QdruMQ": {
+      "thumb": "aliens.jpg",
+      "channel": "kurz",
+      "title": "Are There Lost Alien Civilizations in Our Past?",
+      "views": 4652183,
+      "upload": "2022-02-28T18:30:00.000Z"
+    },
+    "6GlFF4BsO10": {
+      "thumb": "charcoal.jpg",
+      "channel": "fineart",
+      "title": "Realistic Portrait Drawing with Charcoal Pencil",
+      "views": 269097,
+      "upload": "2019-12-22T18:30:00.000Z"
+    },
+    "TRxf5hLZih4": {
+      "channel": {
+        "name": "CG Boost",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLTqHX4vJI_7YFGluxvXry_Voh62QZ2SkQw86nv5=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "3D Animated Short Film \"Family Trip\" (Blender)",
+      "views": 91659,
+      "upload": "2022-02-24T18:30:00.000Z"
+    },
+    "6SrsZVdU740": {
+      "channel": "melodysheep",
+      "title": "The Secret History of the Moon - 4K",
+      "views": 1750145,
+      "upload": "2020-04-30T18:30:00.000Z"
+    },
+    "OkmNXy7er84": {
+      "channel": {
+        "name": "3Blue1Brown",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLQGKDhfIUhBrv9C1hKgMDZsUJbjelfPvXrelFncvw=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "The hardest problem on the hardest test",
+      "views": 13533515,
+      "upload": "2017-12-08T18:30:00.000Z"
+    },
+    "x2Y5-4kLb5I":{
+      "channel": {
+        "name": "CalebCity",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLRbPQP2yGXxZc_ZWDxEKOmCQ4Qrc4qAsIBpXrqiOw=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "When the hero is just as smart as villain",
+      "views": 24227599,
+      "upload": "2019-03-28T18:30:00.000Z"
+    },
+    "qHoQ8bxEL-s": {
+      "channel": {
+        "name": "Daily Dose Of Internet",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLQGifyRDczjF8Th_mEqdvS7ri1YR1HrIQTiuu3vtg=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "Man Glitches While Skateboarding",
+      "views": 7970739,
+      "upload": "2021-11-23T18:30:00.000Z"
+    },
+    "HJZesOKHuAw": {
+      "channel": {
+        "name": "haventfoundanameyet",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLRpAFvFWBsT0I7hw_8vWqRMpSN1HTq1K2MJdw=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "Bot Writes Batman Movie",
+      "views": 3657118,
+      "upload": "2019-09-09T18:30:00.000Z"
+    },
+    "jJPMnTXl63E": {
+      "channel": {
+        "name": "Powfu",
+        "pfp": "https://yt3.ggpht.com/VGcpKuzZrkWPVoZA3rvmufVepPaaCywXFLk5Ng_PCMApUlEYjJE63MPEwi5IyJRVJYkHAV8sZg=s88-c-k-c0x00ffffff-no-nd-rj"
+      },
+      "title": "Powfu - death bed (coffee for your head) (Official Video) ft. beabadoobee",
+      "views": 476892057,
+      "upload": "2020-04-01T18:30:00.000Z"
+    }
+  },
+  "channels": {
+    "zachstar": {
+      "id": "zachstar",
+      "name": "Zach Star",
+      "pfp": "zach.jpg"
+    },
+    "kurz": {
+      "id": "kurz",
+      "name": "Kurzgesagt – In a Nutshell",
+      "pfp": "kurz.jpg"
+    },
+    "fineart": {
+      "id": "fineart",
+      "name": "Fine Art Academy",
+      "pfp": "fineart.jpg"
+    },
+    "melodysheep": {
+      "id": "melodysheep",
+      "name": "melodysheep",
+      "pfp": "melodysheep.jpg"
+    }
+  }
+}
