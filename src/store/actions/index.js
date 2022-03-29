@@ -254,13 +254,6 @@ const loadWhatsApp = ()=>{
     vis: !true,
     id: -1
   }
-  // tmp.media = {
-  //   vis: true,
-  //   name: 'You',
-  //   type: 'Video',
-  //   src: 'meme.mp4',
-  //   time: new Date(new Date() - 60*24*36*1e5).toISOString()
-  // }
 
   store.dispatch({type: 'whatsapp/setData', payload: tmp});
 }
@@ -271,7 +264,8 @@ const loadYouTube = ()=>{
   Object.keys(tmp.vids).forEach((key, i) => {
     var ytvid = {...tmp.vids[key]}
     ytvid.id = key
-    if(!ytvid.thumb) ytvid.thumb = `https://i.ytimg.com/vi/${key}/hqdefault.jpg`
+    ytvid.views = Number(ytvid.views)
+    if(!ytvid.thumb) ytvid.thumb = `https://i.ytimg.com/vi/${key}/hq720.jpg`
     if(typeof(ytvid.channel)!="string"){
       var channel = {...ytvid.channel}
       channel.id = gene_name(8)
@@ -282,7 +276,14 @@ const loadYouTube = ()=>{
     tmp.vids[key] = {...ytvid}
   })
 
-  tmp.home = Object.keys(tmp.vids)
+  Object.keys(tmp.channels).forEach((key, i) => {
+    var chnl = {...tmp.channels[key]}
+    chnl.id = key
+    tmp.channels[key] = {...chnl}
+  })
+
+  tmp.explore.trending = Object.keys(tmp.vids).sort(() => Math.random() - 0.5).splice(0,15)
+  tmp.home = Object.keys(tmp.vids).sort(() => Math.random() - 0.5)
 
   store.dispatch({type: 'youtube/setData', payload: tmp});
 }

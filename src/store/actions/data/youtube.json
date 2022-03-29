@@ -6,6 +6,54 @@
     "TRxf5hLZih4",
     "6SrsZVdU740"
   ],
+  "explore": {
+    "trending": [],
+    "music": [
+      "euCqAq6BRa4",
+      "sK7riqg2mr4",
+      "eK0IIyBlYew",
+      "L7mfjvdnPno",
+      "1-xGerv5FOk",
+      "YOrMAW4pKuA",
+      "jJPMnTXl63E",
+      "2WTvSzXVZvA",
+      "nYh-n7EOtMA",
+      "mWRsgZuwf_8",
+      "KBtk5FUeJbk"
+    ],
+    "gaming": [
+      "ISpmBbzrshM",
+      "lqiZdynJmag",
+      "c8kWStfQW6M",
+      "MLVslPP8GoE",
+      "bNgmnwjbhUM"
+    ],
+    "news": [
+      "dj0p0y1Ajxc",
+      "nK-yJD_fAtk",
+      "AVu-vplvCZE",
+      "j8TcR4ihSyE",
+      "myjEoDypUD8",
+      "yIOQcQft_rY",
+      "zV7y4Oex1DQ"
+    ],
+    "fashion": [
+      "5NGyXTsg77E",
+      "hSDhBXSdYig",
+      "hu_44ceTAX8",
+      "xGF3ObOBbac",
+      "LqiKvFy-B-g"
+    ],
+    "learning": [
+      "bAerID24QJ0",
+      "8N1BxHgsoOw",
+      "xLetJpcjHS0",
+      "PmvLB5dIEp8",
+      "R9OCA6UFE-0",
+      "AjoxkxM_I5g",
+      "HQzoZfc3GwQ"
+    ]
+  },
   "vids": {
     "3izFMB91K_Q": {
       "thumb": "curves.jpg",
@@ -52,7 +100,7 @@
       "views": 13533515,
       "upload": "2017-12-08T18:30:00.000Z"
     },
-    "x2Y5-4kLb5I":{
+    "x2Y5-4kLb5I": {
       "channel": {
         "name": "CalebCity",
         "pfp": "https://yt3.ggpht.com/ytc/AKedOLRbPQP2yGXxZc_ZWDxEKOmCQ4Qrc4qAsIBpXrqiOw=s88-c-k-c0x00ffffff-no-rj"
@@ -75,6 +123,7 @@
         "name": "haventfoundanameyet",
         "pfp": "https://yt3.ggpht.com/ytc/AKedOLRpAFvFWBsT0I7hw_8vWqRMpSN1HTq1K2MJdw=s88-c-k-c0x00ffffff-no-rj"
       },
+      "thumb": "https://i.ytimg.com/vi/HJZesOKHuAw/hqdefault.jpg",
       "title": "Bot Writes Batman Movie",
       "views": 3657118,
       "upload": "2019-09-09T18:30:00.000Z"
@@ -87,28 +136,340 @@
       "title": "Powfu - death bed (coffee for your head) (Official Video) ft. beabadoobee",
       "views": 476892057,
       "upload": "2020-04-01T18:30:00.000Z"
+    },
+    "2WTvSzXVZvA": {
+      "channel": "tseries",
+      "title": "Tumhein Mohabbat Hai|Atrangi Re|Arijit Singh",
+      "views": 4001791,
+      "upload": "2022-01-03T18:30:00.000Z"
+    },
+    "L7mfjvdnPno": {
+      "channel": {
+        "name": "Trevor Daniel",
+        "pfp": "https://yt3.ggpht.com/6BeB22Xiwdd4WJfXHsRdb0DXU-EhnNV499GlozlYCTq09ynxHdsDiS_9L1UKmVHMp_7XFqY_ng=s88-c-k-c0x00ffffff-no-nd-rj"
+      },
+      "title": "Trevor Daniel - Falling (Official Music Video)",
+      "views": 280573066,
+      "upload": "2020-01-15T18:30:00.000Z"
+    },
+    "KBtk5FUeJbk": {
+      "channel": {
+        "name": "Sub Urban",
+        "pfp": "https://yt3.ggpht.com/gwIkNHA7fPTqQ7hvH2ztIYLi_3zBg5L-ly0H_r2ABA_7nV2ZsQwQ5y5IGbOaG0V0L6mv-eogwCI=s88-c-k-c0x00ffffff-no-nd-rj"
+      },
+      "title": "Sub Urban - Cradles [Official Music Video]",
+      "views": 495929749,
+      "upload": "2019-10-09T18:30:00.000Z"
+    },
+    "1-xGerv5FOk": {
+      "channel": {
+        "name": "Alan Walker",
+        "pfp": "https://yt3.ggpht.com/JGFKbcaC0Wh8dU5GcY4KXESw6KPvoO2K5ptiNvGLrrWU7Vs9nhNHDnJofDWh-fQorjbg-VQw=s88-c-k-c0x00ffffff-no-nd-rj"
+      },
+      "thumb": "https://i.ytimg.com/vi/1-xGerv5FOk/hqdefault.jpg",
+      "title": "Alan Walker - Alone",
+      "views": 1245123184,
+      "upload": "2016-12-02T18:30:00.000Z"
+    },
+    "YOrMAW4pKuA": {
+      "channel": {
+        "name": "OneRepublic",
+        "pfp": "https://yt3.ggpht.com/_Q2veUE36EUfGMdAegx8b2WGwNmZEsNE_hvM4dqAJjidyB3vd5-Q9jkd0B_s8VxHfvtL_hwc=s88-c-k-c0x00ffffff-no-nd-rj"
+      },
+      "title": "OneRepublic - Better Days (Audio)",
+      "views": 10745796,
+      "upload": "2020-03-24T18:30:00.000Z"
+    },
+    "nYh-n7EOtMA": {
+      "channel": {
+        "name": "Sia",
+        "pfp": "https://yt3.ggpht.com/I_Y-_JrEx9Hriz50UVEQl5NlDBg8Soa9sXndqnWYPuYe8LUW_wZinCbCNshmDnDg78bX4VjSkA=s88-c-k-c0x00ffffff-no-nd-rj"
+      },
+      "title": "Sia - Cheap Thrills (Lyric Video) ft. Sean Paul",
+      "views": 1713224568,
+      "upload": "2016-02-10T18:30:00.000Z"
+    },
+    "euCqAq6BRa4": {
+      "channel": {
+        "name": "DJ Snake",
+        "pfp": "https://yt3.ggpht.com/kfw_1eOpjdYASmlAnSPa7XmXrYpaKjuW4k7_oB-hD5ljRSlT7yThew72ZxgW1UrAJ1e8vX1G=s88-c-k-c0x00ffffff-no-nd-rj"
+      },
+      "title": "DJ Snake - Let Me Love You ft. Justin Bieber (Official Video)",
+      "views": 1070694822,
+      "upload": "2016-11-28T18:30:00.000Z"
+    },
+    "mWRsgZuwf_8": {
+      "channel": {
+        "name": "ImagineDragons",
+        "pfp": "https://yt3.ggpht.com/aXBmHKABw-J-0ZMxj39wkXpLDEHViOdL5UD71cDG2s5vbeQBWk9mdX3rRxT5U6Wfkvm6o8Uu-dU=s88-c-k-c0x00ffffff-no-nd-rj"
+      },
+      "title": "Imagine Dragons - Demons (Official Video)",
+      "views": 975341857,
+      "upload": "2013-05-06T18:30:00.000Z"
+    },
+    "sK7riqg2mr4": {
+      "channel": "tseries",
+      "title": "Agar Tum Saath Ho FULL AUDIO Song | Tamasha | Ranbir Kapoor, Deepika Padukone | T-Series",
+      "views": 290046991,
+      "upload": "2015-10-15T18:30:00.000Z"
+    },
+    "eK0IIyBlYew": {
+      "channel": {
+        "name": "Sony Music India",
+        "pfp": "https://yt3.ggpht.com/vJEsALWnQIwPZ2oaVbFWPu1n4L0CDkHpAdGJ-KBPFsxM9hsMsvExFK1mnCGUrMzfC67XPVThmQ=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "Tera Zikr - Darshan Raval | Official Video - Latest New Hit Song",
+      "views": 245795029,
+      "upload": "2017-11-08T18:30:00.000Z"
+    },
+    "ISpmBbzrshM": {
+      "channel": {
+        "name": "PewDiePie",
+        "pfp": "https://yt3.ggpht.com/5oUY3tashyxfqsjO5SGhjT4dus8FkN9CsAHwXWISFrdPYii1FudD4ICtLfuCw6-THJsJbgoY=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "THIS GAME IS THE TRUE MEANING OF SUFFERING. / Getting Over It / #1",
+      "views": 15065672,
+      "upload": "2017-11-09T18:30:00.000Z"
+    },
+    "lqiZdynJmag": {
+      "channel": {
+        "name": "Rockstar Games",
+        "pfp": "https://yt3.ggpht.com/r7mISTzNbcLem_plduc_SKMh9KUiP8CWnuhS7H4-CCErF4juXxkrK-5_4LOIMeYl-lXAXMUG=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "Grand Theft Auto V and GTA Online Out Now on PlayStation 5 and Xbox Series X|S",
+      "views": 815170,
+      "upload": "2022-03-14T18:30:00.000Z"
+    },
+    "c8kWStfQW6M": {
+      "channel": {
+        "name": "MrBeast Gaming",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLTwxbi8cjRqaNJPqfSW8GAog09ZN0LMKY0uMv_MeQ=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "Last to Survive Raining TNT wins $10,000 - Challenge",
+      "views": 20607804,
+      "upload": "2020-06-20T18:30:00.000Z"
+    },
+    "MLVslPP8GoE": {
+      "channel": {
+        "name": "Shroud",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLQVPJGz7OrblaKq8e8jSq9g9_IR4C56YpXp4hto7Q=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "shroud matched up against the number one valorant player in the world...",
+      "views": 302801,
+      "upload": "2022-03-17T18:30:00.000Z"
+    },
+    "bNgmnwjbhUM": {
+      "channel": "soham",
+      "title": "Idk its an ace.",
+      "views": 7,
+      "upload": "2022-02-21T18:30:00.000Z"
+    },
+    "dj0p0y1Ajxc": {
+      "channel": {
+        "name": "9 News Australia",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLQJSITBthUulcMNh0zNcaf6F_7QYi23KrqU5_pYJg=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "‘Worst weather yet to come’: Heavy rain hits NSW and Queensland | 9 News Australia",
+      "views": 12332,
+      "upload": "2022-03-28T18:30:00.000Z"
+    },
+    "nK-yJD_fAtk": {
+      "channel": {
+        "name": "WION",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLTjMUv7cELVis5Au9R2HRytJnMtLShdD_k4IaeFQA=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "Gravitas Plus | Explained: The Russia-Ukraine crisis",
+      "views": 24701639,
+      "upload": "2022-02-19T18:30:00.000Z"
+    },
+    "AVu-vplvCZE": {
+      "channel": {
+        "name": "ABC News",
+        "pfp": "https://yt3.ggpht.com/Iv4QbKjK63MB70UvQ22FnTWF8KN3-2qZ2FqeFDiI-HVmidR7GJKo6UrVSwR6vsyHvmdm1pfirrg=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "New UN report on climate change warns devastating impacts could be irreversible",
+      "views": 80700,
+      "upload": "2022-02-27T18:30:00.000Z"
+    },
+    "j8TcR4ihSyE": {
+      "channel": {
+        "name": "Sky Sports Football",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLT4nIC5koOhfeMhk-iVW56hOtZKaXtS8YY3WXoGxw=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "\"I'm not at Man Utd to compete for 6th or 7th!\" | Cristiano Ronaldo says Ralf Rangnick needs time",
+      "views": 1156972,
+      "upload": "2022-01-13T18:30:00.000Z"
+    },
+    "myjEoDypUD8": {
+      "channel": {
+        "name": "Guardian News",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLQNHeFhVI28gKq6WNMMKMLtyPFFO8MBrwDaAPjWDg=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "Watch the uncensored moment Will Smith smacks Chris Rock on stage at the Oscars, drops F-bomb",
+      "views": 66960412,
+      "upload": "2022-03-27T18:30:00.000Z"
+    },
+    "yIOQcQft_rY": {
+      "channel": {
+        "name": "WION",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLTjMUv7cELVis5Au9R2HRytJnMtLShdD_k4IaeFQA=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "Russian Foreign Minister Lavrov to visit India amid the ongoing Russian invasion of Ukraine | WION",
+      "views": 27116,
+      "upload": "2022-03-28T18:30:00.000Z"
+    },
+    "zV7y4Oex1DQ": {
+      "channel": {
+        "name": "Marques Brownlee",
+        "pfp": "https://yt3.ggpht.com/lkH37D712tiyphnu0Id0D5MwwQ7IRuwgQLVD05iMXlDWO-kDHut3uI4MgIEAQ9StK0qOST7fiA=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "2022 Tech I'm Ready For!",
+      "views": 2847456,
+      "upload": "2022-01-05T18:30:00.000Z"
+    },
+    "5NGyXTsg77E": {
+      "channel": {
+        "name": "Every Deep Moment",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLTXHmAtwCNj85_YLvD_4_t9wZOwWOvlDbGXkCb9Sg=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "VOGUE ITALIA | LAFF19 Fashion Film",
+      "views": 221507,
+      "upload": "2019-07-02T18:30:00.000Z"
+    },
+    "hSDhBXSdYig": {
+      "channel": {
+        "name": "lindseyrem",
+        "pfp": "https://yt3.ggpht.com/yWbUZkmwD4noBYHnNfXZorK3yobbd7ot3o1wt5lR7hCdjKaCQW5mmO6EpN4cYlbUa8c9JPXkQw=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "fashion trends I love (and don't love) for 2022",
+      "views": 78703,
+      "upload": "2022-02-25T18:30:00.000Z"
+    },
+    "hu_44ceTAX8": {
+      "channel": {
+        "name": "Alux.com",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLQh0YhlrGYPYpZemAGl__vrKCsRQxCOXplFDgcC_Q=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "15 Things You Didn't Know About The Fashion Industry",
+      "views": 106772,
+      "upload": "2018-06-05T18:30:00.000Z"
+    },
+    "xGF3ObOBbac": {
+      "channel": {
+        "name": "Netflix Is A Joke",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLQHT_u_3g5YgufIXkaK2MePLCrmTvGrELTl_H5p=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "The Ugly Truth Of Fast Fashion | Patriot Act with Hasan Minhaj | Netflix",
+      "views": 4818719,
+      "upload": "2019-11-24T18:30:00.000Z"
+    },
+    "LqiKvFy-B-g": {
+      "channel": {
+        "name": "Shea Whitney",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLSVQyYeSIdIVnUGp7iEfOsUlbacHKB2tLdR-mvTwQ=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "10 *TIMELESS* Style Tips from FASHION ICONS!",
+      "views": 457490,
+      "upload": "2020-12-17T18:30:00.000Z"
+    },
+    "bAerID24QJ0": {
+      "channel": {
+        "name": "Khan Academy",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLTYTpeOiL8n_l9gepDh3m3vczvElfHZO-BR6oAf=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "Algebra: Linear equations 1 | Linear equations | Algebra I | Khan Academy",
+      "views": 2402761,
+      "upload": "2006-11-18T18:30:00.000Z"
+    },
+    "8N1BxHgsoOw": {
+      "channel": {
+        "name": "Professor Dave Explains",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLT_7Mo8gb0atRq92jA0t-n0BHmrlaxQ6FzJIE8hdw=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "The Laws of Thermodynamics, Entropy, and Gibbs Free Energy",
+      "views": 1690888,
+      "upload": "2015-12-15T18:30:00.000Z"
+    },
+    "xLetJpcjHS0": {
+      "channel": {
+        "name": "Neso Academy",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLS6ix06LgBU3BDeogUH0KQhblvxM6FV-kZvI_3R=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "Introduction to Data Structures",
+      "views": 525391,
+      "upload": "2020-03-29T18:30:00.000Z"
+    },
+    "PmvLB5dIEp8": {
+      "channel": {
+        "name": "CrashCourse",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLTkjgAbnuitYR0B5qujr2V36b9uGG82pdngoyPsVQ=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "What Is Organic Chemistry?: Crash Course Organic Chemistry #1",
+      "views": 612848,
+      "upload": "2020-04-30T18:30:00.000Z"
+    },
+    "R9OCA6UFE-0": {
+      "channel": "teded",
+      "title": "The philosophy of Stoicism - Massimo Pigliucci",
+      "views": 7484270,
+      "upload": "2017-06-18T18:30:00.000Z"
+    },
+    "AjoxkxM_I5g": {
+      "channel": {
+        "name": "Ali Abdaal",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLSWd0-HAZHehT9aad84m27uDgIAi86IS6sGsmTH=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "How I Remember Everything I Read",
+      "views": 2030722,
+      "upload": "2020-10-07T18:30:00.000Z"
+    },
+    "HQzoZfc3GwQ": {
+      "channel": {
+        "name": "Marko - WhiteBoard Finance",
+        "pfp": "https://yt3.ggpht.com/ytc/AKedOLSVVz5TNRHqkGxYSQ53Z6t5FM-k6Fh5oX2n59rw9g=s88-c-k-c0x00ffffff-no-rj"
+      },
+      "title": "How To Manage Your Money (50/30/20 Rule)",
+      "views": 2322651,
+      "upload": "2019-05-13T18:30:00.000Z"
     }
   },
+  "subd": [
+    "zachstar",
+    "kurz",
+    "fineart",
+    "melodysheep",
+    "tseries",
+    "teded",
+    "soham"
+  ],
   "channels": {
     "zachstar": {
-      "id": "zachstar",
       "name": "Zach Star",
       "pfp": "zach.jpg"
     },
     "kurz": {
-      "id": "kurz",
       "name": "Kurzgesagt – In a Nutshell",
       "pfp": "kurz.jpg"
     },
     "fineart": {
-      "id": "fineart",
       "name": "Fine Art Academy",
       "pfp": "fineart.jpg"
     },
     "melodysheep": {
-      "id": "melodysheep",
       "name": "melodysheep",
       "pfp": "melodysheep.jpg"
+    },
+    "tseries": {
+      "name": "T-Series",
+      "pfp": "https://yt3.ggpht.com/DzaZaTX6gdgjjPI_vkNc2dPbI794UroI9fTAunua0fa7lukDj5NDkjfhS5-w2KXuvXS02r92=s88-c-k-c0x00ffffff-no-rj"
+    },
+    "teded": {
+      "name": "TED-Ed",
+      "pfp": "https://yt3.ggpht.com/HjXKmDGoAp6b-JdGYpqJYYeN4S_CMpD_kqWvldpN53cbzn-i73t6mVNo8mNki-xLPwi0BVSFi-o=s88-c-k-c0x00ffffff-no-rj"
+    },
+    "soham": {
+      "name": "Soham Das",
+      "pfp": "https://yt3.ggpht.com/ytc/AKedOLQp8wKnJY5r7z9fqdSikiVX48DxBXcKCGsfPJ0DGBM=s88-c-k-c0x00ffffff-no-rj"
     }
   }
 }

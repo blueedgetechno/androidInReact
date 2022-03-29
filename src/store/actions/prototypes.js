@@ -31,7 +31,7 @@ String.prototype.capitalize = function() {
 
 Number.prototype.quantf = function() {
   if(this < 1000){
-    return this
+    return this + 1 - 1
   }else if(this < 1e6){
     return Math.floor(this/1000)+"K"
   }else{
@@ -78,6 +78,16 @@ Date.prototype.minifyTime = function(t) {
     timestr += d.time12()
     return timestr
   }
+}
+
+Date.prototype.minifyDate = function(t) {
+  if(!t) t = round((new Date() - this)/(60*1000))
+
+  if(t < 60) return `${t} min ago`
+  else if(t < 1440) return `${Math.floor(t/60)} hours ago`
+  else if(t < 43200) return `${Math.floor(t/1440)} days ago`
+  else if(t < 525600) return `${Math.floor(t/43200)} months ago`
+  else return `${Math.floor(t/525600)} years ago`
 }
 
 Date.prototype.pastdatetime = function() {

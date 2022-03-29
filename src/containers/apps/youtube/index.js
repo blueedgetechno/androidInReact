@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import {Icon, Image, LazyComponent} from 'components/utils';
 import {dispatchAction, dispatchAct} from 'store/actions';
-import {Home} from './extra';
+import {Home, TrendingPage, SubsPage, LibPage} from './extra';
 import './youtube.scss';
 
 export const YoutubeApp = () => {
@@ -35,7 +35,7 @@ export const YoutubeApp = () => {
 }
 
 const AppContainer = ({app, show}) => {
-  const [tab, setTab] = useState(0)
+  const [tab, setTab] = useState(3)
   const clstring = `${app.payload}-wrapper`
 
   const changeTab = (e)=>{
@@ -57,7 +57,10 @@ const AppContainer = ({app, show}) => {
               <Image className="rounded rounded-full" src="blue.jpg" w={22}/>
             </div>
           </div>
-          <Home/>
+          {tab == 0 && <Home/>}
+          {tab == 1 && <TrendingPage/>}
+          {tab == 3 && <SubsPage/>}
+          {tab == 4 && <LibPage/>}
           <div className="yt-bottom-nav">
             <Icon className="active-dark-lit" mui="Home" w={24} label="Home"
                   out={tab!=0} onClick={changeTab} payload={0}/>

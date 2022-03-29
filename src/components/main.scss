@@ -120,6 +120,13 @@ body{
   }
 }
 
+.softpress-in{
+  transition: transform 200ms ease-in-out;
+  &:active{
+    transform: scale(0.94);
+  }
+}
+
 .quick-trans{
   transition: transform 100ms ease-in-out;
 }
