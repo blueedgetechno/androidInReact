@@ -17,6 +17,14 @@ String.prototype.strip = function(c) {
   return this.slice(i, j + 1);
 }
 
+String.prototype.csum = function() {
+  return [...Array(this.length)].map((x,i) => this.charCodeAt(i)).reduce((a,b) => a+b)
+}
+
+String.prototype.reverse = function() {
+  return this.split('').reverse().join('')
+}
+
 String.prototype.count = function(c) {
   var result = 0,
     i = 0;
@@ -30,13 +38,10 @@ String.prototype.capitalize = function() {
 };
 
 Number.prototype.quantf = function() {
-  if(this < 1000){
-    return this + 1 - 1
-  }else if(this < 1e6){
-    return Math.floor(this/1000)+"K"
-  }else{
-    return Math.floor(this/1e5)/10 +"M"
-  }
+  if(this < 1000) return this + 1 - 1
+  else if(this < 1e6) return Math.floor(this/1000)+"K"
+  else if(this < 1e9) return Math.floor(this/1e5)/10 +"M"
+  else return Math.floor(this/1e8)/10 +"B"
 };
 
 Date.prototype.time12 = function() {

@@ -21,6 +21,10 @@ body{
   color: var(--med-txt);
 }
 
+.light-txt{
+  color: var(--light-txt);
+}
+
 .comp-txt{
   color: var(--comp-txt);
 }
@@ -43,6 +47,18 @@ body{
     pointer-events: none;
   }
 }
+
+.txt-ovf{
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wb-line-2 {-webkit-line-clamp: 2}
+.wb-line-3 {-webkit-line-clamp: 3}
+.wb-line-4 {-webkit-line-clamp: 4}
 
 .status-bar{
   // position: absolute;

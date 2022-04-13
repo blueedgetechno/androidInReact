@@ -1,0 +1,135 @@
+.yt-vid-view {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  bottom: 0;
+  background: var(--app-bg);
+  transition: max-height 200ms ease-in-out;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mini-yt-vid {
+  bottom: 56px;
+  max-height: 120px;
+  height: auto;
+  flex-direction: row;
+
+  .yt-vid-box {
+    width: 25%;
+    height: 3.2em;
+    overflow: hidden;
+  }
+
+  .yt-watch-container {
+    width: 75%;
+    flex-direction: row;
+    justify-content: space-between;
+
+    & > div{
+      width: auto;
+    }
+
+    .yt-vid-info {
+      padding: 0.5em;
+
+      .vid-title {
+        font-size: 0.8em;
+        -webkit-line-clamp: 1;
+      }
+    }
+  }
+}
+
+.yt-vid-box {
+  width: 100%;
+  height: 14em;
+  background: #343434;
+
+  .vidCont{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.yt-watch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  flex-grow: 1;
+  overflow-y: scroll;
+
+  & > div{
+    width: 100%;
+  }
+
+  .yt-vid-info {
+    padding: 0.5em 0.8em;
+
+    .vid-title {
+      font-size: 0.92em;
+      -webkit-line-clamp: 2;
+    }
+
+    .vid-stat {
+      font-weight: 500;
+      color: var(--light-txt);
+      font-size: 0.72em;
+    }
+
+    .vid-acts {
+      display: flex;
+      justify-content: space-around;
+      font-size: 0.75em;
+      color: var(--med-txt);
+      margin: 1em 0;
+    }
+  }
+
+  .yt-mini-ctrl{
+    display: flex;
+    padding: 0 4px;
+    color: var(--med-txt);
+  }
+
+  .yt-channel-row {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    border: solid 0 #ddd;
+    border-width: 1px 0;
+
+    .imageCont {
+      padding: 0.5em;
+      overflow: hidden;
+
+      img {
+        border-radius: 50%;
+      }
+    }
+
+    .text-xss {
+      font-weight: 500;
+    }
+
+    .subscribed-container {
+      display: flex;
+      align-items: center;
+      padding: 0 1em;
+    }
+
+    .red-txt {
+      color: #df0404;
+    }
+  }
+
+  .yt-comment-box{
+    padding: 0.5em 1em;
+  }
+}

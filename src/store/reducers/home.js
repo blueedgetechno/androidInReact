@@ -14,8 +14,8 @@ var initialState = {
 
 var dev = "youtube"
 if(process.env.REACT_APP_ENV=="development" && dev!=""){
-  initialState.stack.push(dev);
-  initialState.ishome = false;
+  // initialState.stack.push(dev);
+  // initialState.ishome = false;
 }
 
 const searchpath = (tree, page, path="-")=>{

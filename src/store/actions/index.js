@@ -40,7 +40,7 @@ export const fetchBatteryStatus = () => {
       },
     });
   });
-};
+}
 
 export const fillZero = (x)=>{
   return (x<9?"0":"") + x
@@ -60,14 +60,17 @@ const fetchTime = () => {
     hours: timestring[0][0],
     minutes: timestring[0][1],
     abb: timestring[1]
-  }});
-  store.dispatch({type: "global/date", payload: {day: date.getDate(), month: date.getMonth(), year: date.getFullYear()}});
-};
+  }})
+
+  store.dispatch({type: "global/date", payload: {
+    day: date.getDate(), month: date.getMonth(), year: date.getFullYear()
+  }})
+}
 
 const fetchActions = () => {
   fetchBatteryStatus();
   fetchTime();
-};
+}
 
 export const fetchWeather = () => {
   var defaultData = {
@@ -125,17 +128,17 @@ export const fetchWeather = () => {
 }
 
 export const loadSettings = () => {
-  fetchActions();
-  loadApps();
-  fetchWeather();
+  fetchActions()
+  loadApps()
+  fetchWeather()
   const shortUpdates = setInterval(fetchActions, 10000);
   window.onresize = ()=>{
     store.dispatch({type: "global/resolution", payload: {
       width: window.innerWidth,
       height: window.innerHeight
     }})
-  };
-};
+  }
+}
 
 export const loadApps = ()=>{
   var tmp = {}
@@ -261,20 +264,8 @@ const loadWhatsApp = ()=>{
 const loadYouTube = ()=>{
   var tmp = {...youtube_data}
 
-  Object.keys(tmp.vids).forEach((key, i) => {
-    var ytvid = {...tmp.vids[key]}
-    ytvid.id = key
-    ytvid.views = Number(ytvid.views)
-    if(!ytvid.thumb) ytvid.thumb = `https://i.ytimg.com/vi/${key}/hq720.jpg`
-    if(typeof(ytvid.channel)!="string"){
-      var channel = {...ytvid.channel}
-      channel.id = gene_name(8)
-      tmp.channels[channel.id] = channel
-      ytvid.channel = channel.id
-    }
-
-    tmp.vids[key] = {...ytvid}
-  })
+  tmp.watch = {}
+  tmp.comp = false
 
   Object.keys(tmp.channels).forEach((key, i) => {
     var chnl = {...tmp.channels[key]}
@@ -282,8 +273,32 @@ const loadYouTube = ()=>{
     tmp.channels[key] = {...chnl}
   })
 
+  Object.keys(tmp.vids).forEach((key, i) => {
+    var ytvid = {...tmp.vids[key]}
+    ytvid.id = key
+    ytvid.views = Number(ytvid.views)
+    ytvid.likes = round(ytvid.views*(0.1 + random()*0.4))
+    ytvid.dislikes = round(ytvid.likes*(0.2 + random()*0.8))
+    if(!ytvid.thumb) ytvid.thumb = `https://i.ytimg.com/vi/${key}/hq720.jpg`
+    var channel
+    if(typeof(ytvid.channel)!="string"){
+      channel = {...ytvid.channel}
+      channel.id = gene_name(8)
+      ytvid.channel = channel.id
+    }else channel = {...tmp.channels[ytvid.channel]}
+
+    if(!channel.subs) channel.subs = round(ytvid.views*(0.05 + random()*0.1))
+
+    tmp.channels[channel.id] = channel
+    tmp.vids[key] = {...ytvid}
+  })
+
+  // tmp.watch = {id: "3izFMB91K_Q"}
+  // tmp.comp = false
+
   tmp.explore.trending = Object.keys(tmp.vids).sort(() => Math.random() - 0.5).splice(0,15)
   tmp.home = Object.keys(tmp.vids).sort(() => Math.random() - 0.5)
+  tmp.library.hist = Object.keys(tmp.vids).filter((x,i) => i&1).splice(0,8)
 
   store.dispatch({type: 'youtube/setData', payload: tmp});
 }

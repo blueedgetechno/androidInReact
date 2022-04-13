@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import {Icon, Image, LazyComponent} from 'components/utils';
 import {dispatchAction, dispatchAct} from 'store/actions';
-import {Home, TrendingPage, SubsPage, LibPage} from './extra';
+import {Home, ViewPage, TrendingPage, SubsPage, LibPage} from './extra';
 import './youtube.scss';
 
 export const YoutubeApp = () => {
@@ -35,7 +35,8 @@ export const YoutubeApp = () => {
 }
 
 const AppContainer = ({app, show}) => {
-  const [tab, setTab] = useState(3)
+  const ydata = useSelector(state => state.youtube)
+  const [tab, setTab] = useState(0)
   const clstring = `${app.payload}-wrapper`
 
   const changeTab = (e)=>{
@@ -61,7 +62,8 @@ const AppContainer = ({app, show}) => {
           {tab == 1 && <TrendingPage/>}
           {tab == 3 && <SubsPage/>}
           {tab == 4 && <LibPage/>}
-          <div className="yt-bottom-nav">
+          {<ViewPage/>}
+          <div className="yt-bottom-nav" data-hide={ydata.comp}>
             <Icon className="active-dark-lit" mui="Home" w={24} label="Home"
                   out={tab!=0} onClick={changeTab} payload={0}/>
             <Icon className="active-dark-lit" mui="Explore" w={24} label="Explore"
