@@ -40,9 +40,7 @@ const AppContainer = ({app, show}) => {
   const clstring = `${app.payload}-wrapper`
 
   const changeTab = (e)=>{
-    if(e.target.dataset.payload){
-      setTab(e.target.dataset.payload)
-    }
+    if(e.target.dataset.payload) setTab(e.target.dataset.payload)
   }
 
   return (

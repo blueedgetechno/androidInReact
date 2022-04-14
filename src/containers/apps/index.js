@@ -4,6 +4,6 @@ import {useSelector, useDispatch} from 'react-redux';
 import './index.scss';
 import './themes.scss';
 
-// export * from './whatsapp';
+export * from './whatsapp';
 export * from './youtube';
-// export * from './playstore';
+export * from './playstore';

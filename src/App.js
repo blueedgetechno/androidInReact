@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-import Background from 'components/background';
+import {Background, OverLay} from 'components/background';
 import Home from 'containers/home';
 import {loadSettings} from 'store/actions/index';
 
@@ -22,6 +22,7 @@ function App() {
       <div className="appwrap">
         <Background/>
         <Home/>
+        <OverLay/>
       </div>
     </div>
   );

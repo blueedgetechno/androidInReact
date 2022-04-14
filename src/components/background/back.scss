@@ -7,3 +7,13 @@
   background-position: center;
   transition: all 0.2s ease;
 }
+
+.app-overlay, .brightness-overlay{
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+}
+
+.brightness-overlay{
+  background: #000;
+}
