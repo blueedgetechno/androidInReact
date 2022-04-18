@@ -193,7 +193,7 @@ const RecentWrapper = ()=>{
 
   useEffect(()=>{
     if(home.stack.length && home.recent){
-      scrollRecentTo(home.stack.length - 1)
+      scrollRecentTo(home.stack.length - 1, true)
     }
 
     if(home.recent) setLag(true)

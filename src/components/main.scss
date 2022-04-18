@@ -168,6 +168,10 @@ body{
   }
 }
 
+.xlit:active{
+  background: rgba(0, 0, 0, 0.12);
+}
+
 .vidCont {
   .react-video, video {
     height: 100%;

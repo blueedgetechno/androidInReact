@@ -35,7 +35,6 @@ html, body{
   margin: 0;
   padding: 0;
   height: 100%;
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewport='0 0 24 24' width='24' height='24'><circle cx='12' cy='12' r='12' style='fill: rgba(64, 64, 64, 0.2);'></circle><circle cx='12' cy='12' r='10' style='fill: rgba(0, 0, 0, 0.25);'></circle></svg>"), auto;
 }
 
 body {

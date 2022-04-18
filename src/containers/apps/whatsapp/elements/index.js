@@ -1,12 +1,12 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React, {useState, useEffect, useRef} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
 
-import TextField from '@mui/material/TextField';
+import TextField from '@mui/material/TextField'
 
-import {Icon, Image, Video, isValidURL} from 'components/utils.js';
-import {dispatchAction, dispatchAct} from 'store/actions';
+import {Icon, Image, Video, isValidURL} from 'components/utils.js'
+import {dispatchAction, dispatchAct} from 'store/actions'
 
-import './extra.scss';
+import './extra.scss'
 
 export const NavBar = (props)=>{
   const [swidth, setWidth] = useState(0);

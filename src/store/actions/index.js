@@ -23,10 +23,18 @@ export const dispatchAction = (e) => {
   };
 
   if (action.type) store.dispatch(action);
-};
+}
 
 export const dispatchAct = (action) => {
   if(action.type) store.dispatch(action);
+}
+
+export const openAppPage = (id, page) => {
+  dispatchAct({type: "home/navApp", payload: page})
+  setTimeout(()=> dispatchAct({
+    type: "home/openApp",
+    payload: id
+  }), 200)
 }
 
 export const fetchBatteryStatus = () => {

@@ -12,10 +12,10 @@ var initialState = {
   favbar: []
 };
 
-var dev = "youtube"
+var dev = ""
 if(process.env.REACT_APP_ENV=="development" && dev!=""){
-  // initialState.stack.push(dev);
-  // initialState.ishome = false;
+  initialState.stack.push(dev)
+  initialState.ishome = false
 }
 
 const searchpath = (tree, page, path="-")=>{
@@ -52,7 +52,7 @@ const Home = createSlice({
           tmp_path = searchpath({...state.apps[id].pagetree}, page)
 
       if(tmp_path){
-        state.apps[id].path = tmp_path.strip("-").split("-");
+        state.apps[id].path = tmp_path.strip("-").split("-")
       }
     },
     goBack: (state, action) => {

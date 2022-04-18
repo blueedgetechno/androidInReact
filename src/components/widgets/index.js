@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Calendar from 'react-calendar';
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import Calendar from 'react-calendar'
 
-import {Icon} from 'components/utils';
-import './widget.scss';
+import {Icon} from 'components/utils'
+import {dispatchAction, dispatchAct, openAppPage} from 'store/actions';
+import './widget.scss'
 
 const ClockDate = (props)=>{
   const date = useSelector((state) => state.global.date);
@@ -16,8 +17,13 @@ const ClockDate = (props)=>{
 }
 
 export const GoogleSearch = () => {
+
+  const handleClick = () => {
+    openAppPage("google","google.search")
+  }
+
   return (
-    <div className="google-search-container">
+    <div className="google-search-container press-in" onClick={handleClick}>
       <div className="google-input-container flex justify-between items-center">
         <Icon src="apps/google" w={26}/>
         <Icon src="apps/mic" w={24}/>

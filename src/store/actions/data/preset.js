@@ -16,7 +16,7 @@ export const page1wid = [
 ]
 
 const page1arr = [
-  "playstore", "youtube", "ssgallery", "ssbrowser"
+  "playstore", "youtube", "google", "ssbrowser"
 ]
 
 export const page1apps = apps.filter(x => page1arr.includes(x.icon)).sort((a, b) => {
