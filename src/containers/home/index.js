@@ -35,7 +35,7 @@ function Home() {
     }
 
     if(true){
-      if (!navigator.userAgentData){
+      if (navigator.userAgentData){
         document.documentElement.requestFullscreen();
       }
     }
