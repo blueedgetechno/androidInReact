@@ -7,12 +7,21 @@ export const favbar = [
 export const page1wid = [
   [1,2,1,5,"GoogleSearch"],
   [2,4,3,5,"ShortWeather"],
-  [2,4,1,3,"MinimalVertClock"]
-  // [2,4,1,5,"WideWeather"],
-  // [2,4,1,5,"WideCalender"],
-  // [4,5,1,3,"DayCountdown"]
-  // [3,5,3,5,"AnalogClock"],
-  // [2,3,3,5,"MinimalClock"]
+  [2,4,1,3,"MinimalVertClock"],
+  [4,6,3,5,"AnalogClock"],
+  [4,6,1,2,"MinimalClock"]
+]
+
+export const page2wid = [
+  [5,7,1,3,"DayCountdown"]
+]
+
+export const page3wid = [
+  [3,6,1,5,"WideWeather"]
+]
+
+export const page4wid = [
+  [1,4,1,5,"WideCalender"]
 ]
 
 const page1arr = [

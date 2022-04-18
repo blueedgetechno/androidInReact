@@ -5,7 +5,10 @@ import {
   page1apps,
   page2apps,
   page3apps,
-  page1wid
+  page1wid,
+  page2wid,
+  page3wid,
+  page4wid
 } from './data/preset';
 import axios from 'axios';
 import './prototypes.js';
@@ -189,6 +192,17 @@ export const loadApps = ()=>{
     }
   }
 
+  // page 2 widgets
+  for (var i = 0; i < page2wid.length; i++) {
+    homelist[gene_name()] = {
+      page: 2,
+      type: 'widget',
+      row: page2wid[i].slice(0,2),
+      col: page2wid[i].slice(2,4),
+      widget: page2wid[i][4]
+    }
+  }
+
   // page 3
   for (var i = 0; i < page3apps.length; i++) {
     homelist[page3apps[i].icon] = {
@@ -196,6 +210,28 @@ export const loadApps = ()=>{
       type: 'app',
       row: [floor(i/4) + 1, floor(i/4) + 2],
       col: [(i%4)+1,(i%4)+2]
+    }
+  }
+
+  // page 3 widgets
+  for (var i = 0; i < page3wid.length; i++) {
+    homelist[gene_name()] = {
+      page: 3,
+      type: 'widget',
+      row: page3wid[i].slice(0,2),
+      col: page3wid[i].slice(2,4),
+      widget: page3wid[i][4]
+    }
+  }
+
+  // page 4 widgets
+  for (var i = 0; i < page4wid.length; i++) {
+    homelist[gene_name()] = {
+      page: 4,
+      type: 'widget',
+      row: page4wid[i].slice(0,2),
+      col: page4wid[i].slice(2,4),
+      widget: page4wid[i][4]
     }
   }
 

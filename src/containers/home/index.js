@@ -34,7 +34,7 @@ function Home() {
       dispatchAct({type: "quickpanel/open"});
     }
 
-    if(true){
+    if(!true){
       if (navigator.userAgentData){
         document.documentElement.requestFullscreen();
       }
@@ -240,6 +240,7 @@ const HomeScreen = (props)=>{
     dots: true,
     arrows: false,
     infinite: false,
+    initialSlide: 1,
     speed: 200
   }
 
