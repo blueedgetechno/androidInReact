@@ -34,7 +34,7 @@ function Home() {
       dispatchAct({type: "quickpanel/open"});
     }
 
-    if(!true){
+    if(true){
       if (navigator.userAgentData){
         document.documentElement.requestFullscreen();
       }
