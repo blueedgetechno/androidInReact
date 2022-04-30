@@ -14,6 +14,8 @@ An open-source project that aims to provide an indistinguishably accurate experi
 
 ![img1](public/gall2.png)
 
+#### Visit the Live Application🌈: &nbsp; [android.blueedge.me](https://android.blueedge.me)
+
 # Stack
 
 - Framework - React (^17.0.2) + Redux
@@ -43,27 +45,27 @@ An open-source project that aims to provide an indistinguishably accurate experi
 ## FAQ
 
 1. Is this real android OS?
-  - No, This is not a real operating system. It is just imitation of it with different technology.
+    - No, This is not a real operating system. It is just imitation of it with different technology.
 
 
 2. How long did it take?
-  - 6 weeks (without gaps)
+    - 6 weeks (without gaps)
 
 
 3. Have ran into problems during development?
-  - Duhh. More than dozen big ones and hundreds of small problems.
+    - Duhh. More than dozen big ones and hundreds of small problems.
 
 
 4. Can I contribute?
-  - Yes, you can! Open an issue, create a pull request, head over to [discussions](https://github.com/blueedgetechno/androidInReact/discussions).
+    - Yes, you can! Open an issue, create a pull request, head over to [discussions](https://github.com/blueedgetechno/androidInReact/discussions).
 
 
 5. Where did you get the inspiration from, if you have?
-  - I got the inspired to make the project on the suggestion of [Derry Shribman](https://github.com/xderry).
+    - I got the inspired to make the project on the suggestion of [Derry Shribman](https://github.com/xderry).
 
 
 6. Why do JavaScript developers wear glasses?
-  - Because they cannot C# (see sharp). &nbsp;&nbsp;&nbsp; ![answer](public/hehe.jpg)
+    - Because they cannot C# (see sharp). &nbsp;&nbsp;&nbsp; ![answer](public/hehe.jpg)
 
 
 ## Online Deployment
