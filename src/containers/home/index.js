@@ -240,7 +240,7 @@ const HomeScreen = (props)=>{
     dots: true,
     arrows: false,
     infinite: false,
-    initialSlide: 1,
+    initialSlide: 0,
     speed: 200
   }
 
