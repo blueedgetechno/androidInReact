@@ -2,6 +2,7 @@
 
 [![Follow me](https://img.shields.io/github/followers/blueedgetechno?label=follow%20me&style=social)](https://github.com/blueedgetechno)
 [![Follow Twitter](https://img.shields.io/twitter/follow/blueedgetechno?label=Follow%20me&style=social)](https://twitter.com/blueedgetechno)
+[![Join](https://img.shields.io/discord/868499076432408627.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/NcjaNdwtnR)
 [![coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/blueedgetechno)
 
 An open-source project that aims to provide an indistinguishably accurate experience of Android on web. The project leverages different JavaScript Web APIs to imitates the Android functionalities and CSS animations to bring life into it.
@@ -57,7 +58,7 @@ An open-source project that aims to provide an indistinguishably accurate experi
 
 
 4. Can I contribute?
-    - Yes, you can! Open an issue, create a pull request, head over to [discussions](https://github.com/blueedgetechno/androidInReact/discussions).
+    - Yes, you can! Open an issue, create a pull request, head over to [discussions](https://github.com/blueedgetechno/androidInReact/discussions) or join the [discord](https://discord.gg/NcjaNdwtnR).
 
 
 5. Where did you get the inspiration from, if you have?
