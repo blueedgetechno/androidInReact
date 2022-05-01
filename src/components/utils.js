@@ -39,7 +39,7 @@ export const MaterialIcon = (props) => {
 };
 
 export const Icon = (props) => {
-  var src = `/img/icon/${props.ui ? "ui/" : ""}${props.src}`;
+  var src = `img/icon/${props.ui ? "ui/" : ""}${props.src}`;
   if (props.src && !props.src.includes(".")) {
     src += ".png";
   }
@@ -117,7 +117,7 @@ export const Icon = (props) => {
 };
 
 export const Image = (props) => {
-  var src = `/img/${(props.dir?props.dir+"/":"")+props.src}`;
+  var src = `img/${(props.dir?props.dir+"/":"")+props.src}`;
   if (props.src && !props.src.includes(".")) {
     src += ".png";
   }
@@ -175,7 +175,7 @@ export const Video = (props) => {
   const [perProg, setPerProg] = useState(0); // time elapsed in %
   const vidplayer = useRef();
 
-  var src = `/img/${(props.dir?props.dir+"/":"")+props.src}`;
+  var src = `img/${(props.dir?props.dir+"/":"")+props.src}`;
   if (props.src && !props.src.includes(".")) src += ".mp4";
 
   if (props.ext || (props.src && props.src.includes("http"))) {
