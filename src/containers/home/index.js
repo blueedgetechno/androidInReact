@@ -67,8 +67,9 @@ function Home() {
           {favbar.map((favicon, i)=>{
             var app = apps[favicon]
             return (
-              <Icon className="mdShad" src={"apps/" + app.icon} action={app.action || "home/openApp"}
-                  data-padd={app.padd} w={52} radii={20} key={i} payload={app.payload}/>
+              <Icon className="mdShad press-in" src={"apps/" + app.icon} key={i}
+                action={app.action || "home/openApp"} w={52} h={52}
+                radii={20} data-padd={app.padd} payload={app.payload}/>
             )
           })}
         </div>
@@ -263,8 +264,9 @@ const HomeScreen = (props)=>{
                         gridColumn: item.col.join(" / ")
                       }}>
                         <div className="app-container">
-                          <Icon src={"apps/" + app.icon} action={app.action || "home/openApp"}
-                            w={52} radii={22} data-padd={app.padd} payload={app.payload}/>
+                          <Icon className="press-in" src={"apps/" + app.icon}
+                            action={app.action || "home/openApp"} w={52} h={52}
+                            radii={22} data-padd={app.padd} payload={app.payload}/>
                           <div className="app-name">{app.name}</div>
                         </div>
                       </div>

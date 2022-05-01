@@ -6,6 +6,13 @@ var apps = [
     padd: true
   },
   {
+    name: 'BuyMeACoffee',
+    icon: 'buyme',
+    action: 'home/openLink',
+    payload: 'https://buymeacoffee.com/blueedgetechno',
+    type: 'app'
+  },
+  {
     name: 'Calender',
     icon: 'calender',
     type: 'app',
@@ -60,6 +67,14 @@ var apps = [
     name: 'GBoard',
     icon: 'gboard',
     type: 'app',
+    padd: true
+  },
+  {
+    name: 'Github',
+    icon: 'github',
+    type: 'app',
+    action: 'home/openLink',
+    payload: 'https://github.com/blueedgetechno/androidInReact',
     padd: true
   },
   {

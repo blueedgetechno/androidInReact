@@ -89,6 +89,9 @@ const Home = createSlice({
       state.recent = false
       state.ishome = true
     },
+    openLink: (state, action) => {
+      window.open(action.payload, '_blank')
+    },
     openApp: (state, action) => {
       if(!action.payload) return;
 

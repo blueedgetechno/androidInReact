@@ -1,7 +1,7 @@
 import apps from './apps';
 
 export const favbar = [
-  "ssphone", "messages","settings","whatsapp"
+  "ssphone", "github","settings","whatsapp"
 ]
 
 export const page1wid = [
@@ -25,7 +25,7 @@ export const page4wid = [
 ]
 
 const page1arr = [
-  "playstore", "youtube", "google", "ssbrowser"
+  "playstore", "youtube", "google", "buyme"
 ]
 
 export const page1apps = apps.filter(x => page1arr.includes(x.icon)).sort((a, b) => {
