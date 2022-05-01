@@ -7,7 +7,7 @@ export const Background = () => {
 
   return (
     <div className="background" style={{
-        backgroundImage: `url(/img/wallpaper/${wall.src})`,
+        backgroundImage: `url(img/wallpaper/${wall.src})`,
       }}></div>
   );
 }
