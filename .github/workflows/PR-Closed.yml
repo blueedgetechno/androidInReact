@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: win11bot/preview
+          repository: win11bot/android-previews
 
       - name: Remove Preview folder
         run: rm -r ${{ github.event.pull_request.number }}
