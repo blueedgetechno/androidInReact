@@ -18,6 +18,12 @@
       "sizes": "512x512"
     }
   ],
+  "author": {
+		"name": "Blue Edge",
+		"website": "https://blueedge.me",
+		"github": "https://github.com/blueedgetechno",
+		"source-repo": "https://github.com/blueedgetechno/androidInReact"
+	},
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#fefefe",
