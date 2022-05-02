@@ -27,7 +27,7 @@
     "react-hammerjs": "^1.0.1",
     "react-player": "^2.9.0",
     "react-redux": "^8.0.1",
-    "react-scripts": "^5.0.0",
+    "react-scripts": "^5.0.1",
     "react-slick": "^0.28.1",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
