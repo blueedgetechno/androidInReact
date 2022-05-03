@@ -53,8 +53,8 @@ An open-source project that aims to provide an indistinguishably accurate experi
     - 6 weeks (without gaps)
 
 
-3. Have ran into problems during development?
-    - Duhh. More than dozen big ones and hundreds of small problems.
+3. Have you ran into problems during development?
+    - Duhh. More than dozen big ones and hundreds of small problems ([more info](timeline.md)).
 
 
 4. Can I contribute?
