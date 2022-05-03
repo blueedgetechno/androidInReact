@@ -1,7 +1,25 @@
-import apps from './apps';
+import apps from './apps'
+
+const srandom = (seed)=>{
+  var x = Math.sin(seed++) * 10000
+  return x - Math.floor(x)
+}
+
+const shuffle = (arr, seed)=>{
+  var m = arr.length, t, i
+  while (m) {
+    i = Math.floor(srandom(seed) * m--)
+    t = arr[m]
+    arr[m] = arr[i]
+    arr[i] = t
+    ++seed
+  }
+
+  return arr
+}
 
 export const favbar = [
-  "ssphone", "github","settings","whatsapp"
+  "twitter", "github","settings","whatsapp"
 ]
 
 export const page1wid = [
@@ -13,7 +31,7 @@ export const page1wid = [
 ]
 
 export const page2wid = [
-  [5,7,1,3,"DayCountdown"]
+  [4,6,1,3,"DayCountdown"]
 ]
 
 export const page3wid = [
@@ -25,15 +43,24 @@ export const page4wid = [
 ]
 
 const page1arr = [
-  "playstore", "youtube", "google", "buyme"
+  "playstore", "youtube", "google", "unescape"
+]
+
+const page2arr = [
+  "ssphone", "gmail", "discord", "buyme"
 ]
 
 export const page1apps = apps.filter(x => page1arr.includes(x.icon)).sort((a, b) => {
-  return page1arr.indexOf(a.icon) > page1arr.indexOf(b.icon) ? 1 : -1;
-});
+  return page1arr.indexOf(a.icon) > page1arr.indexOf(b.icon) ? 1 : -1
+})
 
-var remapps = apps.filter(x => !page1arr.includes(x.icon) && !favbar.includes(x.icon))
-              .sort((a,b)=> 2*Math.random() - 1).sort((a,b)=> 2*Math.random() - 1)
+export const page2bar = apps.filter(x => page2arr.includes(x.icon)).sort((a, b) => {
+  return page2arr.indexOf(a.icon) > page2arr.indexOf(b.icon) ? 1 : -1
+})
 
-export const page2apps = [...remapps.slice(0,16)];
-export const page3apps = [...remapps.slice(16,24)];
+var remapps = shuffle(apps.filter(x => {
+  return !page1arr.includes(x.icon) && !page2arr.includes(x.icon) && !favbar.includes(x.icon)
+}), new Date().getFullYear())
+
+export const page2apps = [...remapps.slice(0,12)]
+export const page3apps = [...remapps.slice(12,20)]

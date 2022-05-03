@@ -69,7 +69,7 @@ export const MinimalClock = () => {
   const time = useSelector((state) => state.global.time);
 
   return (
-    <div className="digital-time-container items-center">
+    <div className="digital-time-container">
       <div className="flex items-baseline">
         <div className="text-4xl">{time.hours}:{time.minutes}</div>
         <div className="text-xs ml-1">{time.abb}</div>

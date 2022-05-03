@@ -3,6 +3,7 @@ import apps from './data/apps';
 import {
   favbar,
   page1apps,
+  page2bar,
   page2apps,
   page3apps,
   page1wid,
@@ -19,6 +20,24 @@ import youtube_data from './data/youtube.json';
 const {round, floor, random, min, max, abs} = Math;
 
 export const gene_name = (x=10) => random().toString(36).substring(2, x).toLowerCase()
+export const srandom = (seed)=>{
+  var x = Math.sin(seed++) * 10000
+  return x - Math.floor(x)
+}
+
+export const shuffle = (arr, seed)=>{
+  var m = arr.length, t, i
+  while (m) {
+    i = Math.floor(srandom(seed) * m--)
+    t = arr[m]
+    arr[m] = arr[i]
+    arr[i] = t
+    ++seed
+  }
+
+  return arr
+}
+
 export const dispatchAction = (e) => {
   var action = {
     type: e.target.dataset.action,
@@ -41,16 +60,22 @@ export const openAppPage = (id, page) => {
 }
 
 export const fetchBatteryStatus = () => {
-  var battery = navigator.getBattery();
-  battery.then((battery) => {
-    store.dispatch({
-      type: "global/battery",
-      payload: {
-        charging: battery.charging,
-        level: battery.level,
-      },
-    });
-  });
+  try{
+    var battery = navigator.getBattery()
+    if(battery){
+      battery.then((battery) => {
+        store.dispatch({
+          type: "global/battery",
+          payload: {
+            charging: battery.charging,
+            level: battery.level,
+          },
+        })
+      })
+    }
+  }catch(e){
+
+  }
 }
 
 export const fillZero = (x)=>{
@@ -188,6 +213,16 @@ export const loadApps = ()=>{
       page: 2,
       type: 'app',
       row: [floor(i/4) + 1, floor(i/4) + 2],
+      col: [(i%4)+1,(i%4)+2]
+    }
+  }
+
+  // page 2 bar
+  for (var i = 0; i < page2bar.length; i++) {
+    homelist[page2bar[i].icon] = {
+      page: 2,
+      type: 'app',
+      row: [6, 7],
       col: [(i%4)+1,(i%4)+2]
     }
   }

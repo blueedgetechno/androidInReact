@@ -36,6 +36,13 @@ var apps = [
     type: 'app'
   },
   {
+    name: 'Discord',
+    icon: 'discord',
+    type: 'app',
+    action: 'home/openLink',
+    payload: 'https://discord.gg/NcjaNdwtnR'
+  },
+  {
     name: 'Docs',
     icon: 'docs',
     type: 'app',
@@ -81,6 +88,8 @@ var apps = [
     name: 'Gmail',
     icon: 'gmail',
     type: 'app',
+    action: 'home/openLink',
+    payload: 'mailto:blueedgetechno@gmail.com',
     padd: true
   },
   {
@@ -281,18 +290,35 @@ var apps = [
     type: 'app'
   },
   {
+    name: 'Unescape',
+    icon: 'unescape',
+    type: 'app',
+    action: 'home/openLink',
+    payload: 'https://blueedge.me/unescape'
+  },
+  {
     name: 'Videos',
     icon: 'ssvideo',
     type: 'app'
-  },{
+  },
+  {
     name: 'Translate',
     icon: 'translate',
     type: 'app'
-  },{
+  },
+  {
+    name: 'Twitter',
+    icon: 'twitter',
+    type: 'app',
+    action: 'home/openLink',
+    payload: 'https://twitter.com/blueedgetechno'
+  },
+  {
     name: 'WhatsApp',
     icon: 'whatsapp',
     type: 'app'
-  },{
+  },
+  {
     name: 'Youtube',
     icon: 'youtube',
     type: 'app',

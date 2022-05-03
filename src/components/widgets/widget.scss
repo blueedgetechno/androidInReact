@@ -75,15 +75,16 @@
 
 .digital-time-container,
 .vert-time-container {
-  padding: 0 1em;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   color: var(--med-txt);
 }
 
-.vert-time-container {
-  box-sizing: border-box;
-  width: 96%;
+.vert-time-container > div {
+  width: 100%;
+  padding: 0 1em;
 }
 
 .cell-container {
@@ -178,7 +179,7 @@
   border-radius: 1em;
 }
 
-.weather-container{
+.weather-container {
   box-sizing: border-box;
   background: #fefefe;
   border-radius: 1em;
@@ -193,56 +194,56 @@
   overflow-x: hidden;
   overflow-y: scroll;
 
-  .city-container{
+  .city-container {
     display: flex;
 
-    span{
+    span {
       font-size: 1rem;
     }
   }
 
-  .weather-date{
+  .weather-date {
     font-size: 0.9em;
     font-weight: 100;
     color: var(--gray-txt);
   }
 
-  .main-weather{
+  .main-weather {
     display: flex;
     align-items: center;
     flex-grow: 1;
   }
 
-  .today-temperature{
+  .today-temperature {
     font-size: 3em;
     font-weight: 100;
     margin-left: 0.3em;
   }
 
-  .weather-pred-container{
+  .weather-pred-container {
     display: flex;
     justify-content: space-between;
 
-    .weather-pred{
+    .weather-pred {
       margin: 0 0.8em;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .pred-day{
+    .pred-day {
       font-size: 0.8em;
     }
   }
 }
 
-.short-weather-container{
-  .today-temperature{
+.short-weather-container {
+  .today-temperature {
     font-size: 2.5em;
     margin-left: 0.1em;
   }
 
-  .main-weather .uicon{
+  .main-weather .uicon {
     height: 100%;
   }
 }

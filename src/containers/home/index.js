@@ -34,7 +34,7 @@ function Home() {
       dispatchAct({type: "quickpanel/open"});
     }
 
-    if(true){
+    if(process.env.REACT_APP_ENV!="development"){
       if (navigator.userAgentData){
         document.documentElement.requestFullscreen();
       }
