@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Hammer, { displayName, propTypes } from 'react-hammerjs';
+import Hammer, { displayName, propTypes } from '@win11react/react-hammerjs';
 import Slider from '@mui/material/Slider';
 import Swiper from 'react-slick';
 
