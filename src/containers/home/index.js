@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {useSelector} from 'react-redux';
-import Hammer from 'react-hammerjs';
+import Hammer from '@win11react/react-hammerjs';
 import Swiper from 'react-slick';
 
 import * as Widgets from 'components/widgets';
