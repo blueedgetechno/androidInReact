@@ -74,7 +74,7 @@ jobs:
       - name: install Rust i686-pc-windows-msvc
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: i686-pc-windows-msvc
+          toolchain: stable-i686-pc-windows-msvc
 
       - name: CI
         run: |
