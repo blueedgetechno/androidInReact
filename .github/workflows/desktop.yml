@@ -48,7 +48,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: __VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
-          releaseName: "Win11inReact v__VERSION__"
+          releaseName: "androidInReact v__VERSION__"
           releaseBody: ${{ github.event.issue.body }}
           releaseDraft: false
           prerelease: false
@@ -87,7 +87,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: __VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
-          releaseName: "Win11inReact v__VERSION__"
+          releaseName: "androidInReact v__VERSION__"
           releaseBody: ${{ github.event.issue.body }}
           releaseDraft: false        
           
