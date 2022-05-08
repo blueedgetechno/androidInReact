@@ -33,6 +33,8 @@ jobs:
           toolchain: stable
           
       - uses: Swatinem/rust-cache@v1
+        with:
+          sharedKey: ${{ matrix.platform }}
       
       - name: install webkit2gtk (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
