@@ -1,0 +1,69 @@
+name: publish
+on:
+  issues:
+    types:
+      - labeled
+jobs:
+  publish-tauri:
+    if: github.event.label.name == 'desktop-release'
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [macos-latest, ubuntu-latest, windows-latest]
+        toolchain: [stable, i686-pc-windows-msvc]
+
+    runs-on: ${{ matrix.platform }}
+    env:
+      CI: false
+    steps:
+      - uses: actions/checkout@v3
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12
+          cache: npm
+
+      - name: git http
+        run: |
+          git config --global url."https://github.com/".insteadOf git@github.com:
+          git config --global url."https://".insteadOf git://
+
+      - name: install Rust stable
+        if: matrix.platform == 'macos-latest'
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          
+      - name: install Rust stable
+        if: matrix.platform == 'windows-latest'
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.toolchain }}    
+
+      - name: install Rust stable
+        if: matrix.platform == 'ubuntu-latest'
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          
+      - name: install webkit2gtk (ubuntu only)
+        if: matrix.platform == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y webkit2gtk-4.0
+
+      - name: ci
+        run: |
+          npm ci
+
+      - name: install app dependencies and build it
+        run: npm run build
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: __VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
+          releaseName: "Win11inReact v__VERSION__"
+          releaseBody: ${{ github.event.issue.body }}
+          releaseDraft: false
+          prerelease: false
