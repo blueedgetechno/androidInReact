@@ -12,6 +12,8 @@ todo*
 
 # production
 /build
+/target/
+WixTools
 *.py
 rough*
 
