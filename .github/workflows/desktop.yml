@@ -31,6 +31,9 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+          
+      - uses: Swatinem/rust-cache@v1
+      
       - name: install webkit2gtk (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
         run: |
@@ -52,42 +55,3 @@ jobs:
           releaseBody: ${{ github.event.issue.body }}
           releaseDraft: false
           prerelease: false
-          
-  publish-32:
-    if: github.event.label.name == 'desktop-release'
-    runs-on: windows-latest
-    env:
-      CI: false
-    steps:
-      - uses: actions/checkout@v3
-      - name: setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 12
-          cache: npm
-
-      - name: git http
-        run: |
-          git config --global url."https://github.com/".insteadOf git@github.com:
-          git config --global url."https://".insteadOf git://
-
-      - name: install Rust i686-pc-windows-msvc
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable-i686-pc-windows-msvc
-
-      - name: CI
-        run: |
-          npm ci
-
-      - name: install app dependencies and build it
-        run: npm run build
-      - uses: tauri-apps/tauri-action@v0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tagName: __VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
-          releaseName: "androidInReact v__VERSION__"
-          releaseBody: ${{ github.event.issue.body }}
-          releaseDraft: false        
-          
