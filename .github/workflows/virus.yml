@@ -8,8 +8,7 @@ jobs:
   virustotal:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: VirusTotal Scan
+      - name: VirusTotal Scan
         uses: crazy-max/ghaction-virustotal@v2
         with:
           vt_api_key: ${{ secrets.VT_API_KEY }}
