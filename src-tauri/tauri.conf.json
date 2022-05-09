@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "Android11React",
-    "version": "0.1.0"
+    "version": "0.0.1"
   },
   "tauri": {
     "allowlist": {
@@ -53,7 +53,7 @@
     "updater": {
       "active": true,
       "endpoints": [
-        "https://github.win11react.com/update/android/"
+        "https://github.win11react.com/update/android/index.json"
     ],
     "dialog": true,
     "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDY1QzY4RkFENDQ3RDY2RDEKUldUUlpuMUVyWS9HWlY2RVVlTlU3OHpOSThOQUN1Vi95VWxvVFZ1dEYzZUxUUlJPWGdYMDFuRWsK"  
