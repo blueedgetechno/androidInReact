@@ -24,8 +24,8 @@ jobs:
         with:
           node-version: 16
 
-      - if: github.event.pull_request.opened == true
-        name: create repo
+      - name: create repo
+        if: ${{ github.event.action == 'opened'}}
         run: gh repo create blueDroidBot/${{ github.event.pull_request.number }} --public
         env:
           GITHUB_TOKEN: ${{ secrets.BOT }}
