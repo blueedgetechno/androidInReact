@@ -31,9 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BOT }}
 
       - name: Build
-        run: |
-          npm ci
-          CI=false PUBLIC_URL=https://android-preview.blueedge.me/${{ github.event.pull_request.number }} npm run build
+        run: npm ci && npm run build
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
