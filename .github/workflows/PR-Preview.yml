@@ -31,7 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BOT }}
 
       - name: Build
-        run: npm ci && npm run build
+        run: npm ci && npm run ghbuild
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
