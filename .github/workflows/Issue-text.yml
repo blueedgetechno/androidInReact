@@ -14,7 +14,7 @@ jobs:
         message: "Hey, thank you for creating an issue. We will normally respond within 24 hours."
         GITHUB_TOKEN: ${{ secrets.BOT }}
         
-    - uses: stefanbuck/github-issue-parser@v2
+    - uses: stefanbuck/github-issue-parser@v3
       id: issue-parser
       with:
         template-path: .github/ISSUE_TEMPLATE/bug_report.yml
